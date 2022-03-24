@@ -4,6 +4,9 @@ import Userinfo from './UserInfo'
 import { Link } from 'react-router-dom'
 import {   matchPath, useLocation } from 'react-router-dom';
 
+import { useRecoilValue } from 'recoil'
+import userData from '../../store/userData'
+
 const NavBarMainWrapper = styled.div`
 	width: 100%;
 	height: 50px;
@@ -13,7 +16,7 @@ const NavBarMainWrapper = styled.div`
 	align-items: flex-end;
 	justify-content: space-around;
 `
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
 	position: relative;
 	width: 15%;
 `
@@ -25,18 +28,18 @@ const MenuWrapper = styled.div`
 const menus = [
 	{ title: '문제', link:'problems'},
 	{ title: '문제집', link:'workbook'},
+	{ title: '노트', link:'note'},
 	{ title: '시험', link:'exam'},
 	{ title: 'Q&A', link:'QandA'},
 	{ title: '그룹', link:'group'},
-	// { title: '로그인', link:'signin'}
+
 ]
 const NavBar = () => {
+	const userState = useRecoilValue(userData)
 	return (
 		<NavBarMainWrapper>
-			<LogoWrapper>
-				<Link to={'/'}>
-					<img alt="메인 로고" src="DUCAMI.svg" />
-				</Link>
+			<LogoWrapper to={'/'}>
+				<img alt="메인 로고" src="DUCAMI.svg" />
 			</LogoWrapper>
 			<MenuWrapper>
 				{
