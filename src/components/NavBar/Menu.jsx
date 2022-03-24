@@ -7,11 +7,10 @@ const Main = styled.div`
 	width: 15%;
 	height: 20px;
 	margin: auto;
-	margin-top: 16px;
+	margin-top: 25px;
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	top: 9px;
 `
 
 const StyledLink = styled(Link)`
@@ -21,8 +20,6 @@ const StyledLink = styled(Link)`
     margin: 0 auto;
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
-    }
-    :hover{
     }
     text-align: center;
 `
@@ -50,7 +47,7 @@ const Menu = (props) => {
 				path[1] === props.link ? <UnderBar color={'green'}/> : 
 				getOnOver ? <UnderBar color={'red'}/> :
 				null
-			}	
+			}
 		</Main>
 	)
 }
