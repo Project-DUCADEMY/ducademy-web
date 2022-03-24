@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import Menu from './Menu'
 import { Link } from 'react-router-dom'
+import {   matchPath, useLocation } from 'react-router-dom';
+
 const NavBarMainWrapper = styled.div`
 	width: 100%;
 	height: 80px;
@@ -32,7 +34,7 @@ const menus = [
 	{ title: '로그인', link:'signin'}
 ]
 const NavBar = () => {
-	return (	
+	return (
 		<NavBarMainWrapper>
 				<Link to={'/'}>
 					<Logo alt="메인 로고" src="DUCAMI.svg" />
