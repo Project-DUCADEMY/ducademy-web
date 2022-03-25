@@ -7,14 +7,14 @@ const Main = styled.div`
 	width: 15%;
 	height: 20px;
 	margin: auto;
-	margin-top: 25px;
+	margin-top: 23px;
 	display: flex;
 	flex-direction: column;
 	position: relative;
 `
 
 const StyledLink = styled(Link)`
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Nanum Gothic Coding';
     color: rgb(80, 80, 80);
     margin: 0 auto;

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Switch, useLocation } from "react-router-
 import NavBar from './components/NavBar/NavBar'
 import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
+import Problems from './components/Problems/Problems'
 
 import Loginpage from './components/Authentication/Loginpage'
 
@@ -14,6 +15,7 @@ const AppRouter = () => {
 			<Routes>
 				<Route exact path="/" element={<Mainpage/>}/>
 				<Route exact path="/mypage" element={<MyPage/>}/>
+				<Route exact path="/problems" element={<Problems/>}/>
 				<Route exact path="/login" element={<Loginpage/>}/>
 				<Route path="*" element={<NotFound/>}/>
        		</Routes>
