@@ -8,8 +8,8 @@ import { useRecoilValue } from 'recoil'
 import userData from '../../store/userData'
 
 const NavBarMainWrapper = styled.div`
-	width: 100%;
 	height: 50px;
+	width: 100%;
 	border-bottom: solid 2px #ede;
 	background-color: #E8F5E9;
 	display: flex;

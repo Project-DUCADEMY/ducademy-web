@@ -8,15 +8,22 @@ const Main = styled.div	`
 	flex-direction: column;
     align-content: center;
     align-items: center;
-
+`
+const MainWrapper = styled.div	`
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
 `
 
 const Problems = () => {
 	return (
-		<Main>
-			<SearchSpace/>
-			<ProblemsTable/>
-		</Main>
+		<MainWrapper>
+			<Main>
+				<SearchSpace/>
+				<ProblemsTable/>
+			</Main>
+		</MainWrapper>
 	)
 }
 

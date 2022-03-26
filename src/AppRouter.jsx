@@ -5,10 +5,15 @@ import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
 
-import Loginpage from './components/Authentication/Loginpage'
+import Loginpage from './components/Authentication/LoginPage'
+import Joinpage from './components/Authentication/JoinPage'
 
 import NotFound from './NotFound'
+
+import userData from './store/userData'
+import { useRecoilValue } from 'recoil'
 const AppRouter = () => {
+	const getUserData = useRecoilValue(userData)
 	return (
 		<BrowserRouter>
 			<NavBar/>
@@ -16,7 +21,12 @@ const AppRouter = () => {
 				<Route exact path="/" element={<Mainpage/>}/>
 				<Route exact path="/mypage" element={<MyPage/>}/>
 				<Route exact path="/problems" element={<Problems/>}/>
-				<Route exact path="/login" element={<Loginpage/>}/>
+				{
+					getUserData === null ? (<>
+						<Route exact path="/login" element={<Loginpage/>}/>
+						<Route exact path="/join" element={<Joinpage/>}/>
+					</>):(<></>)
+				}
 				<Route path="*" element={<NotFound/>}/>
        		</Routes>
 		</BrowserRouter>

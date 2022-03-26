@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useState } from 'react'
+import axios from 'axios'
 import '../../fonts/Nanum_Gothic_Coding.css'
 
 const Background = styled.div`
@@ -81,33 +82,56 @@ const ConfirmButton = styled.button`
 	}
 `
 
-const Loginpage = () => {
+const Joinpage = () => {
 	const [getEmail, setEmail] = useState('')
     const [getPw, setPw] = useState('')
+    const [getPwCh, setPwCh] = useState('')
+	const [getName, setName] = useState('')
+    const [getUsername, setUsername] = useState('')
 
     const handleInputEmail = (e) => {
         setEmail(e.target.value)
     }
+    const handleInputUsername = (e) => {
+        setUsername(e.target.value)
+    }
+    const handleInputName = (e) => {
+        setName(e.target.value)
+    }
     const handleInputPw = (e) => {
         setPw(e.target.value)
     }
-    const login = (e) => {
-    	console.log(getEmail, getPw)
+    const handleInputPwCh = (e) => {
+        setPwCh(e.target.value)
     }
+
+    const join = (e) => {
+    	axios.post(
+        '/authenticate/join', 
+        { 
+        	name: getName,
+        	username: getUsername,
+        	email: getEmail,
+        	password: getPw,
+        	passwordCh: getPwCh
+        })
+        .then(console.log)
+        .catch(console.log)
+    }
+    //name, username, email, password, passwordCh
 	return (
 		<Background>
 			<Container>
-				<LoginTitle>로그인</LoginTitle>
-				<EmailInput type="text" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
+				<LoginTitle>회원가입</LoginTitle>
+				<EmailInput type="text" placeholder="name" value={getName} onChange={handleInputName}/>
+				<EmailInput type="text" placeholder="nickname" value={getUsername} onChange={handleInputUsername}/>
+				<EmailInput type="Email" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
 				<PasswordInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
-				<CheckboxContainer>
-					<Checkbox type="checkbox"/>
-					<CheckboxText>로그인 상태 유지</CheckboxText>
-				</CheckboxContainer>
-				<ConfirmButton onClick={login}>Confirm</ConfirmButton>
+				<PasswordInput type="password" placeholder="Password Check" value={getPwCh} onChange={handleInputPwCh}/>
+				<ConfirmButton onClick={join}>Confirm</ConfirmButton>
 			</Container>
 		</Background>
 	)
 }
 
-export default Loginpage;
+export default Joinpage;
