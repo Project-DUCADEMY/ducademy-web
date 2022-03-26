@@ -21,20 +21,24 @@ const UserImg = styled.img`
 `
 const Username = styled.div`
 	color: grey;
-	font-size: 8px;
+	font-size: 12px;
 	margin-top: 30px;
 	margin-left: 5px;
 `
 const Sign = styled.div`
 	color: grey;
-	font-size: 8px;
+	font-size: 10px;
 	margin-top: 30px;
 	margin-left: 5px;
+`
+const LoginJoinWrapper = styled.div`
+	display: flex;
 `
 const LinkWrapper = styled(Link)`
 	&:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }
+    display: flex;
 `
 const UserInfo = () => {
 	const userState = useRecoilValue(userData)
@@ -43,9 +47,15 @@ const UserInfo = () => {
 			{
 				userState === null ? (
 				<>
-					<LinkWrapper to={'/login'}>
-						<Username>로그인</Username>
-					</LinkWrapper>
+					<LoginJoinWrapper>
+						<LinkWrapper to={'/login'}>
+							<Username>로그인</Username>
+						</LinkWrapper>
+						<Username>|</Username>
+						<LinkWrapper to={'/join'}>
+							<Username>회원가입</Username>
+						</LinkWrapper>
+					</LoginJoinWrapper>
 				</>
 				) : (
 				<>

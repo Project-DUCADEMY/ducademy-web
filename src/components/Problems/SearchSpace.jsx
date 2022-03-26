@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import '../../fonts/Nanum_Gothic_Coding.css'
 const Main = styled.div`
+	width: 100%;
 	display: flex;
-	justify-content: center;
     align-items: center;
+    justify-content: space-between;
 `
 const OpctionsWrapper = styled.div`
 	display: flex;
@@ -14,7 +15,9 @@ const OpctionsWrapper = styled.div`
 	height: 50px;
 `
 const SearchBarWarpper = styled.div`
-
+	display: flex;
+    flex-direction: row;
+    align-items: center;
 `
 const SearchBar = styled.input`
   	outline: none;
@@ -28,7 +31,7 @@ const SubmitButton = styled.div`
 	width: 26px;
 	background-color: #00BFA5;
 	margin-left: 1px;
-	cursor: pointer
+	cursor: pointer;
 `
 const Opction = styled.div`
 	width: 80px;
@@ -47,7 +50,7 @@ const opctions = [
 	'추천',
 	'전체',
 	'오답',
-	'단계'
+	'유형'
 ]
 const SearchSpace = () => {
 	const [getOnOver, setOnOver] = useState(false)
@@ -60,8 +63,10 @@ const SearchSpace = () => {
 				})
 			}
 			</OpctionsWrapper>
-			<SearchBar/>
-			<SubmitButton/>
+			<SearchBarWarpper>
+				<SearchBar/>
+				<SubmitButton/>
+			</SearchBarWarpper>
 		</Main>
 	)
 }
