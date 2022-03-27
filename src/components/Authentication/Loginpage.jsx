@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { useState } from 'react'
+import axios from 'axios'
 import '../../fonts/Nanum_Gothic_Coding.css'
+
 
 const Background = styled.div`
 	width: 100%;
@@ -92,7 +94,14 @@ const Loginpage = () => {
         setPw(e.target.value)
     }
     const login = (e) => {
-    	console.log(getEmail, getPw)
+    	axios.post(
+        '/authenticate/login', 
+        { 
+        	email: getEmail,
+        	password: getPw,
+        })
+        .then(console.log)
+        .catch(console.log)
     }
 	return (
 		<Background>

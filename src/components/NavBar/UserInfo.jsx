@@ -4,7 +4,7 @@ import userData from '../../store/userData'
 import { useRecoilValue } from 'recoil'
 const Main = styled.div`
 	height: 100%;
-	width: 15%;
+	width: 250px;
     display: flex;
     align-items: center;
     flex-direction: row-reverse; 

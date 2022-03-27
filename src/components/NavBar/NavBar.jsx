@@ -18,7 +18,7 @@ const NavBarMainWrapper = styled.div`
 `
 const LogoWrapper = styled(Link)`
 	position: relative;
-	width: 15%;
+	width: 250px;
 `
 const MenuWrapper = styled.div`
 	width: 40%;

@@ -9,6 +9,7 @@ import Loginpage from './components/Authentication/LoginPage'
 import Joinpage from './components/Authentication/JoinPage'
 
 import NotFound from './NotFound'
+import Register from './components/RegisterProblem/RegisterProblem'
 
 import userData from './store/userData'
 import { useRecoilValue } from 'recoil'
@@ -21,6 +22,7 @@ const AppRouter = () => {
 				<Route exact path="/" element={<Mainpage/>}/>
 				<Route exact path="/mypage" element={<MyPage/>}/>
 				<Route exact path="/problems" element={<Problems/>}/>
+				<Route exact path="/resister" element={<Register/>}/>
 				{
 					getUserData === null ? (<>
 						<Route exact path="/login" element={<Loginpage/>}/>
