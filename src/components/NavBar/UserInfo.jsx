@@ -19,7 +19,7 @@ const UserImg = styled.img`
     margin-top: 10px;
     border-radius: 40%;
 `
-const Username = styled.div`
+const Text = styled.div`
 	color: grey;
 	font-size: 12px;
 	margin-top: 30px;
@@ -49,20 +49,20 @@ const UserInfo = () => {
 				<>
 					<LoginJoinWrapper>
 						<LinkWrapper to={'/login'}>
-							<Username>로그인</Username>
+							<Text>로그인</Text>
 						</LinkWrapper>
-						<Username>|</Username>
+						<Text>|</Text>
 						<LinkWrapper to={'/join'}>
-							<Username>회원가입</Username>
+							<Text>회원가입</Text>
 						</LinkWrapper>
 					</LoginJoinWrapper>
 				</>
 				) : (
 				<>
-					<Sign>로그아웃</Sign>
-					<Username>김건호 | </Username>
+					<Text>로그아웃</Text>
+					<Text>{ userState } |</Text>
 					<UserImgWrapper to={'/mypage'}>
-					<UserImg src={'default.jpeg'} />
+						<UserImg src={'default.jpeg'} />
 					</UserImgWrapper>
 				</>
 				)

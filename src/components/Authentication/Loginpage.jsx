@@ -1,7 +1,10 @@
 import styled from "styled-components"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../../fonts/Nanum_Gothic_Coding.css'
+
+import userData from '../../store/userData'
+import { useSetRecoilState } from 'recoil'
 
 
 const Background = styled.div`
@@ -87,6 +90,8 @@ const Loginpage = () => {
 	const [getEmail, setEmail] = useState('')
     const [getPw, setPw] = useState('')
 
+    const setUserData = useSetRecoilState(userData)
+
     const handleInputEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -100,7 +105,9 @@ const Loginpage = () => {
         	email: getEmail,
         	password: getPw,
         })
-        .then(console.log)
+        .then((response) => {
+        	setUserData(response.data)
+        })
         .catch(console.log)
     }
 	return (
