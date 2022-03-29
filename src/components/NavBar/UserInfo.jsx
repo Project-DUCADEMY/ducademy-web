@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import userData from '../../store/userData'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import axios from 'axios'
 const Main = styled.div`
 	height: 100%;
 	width: 250px;
@@ -24,6 +25,7 @@ const Text = styled.div`
 	font-size: 12px;
 	margin-top: 30px;
 	margin-left: 5px;
+	cursor: pointer;
 `
 const Sign = styled.div`
 	color: grey;
@@ -41,11 +43,11 @@ const LinkWrapper = styled(Link)`
     display: flex;
 `
 const UserInfo = () => {
-	const userState = useRecoilValue(userData)
+	const [getUserData, setUserData] = useRecoilState(userData)
 	return (
 		<Main>
 			{
-				userState === null ? (
+				getUserData === null ? (
 				<>
 					<LoginJoinWrapper>
 						<LinkWrapper to={'/login'}>
@@ -59,8 +61,12 @@ const UserInfo = () => {
 				</>
 				) : (
 				<>
-					<Text>로그아웃</Text>
-					<Text>{ userState } |</Text>
+					<Text onClick={() => {
+						axios.post('/authenticate/logout')
+						.then(setUserData(null))
+					}}
+					>로그아웃</Text>
+					<Text>{ getUserData.username } |</Text>
 					<UserImgWrapper to={'/mypage'}>
 						<UserImg src={'default.jpeg'} />
 					</UserImgWrapper>

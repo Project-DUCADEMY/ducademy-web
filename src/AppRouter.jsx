@@ -12,9 +12,17 @@ import NotFound from './NotFound'
 import Register from './components/RegisterProblem/RegisterProblem'
 
 import userData from './store/userData'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import { useEffect } from 'react'
+import axios from 'axios'
 const AppRouter = () => {
-	const getUserData = useRecoilValue(userData)
+	const [getUserData, setUserData] = useRecoilState(userData)
+	useEffect(() => {
+    	axios.post('/user/userinfo')
+    	.then(response => setUserData(response.data))
+    	.catch(error => setUserData(null))
+	}, [])
+
 	return (
 		<BrowserRouter>
 			<NavBar/>

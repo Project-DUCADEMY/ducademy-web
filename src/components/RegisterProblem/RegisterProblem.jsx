@@ -60,6 +60,10 @@ const CommentInput = styled.textarea`
   &:focus {
     outline: none;
   }
+  outline: none;
+  border: 0; 
+  box-shadow: 0 0 0 2px #C4C4C4;
+  font-size: 14px;
 `
 function ProblemResister() {
   const [value, setValue] = useState('');
@@ -86,7 +90,7 @@ function ProblemResister() {
       formData.append('img', file); // formData는 키-밸류 구조
       // 백엔드 multer라우터에 이미지를 보낸다.
       try {
-        const result = await axios.post('http://localhost:4050/img', formData);
+        const result = await axios.post('/problem/registerimg', formData);
         console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
         const IMG_URL = result.data.url;
         // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타난다
@@ -109,7 +113,7 @@ function ProblemResister() {
       	const editor = quillRef.current.getEditor(); 
       	const range = editor.getSelection();
         editor.insertEmbed(range, 'image', 'https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpZTvydV.png');
-        console.log('실패했어요ㅠ');
+        alert('이미지 ')
       }
     });
   };

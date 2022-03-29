@@ -106,9 +106,14 @@ const Loginpage = () => {
         	password: getPw,
         })
         .then((response) => {
-        	setUserData(response.data)
+        	axios.post('/user/userinfo')
+        	.then(response => setUserData(response.data))
+        	.catch(error => setUserData(null))
+            window.location.replace('/')
         })
-        .catch(console.log)
+        .catch(error => {
+        	console.log(error.message)
+        })
     }
 	return (
 		<Background>

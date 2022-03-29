@@ -86,7 +86,6 @@ const Joinpage = () => {
 	const [getEmail, setEmail] = useState('')
     const [getPw, setPw] = useState('')
     const [getPwCh, setPwCh] = useState('')
-	const [getName, setName] = useState('')
     const [getUsername, setUsername] = useState('')
 
     const handleInputEmail = (e) => {
@@ -94,9 +93,6 @@ const Joinpage = () => {
     }
     const handleInputUsername = (e) => {
         setUsername(e.target.value)
-    }
-    const handleInputName = (e) => {
-        setName(e.target.value)
     }
     const handleInputPw = (e) => {
         setPw(e.target.value)
@@ -109,7 +105,6 @@ const Joinpage = () => {
     	axios.post(
         '/authenticate/join', 
         { 
-        	name: getName,
         	username: getUsername,
         	email: getEmail,
         	password: getPw,
@@ -123,7 +118,6 @@ const Joinpage = () => {
 		<Background>
 			<Container>
 				<LoginTitle>회원가입</LoginTitle>
-				<EmailInput type="text" placeholder="name" value={getName} onChange={handleInputName}/>
 				<EmailInput type="text" placeholder="nickname" value={getUsername} onChange={handleInputUsername}/>
 				<EmailInput type="Email" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
 				<PasswordInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import Menu from './Menu'
 import Userinfo from './UserInfo'
 import { Link } from 'react-router-dom'
-import {   matchPath, useLocation } from 'react-router-dom';
+import { useEffect } from 'react'
+import { matchPath, useLocation } from 'react-router-dom';
 
 import { useRecoilValue } from 'recoil'
 import userData from '../../store/userData'
@@ -35,7 +36,10 @@ const menus = [
 
 ]
 const NavBar = () => {
-	const userState = useRecoilValue(userData)
+	const getUserData = useRecoilValue(userData)
+	// useEffect(() => {
+		
+	// },[getUserData])
 	return (
 		<NavBarMainWrapper>
 			<LogoWrapper to={'/'}>
