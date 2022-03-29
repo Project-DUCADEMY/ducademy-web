@@ -5,7 +5,7 @@ import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
 
-import Loginpage from './components/Authentication/Loginpage'
+import Loginpage from './components/Authentication/LoginPage'
 import Joinpage from './components/Authentication/JoinPage'
 
 import NotFound from './NotFound'

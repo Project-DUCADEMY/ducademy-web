@@ -6,6 +6,7 @@ const GraphBox = styled.div`
 	height: 1000px;
 	display: flex;
 `
+
 const MyPage = () => {
 	return (
 		<>

@@ -4,15 +4,63 @@ import { useMemo, useRef, useState } from 'react';
 import "react-quill/dist/quill.snow.css";
 
 import styled from 'styled-components'
+
+const Main = styled.div`
+  width: 800px;
+  background-color: grey;
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+`
+
 const Wrapper = styled.div`
 	width: 700px;
-	height: 700px;
+	height: 600px;
 	overflow-y: scroll;
+  background-color: white;
 	&::-webkit-scrollbar {
 		display: none;
 	}
 `
-
+const InputTheme = styled.input`
+  outline: none;
+  border: 0; 
+  box-shadow: 0 0 0 2px #C4C4C4;
+  height: 25px;
+  font-size: 14px;
+`
+const TitleInput = styled(InputTheme)`
+  width: 480px;
+`
+const CategoryInput = styled(InputTheme)`
+  width: 180px;
+`
+const TopInputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+`
+const BottomInputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  height: 120px;
+  flex-direction: column;
+  align-items: flex-start;
+`
+const BottomInput = styled(InputTheme)`
+  width: 300px;
+`
+const CommentInput = styled.textarea`
+  width: 350px;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+`
 function ProblemResister() {
   const [value, setValue] = useState('');
   const quillRef = useRef();
@@ -75,7 +123,6 @@ function ProblemResister() {
       toolbar: {
         container: [
           ['image'],
-          [{ header: [1, 2, 3, false] }],
           ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         ],
         handlers: {
@@ -101,14 +148,18 @@ function ProblemResister() {
     const editor = quillRef.current.getEditor();
     // console.log(quillRef.current);
     console.log(editor.root); // 에디터 안의 내용 HTML 태그
-
     // 현재 에디터 안에 어떤 데이터가 들어있는지 확인해 보자
-    console.log('안의 내용물 전부', quillRef.current.getEditorContents());
+    console.log(quillRef.current.getEditorContents());
   };
 
   return (
+  <Main>
+    <TopInputContainer>
+      <TitleInput placeholder={"제목을 입력하세요"}/>
+      <CategoryInput placeholder={"유형"}/>
+    </TopInputContainer>
     <Wrapper>
-      <button onClick={onClickContents}>에디터 안의 내용들</button>
+      {/*<button onClick={onClickContents}>에디터 안의 내용들</button>*/}
       <ReactQuill
       	bounds= {'self'}
         ref={quillRef}
@@ -120,6 +171,15 @@ function ProblemResister() {
         formats={formats}
       />
     </Wrapper>
+    <TopInputContainer>
+    <BottomInputContainer>
+      <BottomInput/>
+      <BottomInput/>
+      <BottomInput/>
+    </BottomInputContainer>
+    <CommentInput></CommentInput>   
+    </TopInputContainer>
+  </Main>
   );
 }
 
