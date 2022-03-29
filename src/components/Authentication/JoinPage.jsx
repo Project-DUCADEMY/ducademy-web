@@ -9,76 +9,65 @@ const Background = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #D7FFC3;
+	background-color: white;
+	margin-top: 52px;
 `
 const Container = styled.div`
-	width: 400px;
-	height: 550px;
-	background-color: #96FB66;
+	width: 800px;
+	height: 700px;
+	background-color: #fbfbfb;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-`
-const LoginTitle = styled.span`
-	font-family: 'Nanum Gothic Coding';
-	margin-top: 70px;
-	margin-bottom: 80px;
-	font-size: 45px;
-	text-decoration: bold;
-`
-const EmailInput = styled.input`
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	padding: 70px 150px;
+	padding-top: 30px;
 	box-sizing: border-box;
-	width: 300px;
-	height: 50px;
-	border: 2px solid black;
-	border-radius: 10px;
-	background-color: white;
-	font-size: 18px;
-	padding: 18px 16px;
-	margin-bottom: 35px;
 `
-const PasswordInput = styled.input`
-	box-sizing: border-box;
-	width: 300px;
-	height: 50px;
-	border: 2px solid black;
-	border-radius: 10px;
-	background-color: white;
-	font-size: 18px;
-	padding: 18px 16px;
-`
-const CheckboxContainer = styled.div`
+const InputWrap = styled.div`
+	width: 100%;
 	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-	float: left;
+	flex-direction: column;
+	row-gap: 10px;
+	margin-top: auto;
 `
-const Checkbox = styled.input`
-	width: 30px;
-	height: 30px;
-	border-radius: 10px;
-	margin-right: 10px;
 
+const JoinTitle = styled.span`
+	font-weight: bold;
+	font-size: 48px;
+	text-decoration: bold;
+	color :#3fe2a6;
+	text-align: center;
 `
-const CheckboxText = styled.span`
+
+const JoinInput = styled.input`
+	box-sizing: border-box;
+	width: 100%;
+	height: 70px;
 	font-size: 20px;
+	padding: 24px 20px;
+	background-color: #eff1ee;
+	border: 0px;
+	outline: none;
 `
 const ConfirmButton = styled.button`
-	width: 150px;
-	height: 50px;
-	margin-top: 45px;
-	border-radius: 10px;
+	width: 230px;
+	height: 65px;
+	border-radius: 30px;
+	border: none;
+	background-color: #3fe2a6;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 20px;
 	cursor: pointer;
+	transition: opacity ease-in-out .1s;
+	color : white;
+	margin: 0px auto;
+	margin-top: 45px;
 	&:hover {
-		background-color: #848484;
-	}
-	&:active {
-		transform:translateY(5px);
+		opacity: 0.5;
 	}
 `
 
@@ -86,7 +75,6 @@ const Joinpage = () => {
 	const [getEmail, setEmail] = useState('')
     const [getPw, setPw] = useState('')
     const [getPwCh, setPwCh] = useState('')
-	const [getName, setName] = useState('')
     const [getUsername, setUsername] = useState('')
 
     const handleInputEmail = (e) => {
@@ -94,9 +82,6 @@ const Joinpage = () => {
     }
     const handleInputUsername = (e) => {
         setUsername(e.target.value)
-    }
-    const handleInputName = (e) => {
-        setName(e.target.value)
     }
     const handleInputPw = (e) => {
         setPw(e.target.value)
@@ -109,7 +94,6 @@ const Joinpage = () => {
     	axios.post(
         '/authenticate/join', 
         { 
-        	name: getName,
         	username: getUsername,
         	email: getEmail,
         	password: getPw,
@@ -122,12 +106,13 @@ const Joinpage = () => {
 	return (
 		<Background>
 			<Container>
-				<LoginTitle>회원가입</LoginTitle>
-				<EmailInput type="text" placeholder="name" value={getName} onChange={handleInputName}/>
-				<EmailInput type="text" placeholder="nickname" value={getUsername} onChange={handleInputUsername}/>
-				<EmailInput type="Email" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
-				<PasswordInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
-				<PasswordInput type="password" placeholder="Password Check" value={getPwCh} onChange={handleInputPwCh}/>
+				<JoinTitle>Join</JoinTitle>
+				<InputWrap>
+					<JoinInput type="text" placeholder="Nickname" value={getUsername} onChange={handleInputUsername}/>
+					<JoinInput type="Email" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
+					<JoinInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
+					<JoinInput type="password" placeholder="Password Check" value={getPwCh} onChange={handleInputPwCh}/>
+				</InputWrap>
 				<ConfirmButton onClick={join}>Confirm</ConfirmButton>
 			</Container>
 		</Background>

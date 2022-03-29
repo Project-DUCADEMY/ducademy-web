@@ -13,76 +13,102 @@ const Background = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #D7FFC3;
+	background-color: white;
+	margin-top: 52px;
 `
 const Container = styled.div`
-	width: 400px;
-	height: 550px;
-	background-color: #96FB66;
+	width: 800px;
+	height: 700px;
+	background-color: #fbfbfb;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	padding: 70px 150px;
+	padding-top: 90px;
+	box-sizing: border-box;
 `
 const LoginTitle = styled.span`
-	font-family: 'Nanum Gothic Coding';
-	margin-top: 70px;
-	margin-bottom: 80px;
-	font-size: 45px;
+	/* font-family: 'Nanum Gothic Coding'; */
+	font-weight: bold;
+	font-size: 48px;
 	text-decoration: bold;
+	color :#3fe2a6;
+	text-align: center;
 `
-const EmailInput = styled.input`
-	box-sizing: border-box;
-	width: 300px;
-	height: 50px;
-	border: 2px solid black;
-	border-radius: 10px;
-	background-color: white;
-	font-size: 18px;
-	padding: 18px 16px;
-	margin-bottom: 35px;
+
+const InputWrap = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	margin-top: auto;
 `
-const PasswordInput = styled.input`
+
+const InputTitle = styled.h1`
+	width: 100%;
+	font-size: 20px;
+	font-weight: bold;
+	color :black;
+	margin: 0px;
+`
+
+const LoginInput = styled.input`
 	box-sizing: border-box;
-	width: 300px;
-	height: 50px;
-	border: 2px solid black;
-	border-radius: 10px;
-	background-color: white;
-	font-size: 18px;
-	padding: 18px 16px;
+	width: 100%;
+	height: 70px;
+	font-size: 20px;
+	padding: 24px 20px;
+	background-color: #eff1ee;
+	border: 0px;
+	outline: none;
+
 `
 const CheckboxContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 30px;
-	float: left;
-`
-const Checkbox = styled.input`
-	width: 30px;
-	height: 30px;
-	border-radius: 10px;
-	margin-right: 10px;
-
+	margin-right: auto;
 `
 const CheckboxText = styled.span`
 	font-size: 20px;
 `
-const ConfirmButton = styled.button`
-	width: 150px;
-	height: 50px;
-	margin-top: 45px;
+const Checkbox = styled.div`
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	position: relative;
 	border-radius: 10px;
+	background-color: #eff1ee;
+`
+const ClickedCheckbox = styled.div`
+	width: 30px;
+	height: 30px;
+	background-color: #37eeab;
+	border-radius: 10px;
+	position: absolute;
+	top : 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+`
+const ConfirmButton = styled.button`
+	width: 230px;
+	height: 65px;
+	border-radius: 30px;
+	border: none;
+	background-color: #3fe2a6;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 20px;
 	cursor: pointer;
+	transition: opacity ease-in-out .1s;
+	color : white;
+	margin: 0px auto;
+	margin-top: 45px;
 	&:hover {
-		background-color: #848484;
-	}
-	&:active {
-		transform:translateY(5px);
+		opacity: 0.5;
 	}
 `
 
@@ -106,20 +132,34 @@ const Loginpage = () => {
         	password: getPw,
         })
         .then((response) => {
-        	setUserData(response.data)
+        	axios.post('/user/userinfo')
+        	.then(response => setUserData(response.data))
+        	.catch(error => setUserData(null))
+            window.location.replace('/')
         })
-        .catch(console.log)
+        .catch(error => {
+        	console.log(error.message)
+        })
     }
+
+	const [click, setClick] = useState(false)
 	return (
 		<Background>
 			<Container>
-				<LoginTitle>로그인</LoginTitle>
-				<EmailInput type="text" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
-				<PasswordInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
+				<LoginTitle>Login</LoginTitle>
+				<InputWrap>
+					<LoginInput type="text" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
+					<LoginInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
+				</InputWrap>
 				<CheckboxContainer>
-					<Checkbox type="checkbox"/>
+					<Checkbox onClick={()=>setClick(!click)}>
+						{
+							click && <ClickedCheckbox/>
+						}
+					</Checkbox>
 					<CheckboxText>로그인 상태 유지</CheckboxText>
 				</CheckboxContainer>
+
 				<ConfirmButton onClick={login}>Confirm</ConfirmButton>
 			</Container>
 		</Background>

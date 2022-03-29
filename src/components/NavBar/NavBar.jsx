@@ -2,19 +2,22 @@ import styled from 'styled-components'
 import Menu from './Menu'
 import Userinfo from './UserInfo'
 import { Link } from 'react-router-dom'
-import {   matchPath, useLocation } from 'react-router-dom';
+import { useEffect } from 'react'
+import { matchPath, useLocation } from 'react-router-dom';
 
 import { useRecoilValue } from 'recoil'
 import userData from '../../store/userData'
 
 const NavBarMainWrapper = styled.div`
-	height: 50px;
+	position: fixed;
+	z-index: 2;
 	width: 100%;
 	border-bottom: solid 2px #ede;
 	background-color: #E8F5E9;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-around;
+	top: 0px;
 `
 const LogoWrapper = styled(Link)`
 	position: relative;
@@ -35,7 +38,10 @@ const menus = [
 
 ]
 const NavBar = () => {
-	const userState = useRecoilValue(userData)
+	const getUserData = useRecoilValue(userData)
+	// useEffect(() => {
+		
+	// },[getUserData])
 	return (
 		<NavBarMainWrapper>
 			<LogoWrapper to={'/'}>
