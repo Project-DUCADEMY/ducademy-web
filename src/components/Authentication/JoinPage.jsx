@@ -67,7 +67,7 @@ const ConfirmButton = styled.button`
 	margin: 0px auto;
 	margin-top: 45px;
 	&:hover {
-		opacity: 0.5;
+		opacity: 0.7;
 	}
 `
 

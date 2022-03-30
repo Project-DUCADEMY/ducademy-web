@@ -5,17 +5,28 @@ import "react-quill/dist/quill.snow.css";
 
 import styled from 'styled-components'
 
+const Background = styled.div`
+  width: 100%;
+	height: calc(1150px - 52px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	margin-top: 52px;
+`
+
 const Main = styled.div`
   width: 800px;
-  background-color: grey;
-  height: 850px;
+  height: 1050px;
+  background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: space-evenly;
   position: relative;
-  top: 50px;
 `
 
 const Wrapper = styled.div`
@@ -27,12 +38,30 @@ const Wrapper = styled.div`
 		display: none;
 	}
 `
+
 const InputTheme = styled.input`
-  outline: none;
-  border: 0; 
-  box-shadow: 0 0 0 2px #C4C4C4;
-  height: 25px;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  height: 35px;
   font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
+  &:focus {
+    box-shadow: 0 0 2px #c9c9c9;
+    border-color: #bbb;
+  }
+`
+const Inputs = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  padding: 24px 20px;
+  background-color: #eff1ee;
+  border: 0px;
+  outline: none;
 `
 const TitleInput = styled(InputTheme)`
   width: 480px;
@@ -58,15 +87,35 @@ const BottomInput = styled(InputTheme)`
 `
 const CommentInput = styled.textarea`
   width: 350px;
-  resize: none;
-  &:focus {
-    outline: none;
-  }
+  padding: 12px 10px;
   outline: none;
-  border: 0; 
-  box-shadow: 0 0 0 2px #C4C4C4;
+  border: 1px solid #ccc;
   font-size: 14px;
+  transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
+  &:focus {
+    box-shadow: 0 0 2px #c9c9c9;
+    border-color: #bbb;
+  }
 `
+const ConfirmButton = styled.button`
+	width: 230px;
+	height: 65px;
+	border-radius: 30px;
+	border: none;
+	background-color: #3fe2a6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	cursor: pointer;
+	transition: opacity ease-in-out .1s;
+	color : white;
+	margin: 10px auto;
+	&:hover {
+		opacity: 0.7;
+	}
+`
+
 function ProblemResister() {
   const [value, setValue] = useState('');
   const quillRef = useRef();
@@ -112,8 +161,8 @@ function ProblemResister() {
         // 가져온 위치에 이미지를 삽입한다
         editor.insertEmbed(range, 'image', IMG_URL);
       } catch (error) {
-      	const editor = quillRef.current.getEditor(); 
-      	const range = editor.getSelection();
+        const editor = quillRef.current.getEditor();
+        const range = editor.getSelection();
         editor.insertEmbed(range, 'image', 'https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpZTvydV.png');
         alert('이미지 ')
       }
@@ -163,34 +212,38 @@ function ProblemResister() {
   const [getTag, setTag] = useState('')
   const [getSource, setSource] = useState('')
   return (
-  <Main>
-    <TopInputContainer>
-      <TitleInput placeholder={"제목"} value={getTitle} 
-        onChange={(e) => setTitle(e.target.value)}/>
-      <CategoryInput placeholder={"유형"}/>
-    </TopInputContainer>
-    <Wrapper>
-      {/*<button onClick={onClickContents}>에디터 안의 내용들</button>*/}
-      <ReactQuill
-      	bounds= {'self'}
-        ref={quillRef}
-        theme='snow'
-        placeholder='본문'
-        value={value}
-        onChange={setValue}
-        modules={modules}
-        formats={formats}
-      />
-    </Wrapper>
-    <TopInputContainer>
-    <BottomInputContainer>
-      <BottomInput placeholder={"정답"}/>
-      <BottomInput placeholder={"태그"}/>
-      <BottomInput placeholder={"출처"}/>
-    </BottomInputContainer>
-    <CommentInput placeholder={"풀이"}></CommentInput>   
-    </TopInputContainer>
-  </Main>
+    <Background>
+      <Main>
+        <h1>문제 제작</h1>
+        <TopInputContainer>
+          <TitleInput placeholder={"제목"} value={getTitle}
+            onChange={(e) => setTitle(e.target.value)} />
+          <CategoryInput placeholder={"유형"} />
+        </TopInputContainer>
+        <Wrapper>
+          {/*<button onClick={onClickContents}>에디터 안의 내용들</button>*/}
+          <ReactQuill
+            bounds={'self'}
+            ref={quillRef}
+            theme='snow'
+            placeholder='본문'
+            value={value}
+            onChange={setValue}
+            modules={modules}
+            formats={formats}
+          />
+        </Wrapper>
+        <TopInputContainer>
+          <BottomInputContainer>
+            <BottomInput placeholder={"정답"} />
+            <BottomInput placeholder={"태그"} />
+            <BottomInput placeholder={"출처"} />
+          </BottomInputContainer>
+          <CommentInput placeholder={"풀이"}></CommentInput>
+        </TopInputContainer>
+        <ConfirmButton>Confirm</ConfirmButton>
+      </Main>
+    </Background>
   );
 }
 
