@@ -86,6 +86,7 @@ const BottomInput = styled(InputTheme)`
   width: 300px;
 `
 const CommentInput = styled.textarea`
+  resize: none;
   width: 350px;
   padding: 12px 10px;
   outline: none;
