@@ -14,6 +14,8 @@ const Main = styled.div`
   align-content: center;
   align-items: center;
   justify-content: space-evenly;
+  position: relative;
+  top: 50px;
 `
 
 const Wrapper = styled.div`
@@ -155,11 +157,16 @@ function ProblemResister() {
     // 현재 에디터 안에 어떤 데이터가 들어있는지 확인해 보자
     console.log(quillRef.current.getEditorContents());
   };
-
+  const [getTitle, setTitle] = useState('')
+  const [getCategory, setCategory] = useState('')
+  const [getAnswer, setAnswer] = useState('')
+  const [getTag, setTag] = useState('')
+  const [getSource, setSource] = useState('')
   return (
   <Main>
     <TopInputContainer>
-      <TitleInput placeholder={"제목을 입력하세요"}/>
+      <TitleInput placeholder={"제목"} value={getTitle} 
+        onChange={(e) => setTitle(e.target.value)}/>
       <CategoryInput placeholder={"유형"}/>
     </TopInputContainer>
     <Wrapper>
@@ -177,11 +184,11 @@ function ProblemResister() {
     </Wrapper>
     <TopInputContainer>
     <BottomInputContainer>
-      <BottomInput/>
-      <BottomInput/>
-      <BottomInput/>
+      <BottomInput placeholder={"정답"}/>
+      <BottomInput placeholder={"태그"}/>
+      <BottomInput placeholder={"출처"}/>
     </BottomInputContainer>
-    <CommentInput></CommentInput>   
+    <CommentInput placeholder={"풀이"}></CommentInput>   
     </TopInputContainer>
   </Main>
   );
