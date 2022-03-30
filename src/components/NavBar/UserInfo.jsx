@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import userData from '../../store/userData'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import axios from 'axios'
 const Main = styled.div`
 	height: 100%;
-	width: 15%;
+	width: 250px;
     display: flex;
     align-items: center;
     flex-direction: row-reverse; 
@@ -19,40 +20,55 @@ const UserImg = styled.img`
     margin-top: 10px;
     border-radius: 40%;
 `
-const Username = styled.div`
+const Text = styled.div`
 	color: grey;
-	font-size: 8px;
+	font-size: 12px;
 	margin-top: 30px;
 	margin-left: 5px;
+	cursor: pointer;
 `
 const Sign = styled.div`
 	color: grey;
-	font-size: 8px;
+	font-size: 10px;
 	margin-top: 30px;
 	margin-left: 5px;
+`
+const LoginJoinWrapper = styled.div`
+	display: flex;
 `
 const LinkWrapper = styled(Link)`
 	&:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }
+    display: flex;
 `
 const UserInfo = () => {
-	const userState = useRecoilValue(userData)
+	const [getUserData, setUserData] = useRecoilState(userData)
 	return (
 		<Main>
 			{
-				userState === null ? (
+				getUserData === null ? (
 				<>
-					<LinkWrapper to={'/login'}>
-						<Username>로그인</Username>
-					</LinkWrapper>
+					<LoginJoinWrapper>
+						<LinkWrapper to={'/login'}>
+							<Text>로그인</Text>
+						</LinkWrapper>
+						<Text>|</Text>
+						<LinkWrapper to={'/join'}>
+							<Text>회원가입</Text>
+						</LinkWrapper>
+					</LoginJoinWrapper>
 				</>
 				) : (
 				<>
-					<Sign>로그아웃</Sign>
-					<Username>김건호 | </Username>
+					<Text onClick={() => {
+						axios.post('/authenticate/logout')
+						.then(setUserData(null))
+					}}
+					>로그아웃</Text>
+					<Text>{ getUserData.username } |</Text>
 					<UserImgWrapper to={'/mypage'}>
-					<UserImg src={'default.jpeg'} />
+						<UserImg src={'default.jpeg'} />
 					</UserImgWrapper>
 				</>
 				)
