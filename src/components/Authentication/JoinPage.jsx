@@ -22,7 +22,7 @@ const Container = styled.div`
 	border : 1px solid #dcdcdc;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 70px 150px;
-	padding-top: 30px;
+	padding-top: 90px;
 	box-sizing: border-box;
 `
 const InputWrap = styled.div`
