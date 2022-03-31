@@ -1,100 +1,89 @@
 import * as M from "./Mainpage.style"
 import {useState,useEffect} from "react"
 
+import Carousel from "./CarouselSmall"
+
+
+// import leftArrow from "assets/image/leftArrow"
+// import right from "assets/image/rightArrow"
+
+// import leftArrowN from "../../assets/image/leftArrow1N.svg"
+import leftArrowN from "../../assets/image/mainPage/leftArrow1Y.svg"
+
+// import rightArrowN from "../../assets/image/rightArrow1N.svg"
+import rightArrowN from "../../assets/image/mainPage/rightArrow1Y.svg"
+
+import exam from "../../assets/image/mainPage/exam.svg"
+import group from "../../assets/image/mainPage/group.svg"
+import note from "../../assets/image/mainPage/note.svg"
+import question from "../../assets/image/mainPage/question.svg"
+import quiz from "../../assets/image/mainPage/quiz.svg"
+import quizzes from "../../assets/image/mainPage/quizzes.svg"
+
 const Mainpage = () => {
-	const [carouselMenus,setCarouselMenus] = useState([
+	
+
+	const [explains,setExplains] = useState([
 		{
 			id:1,
-			color:"green"
+			link:"problems",
+			comment:"원하는 분야/ 수준의 문제를 찾아 풀어보세요",
+			img:exam
 		},{
 			id:2,
-			color:"blue"
+			link:"workbook",
+			comment:"문제집을 풀어보세요",
+			img:group
 		},{
 			id:3,
-			color:"yellowgreen"
+			link:"note",
+			comment:"문제에 대해 나만의 노트를 만들어보세요",
+			img:note
 		},{
 			id:4,
-			color:"yellowgreen"
+			link:"exam",
+			comment:"제한시간안에 문제를 풀어보세요",
+			img:question
+		},{
+			id:5,
+			link:"QandA",
+			comment:"모르는 문제를 물어보세요",
+			img:quiz
+		},{
+			id:6,
+			link:"group",
+			comment:"그룹을 만들어 함께 공부하세요",
+			img:quizzes
 		}
 	])
-
-	const [carouselNum,setCarouselNum] = useState(carouselMenus.length)
-	const [carouselArray,setCarouselArray] = useState([])
-
-	// 아래에 특정 인덱스로 이동할 수 있는 버튼
-	useEffect(()=>{
-		let tempArray = []
-		for (let i =0;i<carouselNum;i++){
-			tempArray.push(i)
-		}
-		setCarouselArray(tempArray)
-	},[])
-
-	const carouselScale = 1200;
-	const [translatePosition,setTranslatePosition] = useState(0);
-	function goToRight(){
-		// 내용을 넘어가지 않도록
-		if ((translatePosition-carouselScale) > -(carouselMenus.length * carouselScale)){
-			setTranslatePosition(translatePosition-carouselScale)
-		}
-
-	}
-	function goToLeft(){
-		// 바꾸기 전 비교
-		if ((translatePosition + carouselScale) <= 0){
-
-			setTranslatePosition(translatePosition + carouselScale)
-		}
-
-	}
-
-	// 캐러셀 인덱스에 따라 이동
-	function moveCarousel(index){
-		setTranslatePosition(index * (-carouselScale))
-	}
-
-	// 현재 위치에 따른 캐러셀인덱스 버튼의 색변화
 	
 	return (
 		
 		<M.MainContainer>
-			<M.Carousel>
+			
+		<Carousel/>
 
-			<M.CarouselWrapper>
-			<M.CarouselContainer 
-			containerWidth={1200*(carouselMenus.length)}
-			translatePosition={translatePosition}>
+<M.Content>
+	{
+		explains.map((i,idx) => (
+			<M.explains 
+			key={i.id} 
+			to={i.link} 
+			isFloat={idx % 2 == 0?true:false}>
 				{
-					carouselMenus.map((menu) => (
-						<div key={menu.id} style={{
-							backgroundColor:menu.color
-						}}>
-							{menu.id}
-						</div>
-					))
+					<>
+					<div>
+					<h1>{i.comment}</h1>
+					<p>천재가 알려줍니다</p>
+					</div>
+					<img src={i.img}/>
+					</>
 				}
-				
-			</M.CarouselContainer>
-			<M.CarouselLeft onClick={goToLeft}>
-				<img alt="왼쪽으로" src="Mainpage/leftArrow.svg"/>
-			</M.CarouselLeft>
-			<M.CarouselRight onClick={goToRight}>
-				<img alt="오른쪽으로" src="Mainpage/rightArrow.svg"/>
-			</M.CarouselRight>
-			</M.CarouselWrapper>
-
-			<M.CarouselChoseButtons>
-				{
-					carouselArray.map((i,idx) => (
-						<M.CarouselChoseButton 
-						key={i}
-						onClick={() => moveCarousel(i)}
-						paintCurrent={translatePosition/carouselScale == -idx ? true : false}></M.CarouselChoseButton>
-					))
-				}
-			</M.CarouselChoseButtons>
-
-			</M.Carousel>
+			</M.explains>			
+		))
+	}
+</M.Content>
+<M.Temp/>
 
 		</M.MainContainer>
 

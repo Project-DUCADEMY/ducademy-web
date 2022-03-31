@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const MainContainer = styled.div`
@@ -5,112 +6,63 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column; 
   align-items: center;
+
+  overflow-x:hidden;
 `;
 
-export const Carousel = styled.div`
-    position:relative;
-    margin-top:100px;
-`
 
-export const CarouselWrapper = styled.div`
-  overflow:hidden;
-  width:1200px;
-  height:618px;
 
-  position:relative;
-
-  border-radius:20px;
-
-`
-
-export const CarouselContainer = styled.div`
-  
-  width: ${(props)=>(props.containerWidth+"px")};
-  height: 618px;
-  border-radius: 20px;
-
-  /* transform:translate(-2400px); */
-  transform:translate(${(props) => (props.translatePosition+"px")});
-  transition:transform 0.7s;
-  
-  div {
-    width: 1200px;
-    height: 618px;
-    float: left;
-  }
- 
-`;
-
-export const CarouselLeft = styled.div`
-    position:absolute;
-    width:300px;
-    height:100%;
-    top:0px;
+export const Content = styled.div`
+    /* background-color:#3fe2a6; */
+    
+    margin-top:250px;
+    width:1200px;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+    /* justify-content:center; */
+    /* align-items:center; */
+`
+
+export const explains =styled(Link)`
+    padding:40px;
+    padding-top:60px;
+    padding-bottom:60px;
+    /* margin-top:10px; */
+    margin-bottom:40px;
+    text-decoration:none;
+    color:black;
+    /* background-color:#DDDDDD; */
+    display:flex;
+    justify-content:space-between;
     align-items:center;
+    border-radius:30px;
 
-    img{
-        margin-right:100px;
-        transition:transform 0.2s;
-    }
-    cursor:pointer;
     :hover{
-        img{
-            transform:scale(1.5)
-        }
-    }
-
-`
-export const CarouselRight = styled.div`
-    position:absolute;
-    width:300px;
-    height:100%;
-    top:0px;
-    right:0px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    img{
-        margin-left:100px;
-        transition:transform 0.2s;
-    }
-    cursor:pointer;
-    :hover{
-        img{
-            transform:scale(1.5);
-        }
-    }
-`
-
-export const CarouselChoseButtons = styled.div`
-    margin-right:auto;
-    margin-left:auto;
-
-    display:flex;
-    justify-content:center;
-
-    margin-top:30px;
-
-    div{
         /* background-color:#DDDDDD; */
+        background-color:#3fe2a6;
+    }
+    :active{
+        color:black;
+    }
+    :visited{
 
-        width:12px;
-        height:12px;
-        margin-right:14px;
-        margin-left:14px;
-        border-radius:100%;
-        cursor:pointer;
+        text-decoration:none;
+    }
+    img{
+        /* width:30%; */
+        height:200px;
+    }
+    div{
+        p{
+            /* font-weight:200px; */
+            font-size:20px;
+        }
     }
 `
-
-export const CarouselChoseButton = styled.div`
-    width:12px;
-    height:12px;
-    margin-right:14px;
-    margin-left:14px;
-    border-radius:100%;
-    cursor:pointer;
-    background-color:${(props)=>(props.paintCurrent ? "#878787" : "#DDDDDD")}
+export const Temp = styled.div`
+    height:200px;
+    width:100%;
 `
+
+
+
