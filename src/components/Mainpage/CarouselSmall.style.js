@@ -28,7 +28,7 @@ export const CarouselContainer = styled.div`
   div {
     width: 1200px;
     height: 618px;
-    float: left;
+    /* float: left; */
   }
  
 `;

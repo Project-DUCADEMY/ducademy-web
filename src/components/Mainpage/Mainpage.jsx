@@ -1,7 +1,8 @@
 import * as M from "./Mainpage.style"
 import {useState,useEffect} from "react"
 
-import Carousel from "./CarouselSmall"
+// import Carousel from "./CarouselSmall"
+import Carousel from "./CarouselBig"
 
 
 // import leftArrow from "assets/image/leftArrow"
@@ -69,7 +70,7 @@ const Mainpage = () => {
 			<M.explains 
 			key={i.id} 
 			to={i.link} 
-			isFloat={idx % 2 == 0?true:false}>
+			>
 				{
 					<>
 					<div>
