@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import NavBar from './components/NavBar/NavBar'
 import Mainpage from './components/Mainpage/Mainpage'
@@ -15,6 +15,7 @@ import userData from './store/userData'
 import { useRecoilState } from 'recoil'
 import { useEffect } from 'react'
 import axios from 'axios'
+
 const AppRouter = () => {
 	const [getUserData, setUserData] = useRecoilState(userData)
 	useEffect(() => {
@@ -28,14 +29,18 @@ const AppRouter = () => {
 			<NavBar/>
 			<Routes>
 				<Route exact path="/" element={<Mainpage/>}/>
-				<Route exact path="/mypage" element={<MyPage/>}/>
+				
 				<Route exact path="/problems" element={<Problems/>}/>
 				<Route exact path="/resister" element={<Register/>}/>
 				{
-					getUserData === null ? (<>
+					getUserData === null ? (
+					<>
 						<Route exact path="/login" element={<Loginpage/>}/>
 						<Route exact path="/join" element={<Joinpage/>}/>
-					</>):(<></>)
+					</>):(
+					<>
+						<Route exact path="/mypage" element={<MyPage/>}/>
+					</>)
 				}
 				<Route path="*" element={<NotFound/>}/>
        		</Routes>

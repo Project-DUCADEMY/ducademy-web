@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState } from 'react'
 import axios from 'axios'
-import '../../fonts/Nanum_Gothic_Coding.css'
+import '../../assets/fonts/Nanum_Gothic_Coding.css'
 
 const Background = styled.div`
 	width: 100%;

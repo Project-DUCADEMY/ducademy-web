@@ -14,6 +14,7 @@ const NavBarMainWrapper = styled.div`
 	width: 100%;
 	border-bottom: solid 2px #ede;
 	background-color: #E8F5E9;
+	height: 50px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-around;

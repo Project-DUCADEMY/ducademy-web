@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import '../../fonts/Nanum_Gothic_Coding.css'
+import '../../assets/fonts/Nanum_Gothic_Coding.css'
 
 import userData from '../../store/userData'
 import { useSetRecoilState } from 'recoil'
