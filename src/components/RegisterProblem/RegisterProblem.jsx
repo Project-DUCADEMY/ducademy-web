@@ -215,7 +215,6 @@ function ProblemResister() {
   return (
     <Background>
       <Main>
-        <h1>문제 제작</h1>
         <TopInputContainer>
           <TitleInput placeholder={"제목"} value={getTitle}
             onChange={(e) => setTitle(e.target.value)} />

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
-import '../../fonts/Nanum_Gothic_Coding.css'
+import '../../assets/fonts/Nanum_Gothic_Coding.css'
 const Main = styled.div`
 	width: 100%;
 	display: flex;

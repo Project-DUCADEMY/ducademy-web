@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
-import '../../fonts/Nanum_Gothic_Coding.css'
+import '../../assets/fonts/Nanum_Gothic_Coding.css'
 import { useState } from 'react'
 
 const Main = styled.div`
