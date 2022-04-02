@@ -1,9 +1,14 @@
 import React,{useState,useEffect} from 'react';
+import { RecoilState } from 'recoil';
 
 import * as Cal from "./CarouselBig.style"
 
-import leftArrowN from "../../assets/image/mainPage/leftArrow1Y.svg"
-import rightArrowN from "../../assets/image/mainPage/rightArrow1Y.svg"
+import leftArrow from "../../assets/image/mainPage/carousel/leftArrow.svg"
+import rightArrow from "../../assets/image/mainPage/carousel/rightArrow.svg"
+import hoverLeftArrow from "../../assets/image/mainPage/carousel/hoverLeftArrow.svg"
+import hoverRightArrow from "../../assets/image/mainPage/carousel/hoverRightArrow.svg"
+import mouseDown from "../../assets/image/mainPage/carousel/mouseDown.svg"
+import hoverMouseDown from "../../assets/image/mainPage/carousel/hoverMouseDown.svg"
 
 const CarouselBig = () => {
 
@@ -36,6 +41,8 @@ const CarouselBig = () => {
 		setCarouselArray(tempArray)
 	},[])
 
+    
+
     // carousel의 단위는 vw
     const [carouselScale,setCarouselScale] = useState(100)
     
@@ -56,11 +63,21 @@ const CarouselBig = () => {
             setTranslatePosition(translatePosition + carouselScale)
         }
 	}
+    function goToDown(){
+        window.scrollTo({
+            top:window.outerHeight,
+            behavior:"smooth"
+        })
+    }
     
 	// 캐러셀 인덱스에 따라 이동
 	function moveCarousel(index){
         setTranslatePosition(index * (-carouselScale))
 	}
+
+    const [leftArrowHover,setLeftArrowHover] = useState(false)
+    const [rightArrowHover,setRightArrowHover] = useState(false)
+    const [downArrowHover,setDownArrowHover] = useState(false)
 
     return (
         <Cal.Carousel>
@@ -82,20 +99,35 @@ const CarouselBig = () => {
                 <Cal.CarouselMove 
                 onClick={goToLeft}
                 Right={false}
+                onMouseEnter={() => setLeftArrowHover(true)}
+                onMouseLeave={() => setLeftArrowHover(false)}
                 >
                     <img 
                     alt="왼쪽으로" 
-                    src={leftArrowN}
+                    src={leftArrowHover ? hoverLeftArrow:leftArrow}
                     />
                 </Cal.CarouselMove>
                 <Cal.CarouselMove 
                 onClick={goToRight}
                 Right={0}
+                onMouseEnter={() => setRightArrowHover(true)}
+                onMouseLeave={() => setRightArrowHover(false)}
                 >
                     <img 
                     alt="오른쪽으로" 
-                    src={rightArrowN} />
+                    src={rightArrowHover ? hoverRightArrow : rightArrow} 
+                    />
                 </Cal.CarouselMove>
+                <Cal.CarouselDown
+                onClick={goToDown}
+                onMouseEnter={() => setDownArrowHover(true)}
+                onMouseLeave={() => setDownArrowHover(false)}
+                >
+                    <img 
+                    alt="아래쪽으로"
+                    src={downArrowHover ? hoverMouseDown : mouseDown}
+                    /> 
+                </Cal.CarouselDown>
             </Cal.CarouselWrapper>
         </Cal.Carousel>
     );
