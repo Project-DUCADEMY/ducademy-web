@@ -22,13 +22,16 @@ export const carouselMenu = styled.div`
     width:${(props) => (props.carouselScale+"vw")};
     height:100vh;
     float:left;
+    filter:brightness(70%);
+
 `
 
 export const CarouselMove = styled.div`
     position:absolute;
     width: 300px;
-    height: 100%;
-    top:0px;
+    height: 50%;
+    /* top:0px; */
+    top:25%;
     right:${(props)=>(props.Right)};
     display:flex;
     justify-content:center;
@@ -37,11 +40,25 @@ export const CarouselMove = styled.div`
     img{
         transition:transform 0.2s;
         user-select:none;
-        fill:gray;
+        fill:white;
+        
     }
-    :hover{
+    /* :hover{
         img{
             transform:scale(1.3);
         }
-    }
+    } */
+`
+
+export const CarouselDown = styled.div`
+    position:absolute;
+    width:200px;
+    height:200px;
+    bottom:0px;
+    left:45vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    cursor:pointer;
 `
