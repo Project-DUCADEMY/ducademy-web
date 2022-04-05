@@ -6,16 +6,16 @@ const Book = styled.div`
 	height: 420px;
 	padding: 18px 22px;
 	background: ${props => props.color.background};
-	background-image: linear-gradient(to right, #D11F2F 48px, #ba0716 50px, transparent 50px);  
+	background-image: linear-gradient(to right, #D11F2F 50px, transparent 50px);
 	border-radius: 20px 16px 12px 32px;
 	box-sizing: border-box;
-    flex-direction: column;
+	flex-direction: column;
     align-items: flex-end;
 	transition: box-shadow ease-in-out 0.15s, transform ease-in-out 0.15s;
 	position: relative;
-	cursor: pointer;
+	cursor: pointer;	
 	&:hover {
-		box-shadow: 2px 6px 20px 0px #FEA600;
+		box-shadow: 2px 6px 20px 0px ${props => props.color.shadow};
 		transform: scale(1.05);
 	}
 `
@@ -64,7 +64,7 @@ const BookBottom = styled.div`
 //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chess.com%2Fko%2Fterms%2Fchess-ko&psig=AOvVaw1FzJjSj38iX7W6IhSQypAa&ust=1649121349223000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjrgPSd-fYCFQAAAAAdAAAAABAD
 const Workbook = () => {
 	return (
-		<Book color={{background: palette.theme1.background}}>
+		<Book color={{background: palette.theme1.background, back: palette.theme1.back, shadow: palette.theme1.shadow}}>
 			<Title><TextWrapper>중1 수학 예상 기출 문제집</TextWrapper></Title>
 			<Author><TextWrapper>1tchlvzskf</TextWrapper></Author>
 			<UniqueNumber><TextWrapper>100</TextWrapper></UniqueNumber>
