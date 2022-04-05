@@ -5,8 +5,8 @@ const Book = styled.div`
 	width: 280px;
 	height: 420px;
 	padding: 18px 22px;
-	background: ${props => props.color.background};
-	background-image: linear-gradient(to right, #D11F2F 50px, transparent 50px);
+	background: ${props => props.background};
+	color: ${props => props.text};
 	border-radius: 20px 16px 12px 32px;
 	box-sizing: border-box;
 	flex-direction: column;
@@ -15,28 +15,29 @@ const Book = styled.div`
 	position: relative;
 	cursor: pointer;	
 	&:hover {
-		box-shadow: 2px 6px 20px 0px ${props => props.color.shadow};
-		transform: scale(1.05);
+		box-shadow: 2px 6px 20px 0px ${props => props.shadow};
+		transform: scale(1.03);
 	}
 `
 const TextBox = styled.div`
 	display: flex;
-	background-color: #D11F2F;
 	border-radius: 20px;
 	height: 8%;
-	text-align: center;
 	position: relative;
+	text-align: center;
     align-items: center;
-    align-content: center;
 `
 const Title = styled(TextBox)`
+	background-color: ${props => props.back};
 	width: 65%;
-`
+	`
 const Author = styled(TextBox)`
+	background-color: ${props => props.back};
 	margin-top: 10px;
 	width: 65%;
-`
+	`
 const UniqueNumber = styled(TextBox)`
+	background-color: ${props => props.back};
 	top: 55%;
 	width: 20%;
 `
@@ -48,6 +49,16 @@ const TextWrapper = styled.div`
 	left: 10px;
 	height: 70%;
 	width: calc(100% - 20px);
+`
+const BookBack = styled.div`
+	width: 50px;
+	height: 100%;
+	position: absolute;
+	background: ${props => props.back};
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 32px;
+	left: 0px;
+	top: 0px;
 `
 const BookBottom = styled.div`
 	margin-top: auto;
@@ -62,12 +73,14 @@ const BookBottom = styled.div`
 	background-image: linear-gradient(to bottom, transparent 6px, #E4E0CE 8px, transparent 8px, transparent 12px, #E4E0CE 12px, transparent 14px, transparent 18px,#E4E0CE 18px, transparent 20px, transparent 24px, #E4E0CE 24px, transparent 26px, transparent 30px, #E4E0CE 30px, transparent 32px, transparent 36px, #E4E0CE 36px, transparent 38px, transparent 42px, #E4E0CE 42px, transparent 44px, transparent 48px, #E4E0CE 48px, transparent 50px);
 `
 //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chess.com%2Fko%2Fterms%2Fchess-ko&psig=AOvVaw1FzJjSj38iX7W6IhSQypAa&ust=1649121349223000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjrgPSd-fYCFQAAAAAdAAAAABAD
-const Workbook = () => {
+const Workbook = (props) => {
+	const {back, background, shadow, text} = props.color;
 	return (
-		<Book color={{background: palette.theme1.background, back: palette.theme1.back, shadow: palette.theme1.shadow}}>
-			<Title><TextWrapper>중1 수학 예상 기출 문제집</TextWrapper></Title>
-			<Author><TextWrapper>1tchlvzskf</TextWrapper></Author>
-			<UniqueNumber><TextWrapper>100</TextWrapper></UniqueNumber>
+		<Book back={back} background={background} shadow={shadow} text={text}>
+			<BookBack back={back}></BookBack>
+			<Title back={back}><TextWrapper>중1 수학 예상 기출 문제집</TextWrapper></Title>
+			<Author back={back}><TextWrapper>1tchlvzskf</TextWrapper></Author>
+			<UniqueNumber back={back}><TextWrapper>100</TextWrapper></UniqueNumber>
 			<BookBottom></BookBottom>
 		</Book>
 	)

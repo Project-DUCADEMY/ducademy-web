@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Workbook from './Workbook'
+import { palette } from '../../style/palette'
 const Background = styled.div`
 	width: 100%;
 	height: 100vh - 52px;
@@ -21,19 +22,21 @@ const BookShelf = styled.div`
 	box-sizing: border-box;
 	border: 1px solid black;
 `
+
+const themes = [palette.theme1, palette.theme2]
 const Workbooks = () => {
 	return (
 		<Background>
 			<BookShelf>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
-				<Workbook/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[1]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
+				<Workbook color={themes[0]}/>
 			</BookShelf>
 		</Background>
 	)
