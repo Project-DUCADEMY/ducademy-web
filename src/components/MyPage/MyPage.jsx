@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Background = styled.div`
 	flex-direction: column;
 	width: 100%;
-	height: calc(1150px - 52px);
+	height: (100vh - 52px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
