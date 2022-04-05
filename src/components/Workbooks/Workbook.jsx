@@ -1,34 +1,17 @@
 import styled from 'styled-components'
-const Background = styled.div`
-	width: 100%;
-	height: (100vh - 52px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
-	margin-top: 52px;
-`
-const BookShelf = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	box-sizing: border-box;
-	padding: 18px 22px;
-	width: 700px;
-	border: 1px solid black;
-`
 const Book = styled.div`
-	width: 280px;
-	box-sizing: border-box;
-	padding: 18px 22px;
-	height: 420px;
-	background: #F33139;
-	border-radius: 20px 16px 12px 32px;
-	background-image: linear-gradient(to right,#D11F2F 48px, #ba0716 50px, transparent 50px);  
 	display: flex;
+	width: 280px;
+	height: 420px;
+	padding: 18px 22px;
+	background: #F33139;
+	background-image: linear-gradient(to right,#D11F2F 48px, #ba0716 50px, transparent 50px);  
+	border-radius: 20px 16px 12px 32px;
+	box-sizing: border-box;
     flex-direction: column;
     align-items: flex-end;
 	transition: box-shadow ease-in-out 0.15s, transform ease-in-out 0.15s;
+	cursor: pointer;
 	&:hover {
 		box-shadow: 2px 6px 20px 0px #FEA600;
 		transform: scale(1.05);
@@ -36,7 +19,7 @@ const Book = styled.div`
 	&:after {
 		content: "";
 		margin-top: auto;
-		margin-left: auto;
+		right: 0%;
 		height: 50px;
 		width: 270px;
 		background: white;
@@ -46,12 +29,12 @@ const Book = styled.div`
 	}
 `
 const TextBox = styled.div`
+	display: flex;
 	background-color: #D11F2F;
 	border-radius: 20px;
 	height: 8%;
 	text-align: center;
 	position: relative;
-	display: flex;
     align-items: center;
     align-content: center;
 `
