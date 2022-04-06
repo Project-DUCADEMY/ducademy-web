@@ -8,8 +8,7 @@ import InfoCard from './InfoCard'
 
 const MainContainer = styled.div`
 	flex-direction: column;
-	width: 100%;
-	height: (100vh - 52px);
+	width: 80%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -47,6 +46,9 @@ const MyPage = () => {
 				<ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
 					<MyInfoContainer>
 						<CommitGraph/>
+						<InfoCard/>
+						<InfoCard/>
+						<InfoCard/>
 						<InfoCard/>
 						<InfoCard/>
 						<InfoCard/>
