@@ -5,6 +5,7 @@ import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
 import Workbooks from './components/Workbooks/Workbooks'
+import Memos from './components/Memo/Memos.jsx'
 
 import Loginpage from './components/Authentication/Loginpage'
 import Joinpage from './components/Authentication/JoinPage'
@@ -34,6 +35,7 @@ const AppRouter = () => {
 				<Route exact path="/problems" element={<Problems/>}/>
 				<Route exact path="/workbook" element={<Workbooks/>}/>
 				<Route exact path="/resister" element={<Register/>}/>
+				<Route exact path="/memo" element={<Memos/>}/>
 				{
 					getUserData === null ? (
 					<>

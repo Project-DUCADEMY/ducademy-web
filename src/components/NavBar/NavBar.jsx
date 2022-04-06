@@ -32,7 +32,7 @@ const MenuWrapper = styled.div`
 const menus = [
 	{ title: '문제', link:'problems'},
 	{ title: '문제집', link:'workbook'},
-	{ title: '노트', link:'note'},
+	{ title: '노트', link:'memo'},
 	{ title: '시험', link:'exam'},
 	{ title: 'Q&A', link:'QandA'},
 	{ title: '그룹', link:'group'},
