@@ -10,10 +10,10 @@ const MyInfoBox = styled.div`
   	align-items: center;
   	justify-content: space-evenly;
   	position: relative;
-	height: 300px;
-	min-width: 200px;
-	max-width: 350px;
-    flex-basis: 300px;
+	height: 400px;
+	min-width: 300px;
+	max-width: 450px;
+    flex-basis: 400px;
     flex-shrink: 1;
     flex-grow: 1;
 `
