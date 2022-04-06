@@ -30,12 +30,12 @@ const TextBox = styled.div`
 const Title = styled(TextBox)`
 	background-color: ${props => props.back};
 	width: 65%;
-	`
+`
 const Author = styled(TextBox)`
 	background-color: ${props => props.back};
 	margin-top: 10px;
 	width: 65%;
-	`
+`
 const UniqueNumber = styled(TextBox)`
 	background-color: ${props => props.back};
 	top: 55%;
