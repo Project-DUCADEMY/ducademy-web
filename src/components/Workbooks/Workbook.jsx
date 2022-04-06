@@ -57,6 +57,7 @@ const BookBack = styled.div`
 	background: ${props => props.back};
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 32px;
+	box-shadow: 2px 0px 10px -5px black;
 	left: 0px;
 	top: 0px;
 `

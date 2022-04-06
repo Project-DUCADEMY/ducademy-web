@@ -23,17 +23,17 @@ const BookShelf = styled.div`
 	border: 1px solid black;
 `
 
-const themes = [palette.theme1, palette.theme2]
+const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, palette.theme5, palette.theme6]
 const Workbooks = () => {
 	return (
 		<Background>
 			<BookShelf>
 				<Workbook color={themes[0]}/>
 				<Workbook color={themes[1]}/>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[0]}/>
+				<Workbook color={themes[2]}/>
+				<Workbook color={themes[3]}/>
+				<Workbook color={themes[4]}/>
+				<Workbook color={themes[5]}/>
 				<Workbook color={themes[0]}/>
 				<Workbook color={themes[0]}/>
 				<Workbook color={themes[0]}/>
