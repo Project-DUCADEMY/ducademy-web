@@ -42,13 +42,6 @@ const InputContainer = styled.div`
 	justify-content: space-between;
 	width: 900px;
 `
-// const TitleInput = styled(InputTheme)`
-
-// `
-// const TitleInput = styled(InputTheme)`
-
-// `
-
 const IntroduceContent = styled.div`
   position: relative;
   border: 0.0625rem solid #d7e2eb;
@@ -68,17 +61,18 @@ const uploadImg = (file) => {
     })
 }
 
-
 //{"data": {"link": "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpZTvydV.png"}})
 const ResisterProblem = () => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+
+
+	const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
   return (
   	<Main>
   		<InputContainer>
-	  		<TitleInput placeholder={"제목을 입력하세요"}/>
+	  		<TitleInput placeholder={"제목을 입력하세요"} onChange={(e) => {setTitle(e.target.value)}}/>
 	  		<CategoryInput placeholder={"분류"}/>
   		</InputContainer>
 	  	<TextEditorWrapper>

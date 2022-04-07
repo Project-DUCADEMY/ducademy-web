@@ -5,6 +5,9 @@ import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
 import QnA from "./components/QandA/QandA"
+import Workbooks from './components/Workbooks/Workbooks'
+import Groups from './components/Group/Groups'
+import Memos from './components/Memo/Memos.jsx'
 
 import Loginpage from './components/Authentication/Loginpage'
 import Joinpage from './components/Authentication/JoinPage'
@@ -32,8 +35,11 @@ const AppRouter = () => {
 				<Route exact path="/" element={<Mainpage/>}/>
 				
 				<Route exact path="/problems" element={<Problems/>}/>
+				<Route exact path="/workbook" element={<Workbooks/>}/>
 				<Route exact path="/resister" element={<Register/>}/>
 				<Route exact path="/QandA" element={<QnA/>}/>
+				<Route exact path="/Group" element={<Groups/>}/>
+				<Route exact path="/memo" element={<Memos/>}/>
 				{
 					getUserData === null ? (
 					<>

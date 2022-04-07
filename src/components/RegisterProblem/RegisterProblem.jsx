@@ -203,10 +203,22 @@ function ProblemResister() {
   const onClickContents = () => {
     const editor = quillRef.current.getEditor();
     // console.log(quillRef.current);
-    console.log(editor.root); // 에디터 안의 내용 HTML 태그
+    // console.log(editor.root); // 에디터 안의 내용 HTML 태그
     // 현재 에디터 안에 어떤 데이터가 들어있는지 확인해 보자
     console.log(quillRef.current.getEditorContents());
   };
+  const submit = () => {
+    axios.post('/authenticate/problem/register', 
+    {
+      title: getTitle,
+      answer: getAnswer,
+      description: quillRef.current.getEditorContents()
+    })
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+    console.log(getTitle, getAnswer, quillRef.current.getEditorContents())
+  }
+
   const [getTitle, setTitle] = useState('')
   const [getCategory, setCategory] = useState('')
   const [getAnswer, setAnswer] = useState('')
@@ -235,13 +247,13 @@ function ProblemResister() {
         </Wrapper>
         <TopInputContainer>
           <BottomInputContainer>
-            <BottomInput placeholder={"정답"} />
+            <BottomInput placeholder={"정답"} onChange={(e) => setAnswer(e.target.value)}/>
             <BottomInput placeholder={"태그"} />
             <BottomInput placeholder={"출처"} />
           </BottomInputContainer>
           <CommentInput placeholder={"풀이"}></CommentInput>
         </TopInputContainer>
-        <ConfirmButton>Confirm</ConfirmButton>
+        <ConfirmButton onClick={submit}>Confirm</ConfirmButton>
       </Main>
     </Background>
   );

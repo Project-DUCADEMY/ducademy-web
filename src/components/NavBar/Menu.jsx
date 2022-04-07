@@ -29,20 +29,11 @@ const StyledLink = styled(Link)`
 	position: relative;
 	align-items: center;
     justify-content: flex-end;
-`
-const TitleWrapper = styled.div`
-    font-size: 16px;
-    font-family: 'Nanum Gothic Coding';
-    color: rgb(80, 80, 80);
-    margin: 0 auto;
-    &:focus, &:hover, &:visited, &:link, &:active {
-        text-decoration: none;
-    }
-    text-align: center;
+    color: ${props=>props.color};
 `
 const UnderBar = styled.div`
 	height: 2px;
-	width: 80%;
+	width: 100%;
 	background-color: ${props=>props.color};
 	position: relative;
 	top: 1px;
@@ -50,17 +41,17 @@ const UnderBar = styled.div`
 const Menu = (props) => {
 	const [getOnOver, setOnOver] = useState(false)
 	const path = useLocation().pathname.split('/')
+	const color = path[1] === props.link ? 'red' : getOnOver ? 'green' : 'black'
 	return (	
 		<StyledLink to={props.link}
 			onMouseOver={() => setOnOver(true)}
-			onMouseOut={() => setOnOver(false)}>
+			onMouseOut={() => setOnOver(false)}
+			color={color}>
 			{
 				props.title
 			}
 			{
-				path[1] === props.link ? <UnderBar color={'green'}/> : 
-				getOnOver ? <UnderBar color={'red'}/> :
-				null
+				path[1] === props.link || getOnOver ? <UnderBar color={color}/> : null
 			}
 		</StyledLink>
 	)
