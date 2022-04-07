@@ -12,7 +12,6 @@ const NavBarMainWrapper = styled.div`
 	position: fixed;
 	z-index: 2;
 	width: 100%;
-	border-bottom: solid 2px #ede;
 	background-color: #E8F5E9;
 	height: 50px;
 	display: flex;

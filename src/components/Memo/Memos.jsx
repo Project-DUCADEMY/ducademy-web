@@ -12,17 +12,25 @@ const MainContainer = styled.div`
     justify-content: center;
     flex-direction: column;	
 `
+const RecentTitle = styled.div`
+	margin-top: 100px;
+	font-size: 30px;
+	margin-left: 2%;
+`
 const RecentMemoContainer = styled.div`
 	margin-top: 20px;
 	width: 100%;
-	height: 300px;
 	display: flex;
     justify-content: flex-start;
     align-items: center;
+    border-top: 1px solid grey;
+    flex-wrap: wrap;
+
 `
 const SearchBar = styled.div`
 	width: 100%;
 	height: 100px;
+    border-bottom: 1px solid grey;
 `
 const PostitContainer = styled.div`
 	display: flex;
@@ -34,6 +42,7 @@ const Render = () => {
 	return (
 		<Memos>
 			<MainContainer>
+				<RecentTitle>최근 메모</RecentTitle>
 				<RecentMemoContainer>
 					<Memo/>
 					<Memo/>

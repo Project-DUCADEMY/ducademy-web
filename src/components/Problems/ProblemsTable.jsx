@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import dummy from '../../Dummy/Problems'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+
+import { useSetRecoilState } from 'recoil'
+import problemNumber from '../../store/problem'
+
 const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
@@ -36,19 +40,21 @@ const Tr = styled.tr`
 `
 const ProblemsTable = () => {
 	const [getProblems, setProblems] = useState([])
+	const setProblemNumber = useSetRecoilState(problemNumber)
 	useEffect(() => {
 		axios.get('/problem/problems')
 		.then(response => {
 			setProblems(response.data.questionInfo)
+			console.log(response.data.questionInfo)
 		})
 		.catch(error => console.log(error))
 
-		axios.get('/problem/problem?id=1000')
-		.then(response => {
-			console.log(response)
-		})
-		.catch(error => console.log(error))
 	}, [])
+	const problemClick = (idx) => {
+		setProblemNumber(idx)
+		window.location.href = '/problem'
+
+	}
 	return (
 		<Table>
 	      <thead>
@@ -63,12 +69,12 @@ const ProblemsTable = () => {
 	      {
 	      	getProblems.map((element, idx) => {
 	      		return (
-	      		<Tr key={idx} idx={idx}>
-	      			<Td>{element.questionNumber}</Td>
-		         	<Td>{element.title}</Td>
-		         	<Td></Td>
-		         	<Td></Td>
-		        </Tr>
+		      		<Tr key={idx} idx={idx}  onClick={() => {problemClick(element.questionNumber)}}>
+		      			<Td>{element.questionNumber}</Td>
+			         	<Td>{element.title}</Td>
+			         	<Td></Td>
+			         	<Td></Td>
+			        </Tr>
 	      		)
 	      	})
 	      }

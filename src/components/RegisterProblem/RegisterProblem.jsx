@@ -64,7 +64,7 @@ const Inputs = styled.input`
   outline: none;
 `
 const TitleInput = styled(InputTheme)`
-  width: 480px;
+  width: 100%;
 `
 const CategoryInput = styled(InputTheme)`
   width: 180px;
@@ -212,7 +212,10 @@ function ProblemResister() {
     {
       title: getTitle,
       answer: getAnswer,
-      description: quillRef.current.getEditorContents()
+      content: quillRef.current.getEditorContents(),
+      description: getDescription,
+      info: getInfo,
+      source: getSource
     })
     .then(response => console.log(response))
     .catch(error => console.log(error))
@@ -220,17 +223,17 @@ function ProblemResister() {
   }
 
   const [getTitle, setTitle] = useState('')
-  const [getCategory, setCategory] = useState('')
   const [getAnswer, setAnswer] = useState('')
-  const [getTag, setTag] = useState('')
+  const [getInfo, setInfo] = useState('')
   const [getSource, setSource] = useState('')
+  const [getDescription, setDescription] = useState('')
   return (
     <Background>
       <Main>
         <TopInputContainer>
           <TitleInput placeholder={"제목"} value={getTitle}
             onChange={(e) => setTitle(e.target.value)} />
-          <CategoryInput placeholder={"유형"} />
+          {/*<CategoryInput placeholder={"유형"} />*/}
         </TopInputContainer>
         <Wrapper>
           {/*<button onClick={onClickContents}>에디터 안의 내용들</button>*/}
@@ -248,10 +251,10 @@ function ProblemResister() {
         <TopInputContainer>
           <BottomInputContainer>
             <BottomInput placeholder={"정답"} onChange={(e) => setAnswer(e.target.value)}/>
-            <BottomInput placeholder={"태그"} />
-            <BottomInput placeholder={"출처"} />
+            <BottomInput placeholder={"정보"} onChange={(e) => setInfo(e.target.value)}/>
+            <BottomInput placeholder={"출처"} onChange={(e) => setSource(e.target.value)}/>
           </BottomInputContainer>
-          <CommentInput placeholder={"풀이"}></CommentInput>
+          <CommentInput placeholder={"풀이"} onChange={(e) => setDescription(e.target.value)}></CommentInput>
         </TopInputContainer>
         <ConfirmButton onClick={submit}>Confirm</ConfirmButton>
       </Main>

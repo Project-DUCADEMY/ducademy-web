@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 const Memo = styled.div`
-  width: 18%;
+
   height: 220px;
+   min-width: 250px;
+   max-width: 250px;
+   flex-basis: 300px;
+
   position:relative;
   background:#fff44f;
   overflow:hidden;
@@ -43,10 +47,6 @@ const Memo = styled.div`
    }
 `
 
-const render = () => {
-   return (
-      <Memo></Memo>
-   )
-}
 
-export default render;
+
+export default Memo;
