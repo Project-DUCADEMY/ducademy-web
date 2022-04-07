@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import dummy from '../../Dummy/Problems'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
@@ -33,6 +35,20 @@ const Tr = styled.tr`
 	background-color: ${props => props.idx % 2 == 1 ? '#F9FFF9' : ''}
 `
 const ProblemsTable = () => {
+	const [getProblems, setProblems] = useState([])
+	useEffect(() => {
+		axios.get('/problem/problems')
+		.then(response => {
+			setProblems(response.data.questionInfo)
+		})
+		.catch(error => console.log(error))
+
+		axios.get('/problem/problem?id=1000')
+		.then(response => {
+			console.log(response)
+		})
+		.catch(error => console.log(error))
+	}, [])
 	return (
 		<Table>
 	      <thead>
@@ -45,10 +61,10 @@ const ProblemsTable = () => {
 	      </thead>
 	      <tbody>
 	      {
-	      	dummy.map((element, idx) => {
+	      	getProblems.map((element, idx) => {
 	      		return (
 	      		<Tr key={idx} idx={idx}>
-	      			<Td>{element.idNumber}</Td>
+	      			<Td>{element.questionNumber}</Td>
 		         	<Td>{element.title}</Td>
 		         	<Td></Td>
 		         	<Td></Td>

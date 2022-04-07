@@ -20,11 +20,7 @@ const MainWrapper = styled.div	`
 `
 
 const Problems = () => {
-	useEffect(() => {
-    	axios.get('/problem/problems')
-    	.then(response => console.log(response))
-    	.catch(error => console.log(error))
-	}, [])
+
 	return (
 		<MainWrapper>
 			<Main>

@@ -208,7 +208,7 @@ function ProblemResister() {
     console.log(quillRef.current.getEditorContents());
   };
   const submit = () => {
-    axios.post('/authenticate/problem/register', 
+    axios.post('/problem/register', 
     {
       title: getTitle,
       answer: getAnswer,
