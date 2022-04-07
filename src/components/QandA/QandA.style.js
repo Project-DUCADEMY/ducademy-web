@@ -21,6 +21,8 @@ export const Wrapper = styled.div`
     width:85vw;
     height:100%;
     background-color:white;
+    /* display:flex; */
+    /* flex-direction:column; */
 `
 
 export const MyQContainer = styled.div`
@@ -153,12 +155,36 @@ export const NewQContainer = styled.div`
 
 export const NewQMenu = styled.div`
     width:100%;
-    height:70px;
-    background-color:blue;
+    /* height:70px; */
+    /* background-color:blue; */
+    display:flex;
+    align-items:center;
+    div{
+        height:50px;
+        width:130px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius: 15px 15px 0px 0px;
+        box-shadow: 4px 4px 15px 0px #0000001A;
+        cursor:pointer;
+        margin-right:10px;
+        font-weight:bold;
+    }
 `
 
 export const NewQWrapper = styled.div`
-    padding-top:30px;
     display:flex;
-   
+    flex-direction:column;
+    width:100%;
+    /* height:50px; */
+    background-color:#3fe2a6;
+    border-radius:0px 15px 15px 15px;
+    div{
+        margin-left:20px;
+        width:100%;
+        height:60px;
+        display:flex;
+        align-items:center;
+    }
 `

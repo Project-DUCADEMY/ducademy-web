@@ -149,13 +149,14 @@ const QandA = () => {
         
         <Q.NewQContainer>
             <Q.NewQMenu>
-              
+              <div>최신순</div>
+              <div>조회수순</div>
             </Q.NewQMenu>
             <Q.NewQWrapper>
               {
-                newQuestions.map(() => (
-                  <div>
-                    
+                newQuestions.map((newQ) => (
+                  <div key={newQ.id}>
+                    {newQ.title}
                   </div>
                 ))
               }
