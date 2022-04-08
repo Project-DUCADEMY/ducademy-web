@@ -4,11 +4,8 @@ import NavBar from './components/NavBar/NavBar'
 import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
-<<<<<<< HEAD
 import Problem from './components/Problems/Problem'
-=======
 import QnA from "./components/QandA/QandA"
->>>>>>> 402284d2668960b8db60a58bc7996575f1829d5a
 import Workbooks from './components/Workbooks/Workbooks'
 import Groups from './components/Group/Groups'
 import Memos from './components/Memo/Memos.jsx'

@@ -2,9 +2,11 @@ import styled from 'styled-components'
 import dummy from '../../Dummy/Problems'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate  } from 'react-router-dom'
 
-import { useSetRecoilState } from 'recoil'
+import { useSetRecoilState, useRecoilState } from 'recoil'
 import problemNumber from '../../store/problem'
+import problems from '../../store/problems'
 
 const Table = styled.table`
 	width: 100%;
@@ -38,22 +40,24 @@ const Tr = styled.tr`
 	cursor: pointer;
 	background-color: ${props => props.idx % 2 == 1 ? '#F9FFF9' : ''}
 `
-const ProblemsTable = () => {
-	const [getProblems, setProblems] = useState([])
+const ProblemsTable = (props) => {
+	const [getProblems, setProblems] = useRecoilState(problems)
 	const setProblemNumber = useSetRecoilState(problemNumber)
 	useEffect(() => {
 		axios.get('/problem/problems')
 		.then(response => {
 			setProblems(response.data.questionInfo)
-			console.log(response.data.questionInfo)
+			// console.log(response.data.questionInfo)
 		})
 		.catch(error => console.log(error))
-
 	}, [])
+	const navigate = useNavigate();
 	const problemClick = (idx) => {
 		setProblemNumber(idx)
-		window.location.href = '/problem'
-
+		navigate({
+			pathname: "/problem",
+			state: {number: 1000}
+		})
 	}
 	return (
 		<Table>
