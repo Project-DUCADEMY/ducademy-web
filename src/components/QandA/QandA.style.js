@@ -1,16 +1,10 @@
 import styled from "styled-components"
-
 export const Container = styled.div`
     width:100vw;
-
     height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
-
-    
-    /* height:3000px; */
-    /* overflow-y:hidden; */
 `
 export const temp = styled.div`
     width:100vw;
@@ -24,7 +18,6 @@ export const Wrapper = styled.div`
     /* display:flex; */
     /* flex-direction:column; */
 `
-
 export const MyQContainer = styled.div`
     width:100%;
     height:310px;
@@ -50,12 +43,10 @@ export const MyQWrapper = styled.div`
     display:flex;
     align-items:center;
 `
-
 export const tempMyQ = styled.div`
     height:250px;
     width:20px;
 `
-
 export const MyQ = styled.article`
     width:350px;
     height:250px;
@@ -80,9 +71,6 @@ export const MyQ = styled.article`
     }
     
 `
-
-
-
 export const PlusCard = styled.div`
     width:350px;
     height:250px;
@@ -106,7 +94,6 @@ export const PlusCard = styled.div`
         width:140px;
     }
 `
-
 export const MyQFoot = styled.div`
     position:absolute;
     bottom:2px;
@@ -119,26 +106,25 @@ export const MyQFoot = styled.div`
     align-items:center;
     padding:20px;
 `
-
 export const Category = styled.div`
-    display:flex;
-    align-items:center;
-    div{
+    display: flex;
+    align-items: center;
+    div {
         box-shadow: 4px 4px 15px 0px #0000001A;
-        border-radius:20px;
-        margin-left:10px;
-        padding:20px;
-        padding-top:6px;
-        padding-bottom:6px;
-        font-size:13px;
-        cursor:pointer;
-        :hover{
-            color:white;
-            background-color:#3fe2a6;
+        border-radius: 20px;
+        margin-left: 10px;
+        padding: 20px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;
+        :hover {
+            color: white;
+            background-color: #3fe2a6;
         }
     }
 `
-
 export const MyQFootMenu = styled.div`
     width:100px;
     height:30px;
@@ -147,12 +133,10 @@ export const MyQFootMenu = styled.div`
     justify-content:flex-end;
     align-items:center;
 `
-
 export const NewQContainer = styled.div`
     margin-top:100px;
     width:100%;
 `
-
 export const NewQMenu = styled.div`
     width:100%;
     /* height:70px; */
@@ -172,7 +156,6 @@ export const NewQMenu = styled.div`
         font-weight:bold;
     }
 `
-
 export const NewQWrapper = styled.div`
     display:flex;
     flex-direction:column;
