@@ -36,7 +36,7 @@ const AppRouter = () => {
 				<Route exact path="/" element={<Mainpage/>}/>
 				
 				<Route exact path="/problems" element={<Problems/>}/>
-				<Route exact path="/problem" element={<Problem/>}/>
+				<Route exact path="/problem/:number" element={<Problem/>}/>
 				<Route exact path="/workbook" element={<Workbooks/>}/>
 				<Route exact path="/resister" element={<Register/>}/>
 				<Route exact path="/QandA" element={<QnA/>}/>

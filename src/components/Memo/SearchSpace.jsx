@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import '../../assets/fonts/Nanum_Gothic_Coding.css'
 const Main = styled.div`
-	width: 100%;
+	width: 1100px;
 	display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,14 +42,13 @@ const Opction = styled.div`
 	font-size: 14px;
     font-family: 'Nanum Gothic Coding';
     cursor: pointer;
-
     :hover{
     	background-color: #DCEDC8;
     }
 `
 const opctions = [
+	'추천',
 	'전체',
-	'저장',
 	'오답',
 	'유형'
 ]

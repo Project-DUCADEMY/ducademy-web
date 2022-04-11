@@ -1,71 +1,71 @@
 import styled from 'styled-components'
-import Memo from './Memo'
-const Memos = styled.div`
-	margin-top: 52px;
-	display: flex;
-	width: 100%;
-    justify-content: center;
-`
-const MainContainer = styled.div`
-	width: 80%;
-	display: flex;
-    justify-content: center;
-    flex-direction: column;	
-`
-const RecentTitle = styled.div`
-	margin-top: 100px;
-	font-size: 30px;
-	margin-left: 2%;
-`
-const RecentMemoContainer = styled.div`
-	margin-top: 20px;
-	width: 100%;
-	display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-top: 1px solid grey;
-    flex-wrap: wrap;
+import SearchSpace from './SearchSpace'
 
-`
-const SearchBar = styled.div`
-	width: 100%;
-	height: 100px;
-    border-bottom: 1px solid grey;
-`
-const PostitContainer = styled.div`
+import { ReactComponent as TrashCanOpen } from './TrashCanOpen.svg'
+import { ReactComponent as TrashCanClose } from './TrashCanClose.svg'
+import { ReactComponent as Pen } from './Pen.svg'
+
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
+const Main = styled.div	`
+	margin-top: 75px;
+	width: 70%;
 	display: flex;
-    flex-wrap: wrap;	
-	width: 100%;
-	height: 1000px;
+	flex-direction: column;
+    align-content: center;
+    align-items: center;
 `
-const Render = () => {
+const MainWrapper = styled.div	`
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	height: 1200px;
+`
+const CorkBoard = styled.div`
+	margin-top: 10px;
+	width: 1100px;
+	height: 755px;
+	min-height: 100%;
+	background-size: auto;
+	background-image: url('./CorkBoard.png');
+	background-size: contain;
+`
+const FunctionWrapper = styled.div`
+	display: flex;
+	width: 1500px;
+	align-items: flex-end;
+	justify-content: space-evenly;
+`
+const PenWrapper = styled.div`
+	width: 100px;
+`
+
+
+const Memos = () => {
+	const [getTrashCanHover, setTrashCanHover] = useState(false)
+	// useEffect(() => {
+	// 	console.log(getTrashCanHover)
+	// }, [getTrashCanHover])
 	return (
-		<Memos>
-			<MainContainer>
-				<RecentTitle>최근 메모</RecentTitle>
-				<RecentMemoContainer>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-				</RecentMemoContainer>
-				<SearchBar/>
-				<PostitContainer>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-					<Memo/>
-				</PostitContainer>
-			</MainContainer>
-		</Memos>
+		<MainWrapper>
+			<Main>
+				<SearchSpace/>
+				<FunctionWrapper>
+					<PenWrapper>
+						<Pen/>
+					</PenWrapper>
+					<CorkBoard/>
+					{
+						getTrashCanHover ? 
+						<TrashCanOpen onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
+						:<TrashCanClose onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
+					}
+				</FunctionWrapper>
+			</Main>
+
+		</MainWrapper>
 	)
 }
-export default Render;
+
+export default Memos;
