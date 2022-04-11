@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
-import problemNumber from '../../store/problem'
 import { route } from "react-router";
 const Background = styled.div`
   	width: 100%;
@@ -82,14 +81,14 @@ const Submit = styled.input`
 `
 
 const Render = ({ location }) => {
-	const getProblemNumber = useRecoilValue(problemNumber)
+	const param = document.location.href.split('/')[document.location.href.split('/').length - 1];
 	useEffect(() => {
-		axios.get(`/problem/problem/?id=${getProblemNumber}`)
+		axios.get(`/problem/problem/?id=${param}`)
 			.then(response => {
 				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
-	}, [getProblemNumber])
+	}, [])
 	return (
 		<Background>
 			<Wrapper>
