@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { route } from "react-router";
 const Background = styled.div`
@@ -81,21 +81,32 @@ const Submit = styled.input`
 `
 
 const Render = ({ location }) => {
-	const param = document.location.href.split('/')[document.location.href.split('/').length - 1];
+	const [getProblem, setProblem] = useState({})
 	useEffect(() => {
-		axios.get(`/problem/problem/?id=${param}`)
+		axios.get(`/problem/problem/?id=${document.location.href.split('/')[document.location.href.split('/').length - 1]}`)
 			.then(response => {
+				setProblem(response.data.question)
 				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
 	}, [])
+
+
+	const CheckLoading = (param) => {
+		if(param === undefined || param === null) {
+			return 'Loading'
+		}
+		else {
+			return param
+		}
+	}
 	return (
 		<Background>
 			<Wrapper>
 				<BoxWrapper>
 					<TitleBox>
-						<TitleNumber>{1136}</TitleNumber>
-						<TitleName>{"5x + 2 = 12의 실수 해 구하기"}</TitleName>
+						<TitleNumber>{CheckLoading(getProblem.questionNumber)}</TitleNumber>
+						<TitleName>{CheckLoading(getProblem.title)}</TitleName>
 					</TitleBox>
 				</BoxWrapper>
 				<BoxWrapper>
@@ -123,8 +134,7 @@ const Render = ({ location }) => {
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>문제</BoxText>
-					<MainBox>
-						{'나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠'}
+					<MainBox dangerouslySetInnerHTML={{__html: CheckLoading(getProblem.content) }}>
 					</MainBox>
 				</BoxWrapper>
 				<BoxWrapper>
