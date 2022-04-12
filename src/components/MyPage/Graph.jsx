@@ -503,10 +503,13 @@ const Graph = () => {
 }
 
 const Graph1 = () =>{
-    var len = [0]*52;
+    
     return(
         <div>
-            
+            {/* for (let i = 0; i < array.length; i++) {
+                const element = array[i];
+                
+            } */}
         </div>
     )
 }
