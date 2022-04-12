@@ -5,12 +5,12 @@ const Background = styled.div`
 	width: 100%;
 	height: 100vh - 52px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: white;
 	margin-top: 52px;
 `
-
 const BookShelf = styled.div`
 	display: flex;
 	flex-wrap: wrap;
@@ -18,15 +18,17 @@ const BookShelf = styled.div`
 	margin: 20px 0px 20px 0px;
 	padding: 18px 22px;
 	row-gap: 20px;
+	background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	justify-content: space-evenly;
 	box-sizing: border-box;
-	border: 1px solid black;
 `
-
 const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, palette.theme5, palette.theme6]
 const Workbooks = () => {
 	return (
 		<Background>
+			<h1>문제집</h1>
 			<BookShelf>
 				<Workbook color={themes[0]}/>
 				<Workbook color={themes[1]}/>
