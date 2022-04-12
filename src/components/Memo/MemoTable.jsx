@@ -6,7 +6,7 @@ import { useNavigate  } from 'react-router-dom'
 
 import { useSetRecoilState, useRecoilState } from 'recoil'
 import problems from '../../store/problems'
-
+import getProblems from '../../Dummy/Problems'
 const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
@@ -40,24 +40,11 @@ const Tr = styled.tr`
 	background-color: ${props => props.idx % 2 == 1 ? '#F9FFF9' : ''}
 `
 const ProblemsTable = (props) => {
-	const [getProblems, setProblems] = useRecoilState(problems)
-	useEffect(() => {
-		axios.get('/problem/problems')
-		.then(response => {
-			setProblems(response.data.questionInfo)
-			// console.log(response.data.questionInfo)
-		})
-		.catch(error => console.log(error))
-	}, [])
-	const navigate = useNavigate();
-	const problemClick = (idx) => {
-		navigate(`/problem/${idx}`)
-	}
 	return (
 		<Table>
 	      <thead>
 	        <Tr idx={1}>
-	          	<NumberTh>번호</NumberTh>
+	          	<NumberTh>문제번호</NumberTh>
 	          	<TitleTh>제목</TitleTh>
 	          	<TypeTh>유형</TypeTh>
 	          	<InfoTh>정보</InfoTh>
@@ -67,7 +54,7 @@ const ProblemsTable = (props) => {
 	      {
 	      	getProblems.map((element, idx) => {
 	      		return (
-		      		<Tr key={idx} idx={idx}  onClick={() => {problemClick(element.questionNumber)}}>
+		      		<Tr key={idx} idx={idx}>
 		      			<Td>{element.questionNumber}</Td>
 			         	<Td>{element.title}</Td>
 			         	<Td></Td>

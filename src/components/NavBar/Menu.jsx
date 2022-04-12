@@ -29,19 +29,21 @@ const StyledLink = styled(Link)`
 	position: relative;
 	align-items: center;
     justify-content: flex-end;
-    color: ${props=>props.color};
+    color: ${({color}) => color};
+    bottom: 13px;
 `
 const UnderBar = styled.div`
 	height: 2px;
-	width: 100%;
-	background-color: ${props=>props.color};
+	background-color: ${({color}) => color};
 	position: relative;
-	top: 1px;
+	top: 5px;
+	transition: all 0.1s;
+	width: ${({color}) => { return color === 'black' ? '0%' : '70%' }};
 `
 const Menu = (props) => {
 	const [getOnOver, setOnOver] = useState(false)
 	const path = useLocation().pathname.split('/')
-	const color = path[1] === props.link ? 'red' : getOnOver ? 'green' : 'black'
+	const color = path[1] === props.link ? '#00C853' : getOnOver ? '#00BFA5' : 'black'
 	return (	
 		<StyledLink to={props.link}
 			onMouseOver={() => setOnOver(true)}
@@ -50,9 +52,7 @@ const Menu = (props) => {
 			{
 				props.title
 			}
-			{
-				path[1] === props.link || getOnOver ? <UnderBar color={color}/> : null
-			}
+		<UnderBar color={color}/>
 		</StyledLink>
 	)
 }

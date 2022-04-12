@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { matchPath, useLocation } from 'react-router-dom';
 
+import { ReactComponent as Icon } from '../../assets/image/DUCAMI.svg'
 import { useRecoilValue } from 'recoil'
 import userData from '../../store/userData'
 
@@ -12,8 +13,7 @@ const NavBarMainWrapper = styled.div`
 	position: fixed;
 	z-index: 2;
 	width: 100%;
-	border-bottom: solid 2px #ede;
-	background-color: #E8F5E9;
+	background-color: #F1F8E9;
 	height: 50px;
 	display: flex;
 	align-items: flex-end;
@@ -22,7 +22,11 @@ const NavBarMainWrapper = styled.div`
 `
 const LogoWrapper = styled(Link)`
 	position: relative;
-	width: 250px;
+	width: 200px;
+	bottom: 5px;
+`
+const Logo = styled(Icon)`
+fill: "red";
 `
 const MenuWrapper = styled.div`
 	width: 40%;
@@ -46,7 +50,7 @@ const NavBar = () => {
 	return (
 		<NavBarMainWrapper>
 			<LogoWrapper to={'/'}>
-				<img alt="메인 로고" src="DUCAMI.svg" />
+				<Logo/>
 			</LogoWrapper>
 			<MenuWrapper>
 				{

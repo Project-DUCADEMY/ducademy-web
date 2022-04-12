@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
 import ProblemsTable from './ProblemsTable'
 
+
 import axios from 'axios'
 import { useEffect } from 'react'
 const Main = styled.div	`
@@ -20,11 +21,6 @@ const MainWrapper = styled.div	`
 `
 
 const Problems = () => {
-	useEffect(() => {
-    	axios.get('/problem/problems')
-    	.then(response => console.log(response))
-    	.catch(error => console.log(error))
-	}, [])
 	return (
 		<MainWrapper>
 			<Main>
