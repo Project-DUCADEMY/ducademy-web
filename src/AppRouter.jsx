@@ -23,7 +23,8 @@ const AppRouter = () => {
 	useEffect(() => {
     	axios.post('/user/userinfo')
     	.then(response => setUserData(response.data))
-    	.catch(error => setUserData(null))
+    	// .catch(error => setUserData(null))
+    	.catch(error => setUserData(1))
 	}, [])
 
 	return (
