@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import CommitGraph from './CommitGraph'
 import InfoCard from './InfoCard'
 import Graph from './Graph'
+import ModeifyInformation from './ModifyInformation'
 
 const MainContainer = styled.div`
 	flex-direction: column;
@@ -24,11 +25,10 @@ const Background = styled.div`
 const MyInfoContainer = styled.div`
 	margin-top: 20px;
 	width: 100%;
-	display: flex;
+	/* display: flex; */
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: flex-start;
-    gap: 50px;
 `
 const Title = styled.h1`
 	margin-left: 10px;
@@ -47,21 +47,12 @@ const MyPage = () => {
 				<ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
 					<CommitGraph><Graph/></CommitGraph>
 					<MyInfoContainer>
-						{/* <CommitGraph/> */}
-						<InfoCard>정보수정</InfoCard>
+						{/* <InfoCard><ModeifyInformation/></InfoCard>
 						<InfoCard>내 Q&A</InfoCard>
 						<InfoCard>내 문제</InfoCard>
 						<InfoCard>즐겨찾기한 문제집</InfoCard>
-						<InfoCard>그룹 관리</InfoCard>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
+						<InfoCard>그룹 관리</InfoCard> */}
+						<ModeifyInformation/>
 					</MyInfoContainer>
 			</MainContainer>
 		</Background>

@@ -1,7 +1,7 @@
 const Graph = () => {
 	return (
-        <div>
-		<svg width="823" height="128" class="js-calendar-graph-svg">
+        <div width="1200" display="flex" justify-content="cneter">
+		<svg width="900" height="128" class="js-calendar-graph-svg">
   <g transform="translate(15, 20)">
       <g transform="translate(0, 0)">
           <rect width="11" height="11" x="16" y="0" class="ContributionCalendar-day" rx="2" ry="2" data-count="0" data-date="2021-04-04" data-level="0"></rect>
@@ -491,7 +491,7 @@ const Graph = () => {
       <text x="676" y="-8" class="ContributionCalendar-label">Feb</text>
       <text x="736" y="-8" class="ContributionCalendar-label">Mar</text>
     {/* <text text-anchor="start" class="ContributionCalendar-label" dx="-15" dy="8">Sun</text> */}
-    <text text-anchor="start" class="ContributionCalendar-label" dx="-17" dy="25">Mon</text>
+    <text text-anchor="start" class="ContributionCalendar-label" dx="-25" dy="25">Mon</text>
     {/* <text text-anchor="start" class="ContributionCalendar-label" dx="-15" dy="32">Tue</text> */}
     <text text-anchor="start" class="ContributionCalendar-label" dx="-15" dy="56">Wed</text>
     {/* <text text-anchor="start" class="ContributionCalendar-label" dx="-15" dy="57">Thu</text> */}
@@ -506,10 +506,7 @@ const Graph1 = () =>{
     
     return(
         <div>
-            {/* for (let i = 0; i < array.length; i++) {
-                const element = array[i];
-                
-            } */}
+            
         </div>
     )
 }
