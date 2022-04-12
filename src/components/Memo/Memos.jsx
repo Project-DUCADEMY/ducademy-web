@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
+import Memo from './Memo'
 
 import { ReactComponent as TrashCanOpen } from './TrashCanOpen.svg'
 import { ReactComponent as TrashCanClose } from './TrashCanClose.svg'
@@ -25,11 +26,24 @@ const MainWrapper = styled.div	`
 const CorkBoard = styled.div`
 	margin-top: 10px;
 	width: 1100px;
-	height: 755px;
+	height: 745px;
 	min-height: 100%;
 	background-size: auto;
 	background-image: url('./CorkBoard.png');
 	background-size: contain;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+`
+const MemoContainer = styled.div`
+	width: 1000px;
+	height: 700px;
+	display: flex;
+	flex-wrap: wrap; 
+	gap: 20px;
+
+
 `
 const FunctionWrapper = styled.div`
 	display: flex;
@@ -41,7 +55,10 @@ const PenWrapper = styled.div`
 	width: 100px;
 `
 
-
+const dummy = [1,1,1,1,1,1,1,1,1,1,1,1]
+const rand = (min, max) => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 const Memos = () => {
 	const [getTrashCanHover, setTrashCanHover] = useState(false)
 	// useEffect(() => {
@@ -52,15 +69,26 @@ const Memos = () => {
 			<Main>
 				<SearchSpace/>
 				<FunctionWrapper>
-					<PenWrapper>
+					{/* <PenWrapper>
 						<Pen/>
-					</PenWrapper>
-					<CorkBoard/>
-					{
+					</PenWrapper> */}
+					<CorkBoard>
+						<MemoContainer>
+						{
+							dummy.map((element) => {
+								return <Memo 
+									Size={150}
+									Tilt={rand(-10, 10)}
+								></Memo>
+							})
+						}
+						</MemoContainer>
+					</CorkBoard>
+					{/* {
 						getTrashCanHover ? 
 						<TrashCanOpen onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
 						:<TrashCanClose onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
-					}
+					} */}
 				</FunctionWrapper>
 			</Main>
 

@@ -16,11 +16,12 @@ const MyInfoBox = styled.div`
     flex-basis: 400px;
     flex-shrink: 1;
     flex-grow: 1;
+	
 `
 const render = () => {
 	return (
 		<MyInfoBox></MyInfoBox>
 	)
 }
-export default render
+export default MyInfoBox
 export { MyInfoBox as theme }

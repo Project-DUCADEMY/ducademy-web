@@ -6,6 +6,7 @@ const Main = styled.div`
 	display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 `
 const OpctionsWrapper = styled.div`
 	display: flex;
@@ -42,7 +43,7 @@ const Opction = styled.div`
 	font-size: 14px;
     font-family: 'Nanum Gothic Coding';
     cursor: pointer;
-
+    background-color: ${({clicked}) => clicked ? '#DCEDC8' : ''};
     :hover{
     	background-color: #DCEDC8;
     }
@@ -55,12 +56,18 @@ const opctions = [
 ]
 const SearchSpace = () => {
 	const [getOnOver, setOnOver] = useState(false)
+	const [getCurrentOpction, setCurrentOpction] = useState('전체')
+
 	return (
 		<Main>
 			<OpctionsWrapper>
 			{
 				opctions.map((element, idx) => {
-					return <Opction key={idx}>{element}</Opction>
+					return <Opction 
+						key={idx} 
+						clicked={getCurrentOpction === element}
+						onClick={() => {setCurrentOpction(element)}}>
+						{element}</Opction>
 				})
 			}
 			</OpctionsWrapper>

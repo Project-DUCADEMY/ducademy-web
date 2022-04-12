@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { route } from "react-router";
 let Challenge = 1
@@ -142,17 +142,45 @@ const SubmitButton = styled.button`
 		opacity: 0.7;
 	}
 `
+const CategoryCore = styled.div`
+	background-color: ${({color}) => color};
+	height: 30px;
+	min-width: 70px;
+	border-radius: 3px;
+	line-height: 30px;
+	text-align: center;
+`
+const CategoryContainer = styled(Box)`
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+	gap: 10px;
+
+
+`
 
 
 const Render = ({ location }) => {
-	const param = document.location.href.split('/')[document.location.href.split('/').length - 1];
+	const [getProblem, setProblem] = useState({})
 	useEffect(() => {
-		axios.get(`/problem/problem/?id=${param}`)
+		axios.get(`/problem/problem/?id=${document.location.href.split('/')[document.location.href.split('/').length - 1]}`)
 			.then(response => {
+				setProblem(response.data.question)
 				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
 	}, [])
+
+
+	const CheckLoading = (param) => {
+		if(param === undefined || param === null) {
+			return 'Loading'
+		}
+		else {
+			return param
+		}
+	}
 	return (
 		<Background>
 			<Wrapper>
@@ -161,8 +189,8 @@ const Render = ({ location }) => {
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
-						<TitleNumber>{1136}</TitleNumber>
-						<TitleName>{"5x + 2 = 12의 실수 해 구하기"}</TitleName>
+						<TitleNumber>{CheckLoading(getProblem.questionNumber)}</TitleNumber>
+						<TitleName>{CheckLoading(getProblem.title)}</TitleName>
 					</TitleBox>
 				</BoxWrapper>
 				<BoxWrapper>
@@ -201,8 +229,26 @@ const Render = ({ location }) => {
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>문제</BoxText>
+					<MainBox dangerouslySetInnerHTML={{__html: CheckLoading(getProblem.content) }}>
+					</MainBox>
+				</BoxWrapper>
+				<BoxWrapper>
+					<BoxText>유형</BoxText>
+					<CategoryContainer>
+						{
+							getProblem.info === undefined ? <>Loading</> :
+							getProblem.info.map((element) => {
+								return <CategoryCore color='blue'>{element}</CategoryCore>
+							}) 
+						}
+					</CategoryContainer>
+				</BoxWrapper>
+				<BoxWrapper>
+					<BoxText>출처</BoxText>
 					<MainBox>
-						{'나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠나는해물짬뽕훠훠훠'}
+					{
+						CheckLoading(getProblem.source)
+					}
 					</MainBox>
 				</BoxWrapper>
 				<BoxWrapper>

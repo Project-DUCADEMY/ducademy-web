@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from 'styled-components'
 
 import NavBar from './components/NavBar/NavBar'
+// import Footer from './components/Footer/Footer'
+
 import Mainpage from './components/Mainpage/Mainpage'
 import MyPage from './components/MyPage/MyPage'
 import Problems from './components/Problems/Problems'
@@ -26,6 +29,7 @@ const AppRouter = () => {
 	useEffect(() => {
     	axios.post('/user/userinfo')
     	.then(response => setUserData(response.data))
+    	// .catch(error => setUserData(null))
     	.catch(error => setUserData(null))
 	}, [])
 
@@ -38,7 +42,6 @@ const AppRouter = () => {
 				<Route exact path="/problems" element={<Problems/>}/>
 				<Route exact path="/problem/:number" element={<Problem/>}/>
 				<Route exact path="/workbook" element={<Workbooks/>}/>
-				<Route exact path="/resister" element={<Register/>}/>
 				<Route exact path="/QandA" element={<QnA/>}/>
 				<Route exact path="/Group" element={<Groups/>}/>
 				<Route exact path="/memo" element={<Memos/>}/>
@@ -50,6 +53,7 @@ const AppRouter = () => {
 					</>):(
 					<>
 						<Route exact path="/mypage" element={<MyPage/>}/>
+						<Route exact path="/resister" element={<Register/>}/>
 					</>)
 				}
 				<Route path="*" element={<NotFound/>}/>
