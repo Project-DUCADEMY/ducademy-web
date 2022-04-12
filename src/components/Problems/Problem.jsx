@@ -79,6 +79,23 @@ const Submit = styled.input`
 	word-break: break-all;
 	flex-wrap: wrap;
 `
+const CategoryCore = styled.div`
+	background-color: ${({color}) => color};
+	height: 30px;
+	min-width: 70px;
+	border-radius: 3px;
+	line-height: 30px;
+	text-align: center;
+`
+const CategoryContainer = styled(Box)`
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+	gap: 10px;
+
+
+`
 
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
@@ -138,11 +155,25 @@ const Render = ({ location }) => {
 					</MainBox>
 				</BoxWrapper>
 				<BoxWrapper>
-					<BoxText>입력</BoxText>
-					<InputExampleBox>
-						양의 정수 하나를 입력해야 한다. 이외 문자는 허용되지 않는다.
-						허허허
-					</InputExampleBox>
+					<BoxText>유형</BoxText>
+					<CategoryContainer>
+						{
+							getProblem.info === undefined ? <>Loading</> :
+							getProblem.info.map((element) => {
+								return <CategoryCore color='blue'>{element}</CategoryCore>
+							}) 
+						}
+					</CategoryContainer>
+				</BoxWrapper>
+				<BoxWrapper>
+					<BoxText>출처</BoxText>
+					<MainBox>
+					{
+						CheckLoading(getProblem.source)
+					}
+					</MainBox>
+				</BoxWrapper>
+				<BoxWrapper>
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>제출</BoxText>
