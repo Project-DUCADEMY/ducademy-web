@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import CommitGraph from './CommitGraph'
 import InfoCard from './InfoCard'
+import Graph from './Graph'
 
 const MainContainer = styled.div`
 	flex-direction: column;
@@ -44,13 +45,14 @@ const MyPage = () => {
 		<Background>
 			<MainContainer>
 				<ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
+					<CommitGraph><Graph/></CommitGraph>
 					<MyInfoContainer>
-						<CommitGraph/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
-						<InfoCard/>
+						{/* <CommitGraph/> */}
+						<InfoCard>정보수정</InfoCard>
+						<InfoCard>내 Q&A</InfoCard>
+						<InfoCard>내 문제</InfoCard>
+						<InfoCard>즐겨찾기한 문제집</InfoCard>
+						<InfoCard>그룹 관리</InfoCard>
 						<InfoCard/>
 						<InfoCard/>
 						<InfoCard/>
@@ -67,6 +69,7 @@ const MyPage = () => {
 }
 
 export default MyPage;
+
 
 // const Title = styled.h1`
 // 	margin-left: 10px;
