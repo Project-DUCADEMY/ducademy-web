@@ -50,9 +50,8 @@ const Opction = styled.div`
 `
 const opctions = [
 	'전체',
-	'저장',
-	'오답',
-	'유형'
+	'내 그룹',
+	'그룹 창설',
 ]
 const SearchSpace = () => {
 	const [getOnOver, setOnOver] = useState(false)
