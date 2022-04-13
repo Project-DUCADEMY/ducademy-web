@@ -41,10 +41,40 @@ export const PhotoChangeContainer = styled.div`
     height : 100px;
 
 `
-export const PhotoChange = styled.button`
+export const Button = styled.button`
     width : 100px;
     height : 32px;
     /* display : inline; */
     text-align : center;
+    color : black;
+    background-color : #fff;
+    border-color : gray;
+    :hover{
+        border-color : black;
+    }
+`
 
+export const Label = styled.label`
+    display: inline-block;
+    padding: 20px 20px;
+    color: black;
+    background-color: white;
+    height: 20px;
+    border-color: black;
+    border : 1.5px solid lightgray;
+    font-size : 21px;
+    align-items: center;
+    justify-content: center;
+    :hover{
+        border-color : black;
+    }
+`
+
+export const InputFile = styled.input`
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
 `
