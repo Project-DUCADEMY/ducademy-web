@@ -172,7 +172,7 @@ const Render = ({ location }) => {
 
 	const CheckLoading = (param) => {
 		if(param === undefined || param === null) {
-			return 'Loading'
+			return ' '
 		}
 		else {
 			return param
