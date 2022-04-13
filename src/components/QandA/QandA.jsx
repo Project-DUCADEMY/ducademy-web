@@ -103,6 +103,54 @@ const QandA = () => {
       title: "4의 n제곱근 중 실수 구하기",
       댓글: 4,
     },
+    {
+      id: 4,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 5,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 6,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 7,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 4,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 5,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 6,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
+    {
+      id: 7,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      댓글: 4,
+    },
   ]);
 
   // 더미----------------------------
@@ -117,8 +165,8 @@ const QandA = () => {
 
   return (
     <Q.Container>
-      <Q.temp />
       <Q.Wrapper>
+      <Q.temp />
         <Q.MyQContainer>
           <Q.MyQWrapper>
             <Q.tempMyQ />
@@ -147,6 +195,7 @@ const QandA = () => {
           </Q.MyQWrapper>
         </Q.MyQContainer>
         
+
         <Q.NewQContainer>
             <Q.NewQMenu>
               <div>최신순</div>
@@ -162,6 +211,7 @@ const QandA = () => {
               }
             </Q.NewQWrapper>
         </Q.NewQContainer>
+
 
       </Q.Wrapper>
     </Q.Container>
