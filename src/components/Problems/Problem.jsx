@@ -44,9 +44,6 @@ const Button = styled.button`
 	position: relative;
 	transition: color ease-in-out .15s;
 	cursor: pointer;
-	&:hover {
-		color: red;
-	}
 `
 const EditButton = styled(Button)`
 	&:hover { 
@@ -175,7 +172,7 @@ const Render = ({ location }) => {
 
 	const CheckLoading = (param) => {
 		if(param === undefined || param === null) {
-			return 'Loading'
+			return ' '
 		}
 		else {
 			return param
