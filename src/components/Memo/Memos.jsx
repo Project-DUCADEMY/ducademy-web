@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
 import Memo from './Memo'
+import FunctionBar from './FunctionBar'
 
 import { ReactComponent as TrashCanOpen } from './TrashCanOpen.svg'
 import { ReactComponent as TrashCanClose } from './TrashCanClose.svg'
@@ -26,14 +27,14 @@ const MainWrapper = styled.div	`
 const CorkBoard = styled.div`
 	margin-top: 10px;
 	width: 1100px;
-	height: 745px;
-	min-height: 100%;
+	height: 730px;
 	background-size: auto;
 	background-image: url('./CorkBoard.png');
 	background-size: contain;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 1;
 
 `
 const MemoContainer = styled.div`
@@ -42,12 +43,10 @@ const MemoContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap; 
 	gap: 20px;
-
-
 `
 const FunctionWrapper = styled.div`
 	display: flex;
-	width: 1500px;
+	width: 1200px;
 	align-items: flex-end;
 	justify-content: space-evenly;
 `
@@ -55,43 +54,61 @@ const PenWrapper = styled.div`
 	width: 100px;
 `
 
-const dummy = [1,1,1,1,1,1,1,1,1,1,1,1]
+const ModalOverlay = styled.div`
+  box-sizing: border-box;
+  display: ${(props) => (props.visable ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+`
+
+
 const rand = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 const Memos = () => {
 	const [getTrashCanHover, setTrashCanHover] = useState(false)
-	// useEffect(() => {
-	// 	console.log(getTrashCanHover)
-	// }, [getTrashCanHover])
+	const [getModalOpen, setModalOpen] = useState(null)
+	const [getMemos, setMemos] = useState([{},{},{},{},{},{},{},{},{},{},{},{}])
+	useEffect(() => {
+		let temp = [...getMemos]
+		temp.forEach((element, idx) => {
+			temp[idx].tilt = rand(-10, 10)
+		})
+		setMemos(temp)
+	}, [])
+	
 	return (
 		<MainWrapper>
 			<Main>
 				<SearchSpace/>
 				<FunctionWrapper>
-					{/* <PenWrapper>
-						<Pen/>
-					</PenWrapper> */}
+					<FunctionBar/>
 					<CorkBoard>
+						<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(null)}}/>
 						<MemoContainer>
 						{
-							dummy.map((element) => {
-								return <Memo 
+							getMemos.map((element, idx) => {
+								return <Memo
 									Size={150}
-									Tilt={rand(-10, 10)}
+									Tilt={element.tilt}
+									Modal={[getModalOpen, setModalOpen]}
+									Idx={idx + 1}
+									key={idx + 1}
 								></Memo>
 							})
 						}
 						</MemoContainer>
+
 					</CorkBoard>
-					{/* {
-						getTrashCanHover ? 
-						<TrashCanOpen onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
-						:<TrashCanClose onMouseEnter={() => {setTrashCanHover(true)}} onMouseLeave={() => {setTrashCanHover(false)}}/>
-					} */}
+					<FunctionBar/>
 				</FunctionWrapper>
 			</Main>
-
+			
 		</MainWrapper>
 	)
 }

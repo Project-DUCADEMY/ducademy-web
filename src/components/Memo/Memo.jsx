@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+
+import styled, { css } from 'styled-components'
 const Memo = styled.div`
 
    height: ${({Size}) => Size}px;
@@ -6,25 +7,48 @@ const Memo = styled.div`
    max-width: ${({Size}) => Size}px;
    transform: rotate(${({Tilt}) => Tilt}deg);
    position:relative;
+   right: 20px;
+   bottom: 20px;
    background:#fff44f;
    overflow:hidden;
-   margin:10px auto;
       inset 0 -40px 40px rgba(0,0,0,0.2),
       0 5px 6px 5px rgba(0,0,0,0.2);
    font-family: 'Permanent Marker', cursive;
    font-size:19px;
-   -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
    color:#130d6b;
-   transition: all 0.3s;
-   cursor: pointer;
-   :hover{
-      transform: rotate(0deg);
-      height: ${({Size}) => Size * 1.2}px;
-      min-width: ${({Size}) => Size * 1.2}px;
-      max-width: ${({Size}) => Size * 1.2}px;
-   }  
+   transition: all 0.4s;
    padding:20px;
    border-radius:0 0 0 30px/45px;
+   ${({Clicked}) => {
+      return Clicked ? 
+      css`
+         box-sizing: border-box;
+         position: absolute;
+         left: 50%;
+         top: 50%;
+         z-index: 1000;
+         overflow: auto;
+         outline: 0;
+         transform: rotate(0deg) scale(3) translate(calc(-50% + 50px), calc(-50% + 50px));
+      `:
+      css`
+      :hover{
+         cursor: pointer;
+         transform: rotate(0deg) scale(1.2);
+      }  
+      `
+   }}
+   
+`
+const EmptyMemo = styled(Memo)`
+
+`
+const MemoWrapper = styled.div`
+   height: ${({Size}) => Size}px;
+   min-width: ${({Size}) => Size}px;
+   max-width: ${({Size}) => Size}px;
+   margin: 10px auto;
+   padding: 20px;
 
 `
 const Flutter = styled.div`
@@ -57,18 +81,24 @@ const Pin = styled.div`
 
 `
 const render = (props) => {
+   if(props.Idx === props.Modal) {
+      console.log(props.Idx)
+   }
    return (
+   <MemoWrapper Size={props.Size}>
    <Memo 
       Size={props.Size}
       Tilt={props.Tilt}
+      onClick={() => {props.Modal[1](props.Idx); console.log(props.Idx)}}
+      Clicked={props.Idx === props.Modal[0]}
    >
-   <Flutter/>
-      <Pin/>
       {
          props.message
       }
-   <UnderLine/>
-   </Memo>)
+      <Flutter/>
+      <UnderLine/>
+   </Memo>
+   </MemoWrapper>)
 }
 
 
