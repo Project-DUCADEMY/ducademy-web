@@ -29,11 +29,11 @@ export const Hr = styled.div`
 
 export const InfoEditContainer = styled.div`
     width:100%;
-    height:50%;
+    height:120px;
     display:flex;
     
 `
-export const PhotoChangeContainer = styled.div`
+export const PhotoChangeButtonContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,23 +55,24 @@ export const Button = styled.button`
 `
 
 export const Label = styled.label`
-    display: inline-block;
-    padding: 20px 20px;
+    display: flex;
+    padding: 10px 10px;
     color: black;
     background-color: white;
     height: 20px;
     border-color: black;
     border : 1.5px solid lightgray;
-    font-size : 21px;
+    font-size : 18px;
     align-items: center;
     justify-content: center;
+    text-align : center;
     :hover{
         border-color : black;
     }
 `
 
 export const InputFile = styled.input`
-    position: absolute;
+    /* position: absolute; */
     width: 0;
     height: 0;
     padding: 0;
