@@ -91,7 +91,7 @@ export const PlusCard = styled.div`
   color: white;
   box-shadow: 4px 4px 15px 0px #0000001a;
 
-  > p{
+  > p {
     width: 170px;
     word-break: keep-all;
     line-height: 28px;
@@ -119,15 +119,16 @@ export const MyQFoot = styled.div`
 export const Category = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 10px;
+  margin-right: 20px;
   > div {
     box-shadow: 4px 4px 15px 0px #0000001a;
     border-radius: 20px;
-    margin-left: 10px;
-    margin-right:20px;
     padding: 20px;
     padding-top: 6px;
     padding-bottom: 6px;
     font-size: 13px;
+    min-width:26px;
     cursor: pointer;
     :hover {
       color: white;
@@ -169,18 +170,19 @@ export const NewMenu = styled.div`
   border-radius: 15px 15px 0px 0px;
 
   ${(props) =>
-    props.sortedBy ?
-    css`
-      box-shadow: 4px -4px 15px 0px #0000001A;
-    ` : css`
-      :hover{
-      background: #f4f4f4;
-      }
-    `}
+    props.sortedBy
+      ? css`
+          box-shadow: 4px -4px 15px 0px #0000001a;
+        `
+      : css`
+          :hover {
+            background: #f4f4f4;
+          }
+        `}
   cursor:pointer;
   margin-right: 10px;
   font-weight: bold;
-  user-select:none;
+  user-select: none;
 `;
 
 export const NewQWrapper = styled.div`
@@ -195,26 +197,52 @@ export const NewQWrapper = styled.div`
   > div {
     padding-left: 20px;
     padding-right: 30px;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     height: 60px;
     display: flex;
-    align-items: center;
-    justify-content:space-between;
-    cursor:pointer;
+    align-items: center; 
+    justify-content: space-between;
+    cursor: pointer;
   }
   > div:hover {
     background: #f4f4f4;
   }
-
 `;
 
+export const NewQListMenu = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const NewQListInfo = styled(NewQListMenu)`
+  min-width:240px;
+`
 export const NewQTitle = styled.div`
-    display:flex;
-    align-items:center;
+  /* min-width:300px; */
+  /* width:700px; */
+  /* width: 80%; */
+  /* min-width:400px; */
+  width: 40vw;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 `
 
+// margin:100px;
+//         outline: 1px solid black;
+//         display: block;
+//         color: black;
+//         width: 630px;
+//         font-size: 20px;
+//         font-weight: bolder !important;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         white-space: nowrap;
 export const NewQInfoDate = styled.div`
-    font-size:15px;
-`
-
+  font-size: 15px;
+  min-width:99.1px;
+`;
+export const NewQInfoWriter = styled(NewQInfoDate)`
+  margin-right: 40px;
+  margin-left:40px;
+`;

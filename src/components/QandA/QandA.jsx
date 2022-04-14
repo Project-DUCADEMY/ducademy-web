@@ -66,9 +66,8 @@ const QandA = () => {
     {
       id: 1,
       category: "수학",
-      title: "이거 모르겠음 어케품?",
+      title: "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -77,7 +76,6 @@ const QandA = () => {
       category: "과학",
       title: "원석쌤도 몰랐음",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -86,7 +84,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -95,7 +92,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -104,7 +100,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -113,7 +108,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -122,7 +116,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -131,7 +124,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -140,7 +132,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -149,7 +140,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -158,7 +148,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -167,7 +156,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -176,7 +164,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -185,7 +172,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -194,7 +180,6 @@ const QandA = () => {
       category: "수학",
       title: "4의 n제곱근 중 실수 구하기",
       comments: 4,
-      likes: 2,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
@@ -215,7 +200,7 @@ const QandA = () => {
   // const menus = ["최신순","조회수순"];
   const [menus, setMenus] = useState([
     {
-      title: "최신순",
+      title: "최신순",  
       id: 0,
     },
     {
@@ -275,7 +260,7 @@ const QandA = () => {
           <Q.NewQMenus>
             {menus.map((menu, idx) => (
               <Q.NewMenu
-                key={menu.id}
+                key={idx}
                 sortedBy={sortedBy == idx ? true : false}
                 onClick={() => setSortedBy(idx)}
               >
@@ -284,18 +269,26 @@ const QandA = () => {
             ))}
           </Q.NewQMenus>
           <Q.NewQWrapper>
+
             {newQuestions.map((newQ) => (
               <div key={newQ.id}>
-                <Q.NewQTitle>
+
+                <Q.NewQListMenu>
                   <Q.Category><div>{newQ.category}</div></Q.Category>
-                  {newQ.title}
-                </Q.NewQTitle>
-                <div>
+                  <Q.NewQTitle>
+                    {newQ.title}
+                  </Q.NewQTitle>
+                </Q.NewQListMenu>
+                
+                <Q.NewQListInfo>
+                  <Q.NewQInfoWriter>{newQ.writer}</Q.NewQInfoWriter>
                   <Q.NewQInfoDate>{makeDate(newQ.time)}</Q.NewQInfoDate>
                   {/* <div>ㅎㅇ</div> */}
-                </div>
+                </Q.NewQListInfo>
+
               </div>
             ))}
+
           </Q.NewQWrapper>
         </Q.NewQContainer>
       </Q.Wrapper>
@@ -303,12 +296,5 @@ const QandA = () => {
   );
 };
 
-// id: 14,
-// category: "수학",
-// title: "4의 n제곱근 중 실수 구하기",
-// comments: 4,
-// likes:2,
-// writer:"codingbotPark",
-// time:"Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
 
 export default QandA;
