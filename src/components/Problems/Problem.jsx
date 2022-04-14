@@ -3,7 +3,9 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { route } from "react-router";
+
 let Challenge = 1
+let BookMarked = true
 const Background = styled.div`
   	width: 100%;
 	display: flex;
@@ -50,15 +52,16 @@ const Button = styled.button`
 	}
 	cursor: pointer;
 `
+const LikeButton = styled(Button)`
+		
+`
 const BookMarkButton = styled(Button)`
-	left: 0%;
-	color: #fbfbfb;
+	color: ${props => props.Yellow ? "yellow" : "#fbfbfb"};
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 	transition: background-color ease-in-out .15s, color ease-in-out .15s;
 	&:hover {
-		color: #cccccc;
-		background-color: #cccccc;
+		color: ${props => props.Yellow ? "#c4c42c" : "#cccccc"}
 	}
 `
 const EditButton = styled(Button)`
@@ -198,7 +201,7 @@ const Render = ({ location }) => {
 		<Background>
 			<Wrapper>
 				<ButtonWrapper>
-					<BookMarkButton>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
+					<LikeButton></LikeButton><BookMarkButton Yellow={BookMarked}>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
@@ -236,7 +239,7 @@ const Render = ({ location }) => {
 						</InfoItem>
 						<InfoItem>
 							<InfoHead>정답 비율</InfoHead>
-							<InfoBody>{(88384 / 160042 * 100).toFixed(3)}%</InfoBody>
+							<InfoBody>{(88384 / 160042 * 100).toFixed(3)}%</InfoBody >
 						</InfoItem>
 					</InfoBox>
 				</BoxWrapper>
