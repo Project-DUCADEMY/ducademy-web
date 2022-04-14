@@ -1,8 +1,8 @@
 import * as M from "./Mainpage.style";
 import { useState, useEffect } from "react";
 
-// import Carousel from "./CarouselSmall"
-import Carousel from "./CarouselBig";
+import Carousel from "./CarouselSmall"
+// import Carousel from "./CarouselBig";
 
 import exam from "../../assets/image/mainPage/main/exam.svg";
 import group from "../../assets/image/mainPage/main/group.svg";

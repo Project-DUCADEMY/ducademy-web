@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import * as Cal from "./CarouselSmall.style";
 
 // import leftArrowN from "../../assets/image/leftArrow1N.svg"
-import leftArrowN from "../../assets/image/mainPage/leftArrow1Y.svg";
+// import leftArrowN from "../../assets/image/mainPage/leftArrow1Y.svg";
 
 // import rightArrowN from "../../assets/image/rightArrow1N.svg"
-import rightArrowN from "../../assets/image/mainPage/rightArrow1Y.svg";
+// import rightArrowN from "../../assets/image/mainPage/rightArrow1Y.svg";
 
 const CarouselSmall = () => {
   const [carouselMenus, setCarouselMenus] = useState([
@@ -82,10 +82,10 @@ const CarouselSmall = () => {
           ))}
         </Cal.CarouselContainer>
         <Cal.CarouselLeft onClick={goToLeft}>
-          <img alt="왼쪽으로" src={leftArrowN} />
+          {/* <img alt="왼쪽으로" src={leftArrowN} /> */}
         </Cal.CarouselLeft>
         <Cal.CarouselRight onClick={goToRight}>
-          <img alt="오른쪽으로" src={rightArrowN} />
+          {/* <img alt="오른쪽으로" src={rightArrowN} /> */}
         </Cal.CarouselRight>
       </Cal.CarouselWrapper>
 

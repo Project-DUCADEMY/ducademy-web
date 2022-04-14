@@ -6,7 +6,6 @@ import { route } from "react-router";
 let Challenge = 1
 const Background = styled.div`
   	width: 100%;
-	height: calc(100vh - 52px);
 	display: flex;
 	justify-content: center;
 	background-color: rgb(255, 255, 255);
@@ -14,6 +13,8 @@ const Background = styled.div`
 	padding-top: 50px;
 `
 const Wrapper = styled.div`
+	box-sizing: border-box;
+	padding-bottom: 10px;
 	width: 80%;
 	position: relative;
 	display: flex;
@@ -31,19 +32,34 @@ const ButtonWrapper = styled(BoxWrapper)`
 `
 const Button = styled.button`
 	width: 20%;
+	height: 50px;
 	background-color: #fbfbfb;
 	border : 1px solid #dcdcdc;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	padding: 18px 22px;
-	font-size: 15px;
+	font-size: 25px;
 	font-weight: bold;
 	display: flex;
 	box-sizing: border-box;
 	justify-content: center;
-	text-align: center;
+	align-items: center;
 	position: relative;
-	transition: color ease-in-out .15s;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		color: #cccccc;
+		background-color: #cccccc;
+	}
 	cursor: pointer;
+`
+const BookMarkButton = styled(Button)`
+	left: 0%;
+	color: #fbfbfb;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		color: #cccccc;
+		background-color: #cccccc;
+	}
 `
 const EditButton = styled(Button)`
 	&:hover { 
@@ -103,14 +119,14 @@ const InfoBody = styled.div`
 const MainBox = styled(Box)`
 	justify-content: flex-start;
 `
-const InputExampleBox = styled(Box)`
+const RecommendBox = styled(Box)`
 	justify-content: flex-start;
 `
 const Submit = styled.input`
   box-sizing: border-box;
   padding: 18px 22px;
   width: 100%;
-  font-size: 14px;
+  font-size: 20px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   outline: none;
@@ -171,7 +187,7 @@ const Render = ({ location }) => {
 
 
 	const CheckLoading = (param) => {
-		if(param === undefined || param === null) {
+		if (param === undefined || param === null) {
 			return ' '
 		}
 		else {
@@ -182,7 +198,7 @@ const Render = ({ location }) => {
 		<Background>
 			<Wrapper>
 				<ButtonWrapper>
-					<EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
+					<BookMarkButton>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
@@ -234,8 +250,14 @@ const Render = ({ location }) => {
 					<CategoryContainer>
 						{
 							getProblem.info === undefined ? <>Loading</> :
-							getProblem.info.map((element) => {
-								return <CategoryCore color='blue'>{element}</CategoryCore>
+							getProblem.info.map((element, idx) => {
+								return (
+									<CategoryCore 
+										color='blue'
+										key={idx}>
+									{element}
+									</CategoryCore>
+								)
 							}) 
 						}
 					</CategoryContainer>
@@ -249,15 +271,14 @@ const Render = ({ location }) => {
 					</MainBox>
 				</BoxWrapper>
 				<BoxWrapper>
-					<BoxText>입력</BoxText>
-					<InputExampleBox>
-						양의 정수 하나를 입력해야 한다. 이외의 문자는 허용되지 않는다.
-						허허허
-					</InputExampleBox>
-				</BoxWrapper>
-				<BoxWrapper>
 					<BoxText>제출</BoxText>
 					<Box><Submit></Submit><SubmitButton>제출</SubmitButton></Box>
+				</BoxWrapper>
+				<BoxWrapper>
+					<BoxText>추천 문제</BoxText>
+					<RecommendBox>
+						안녕하세요&nbsp;하하하하하
+					</RecommendBox>
 				</BoxWrapper>
 			</Wrapper>
 		</Background>
