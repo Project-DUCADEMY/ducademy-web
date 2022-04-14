@@ -14,51 +14,51 @@ const QandA = () => {
       id: 1,
       category: "국어",
       title: "국어시간 너무 잠옴",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: true,
     },
     {
       id: 2,
       category: "파이썬",
       title: "잘하고싶다",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자 안녕하세요 박성한 너무 귀엽다 앞에서 go언ㅇ어 하이요 박병관 안녕하세요 하하하하하하 아니 정말 성한이 ㅎㅇㅎㅇㅎㅇㅎㅇ 야이씨 왜 안되냐 하앙아아아아 아 제발 돼라라라라라라ㅏㄹ 아앙 ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: false,
     },
     {
       id: 3,
       category: "국어",
       title:
         "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사사사사오오오오오오오오오오육육육육육육육육육육",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: true,
     },
     {
       id: 4,
       category: "기타",
       title: "잘하고싶다",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 ",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: false,
     },
     {
       id: 5,
       category: "파이썬",
       title: "잘하고싶다",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: false,
     },
     {
       id: 6,
       category: "파이썬",
       title: "잘하고싶다",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: false,
     },
     {
       id: 7,
       category: "파이썬",
       title: "잘하고싶다 아 이거 어케함 기모찡 하하하하하하하",
-      // comment:"아 저는 김건호의 노역에 시달리고 있습니다ㅋㅋㅋ 대소흠 아이디어좀 바꾸자 ",
-      댓글: 4,
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      new: false,
     },
   ]);
 
@@ -66,7 +66,8 @@ const QandA = () => {
     {
       id: 1,
       category: "수학",
-      title: "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사",
+      title:
+        "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사",
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
@@ -189,7 +190,7 @@ const QandA = () => {
 
   function goToAnswer() {
     window.scrollTo({
-      top: 400,
+      top: 450,
       behavior: "smooth",
     });
   }
@@ -200,12 +201,52 @@ const QandA = () => {
   // const menus = ["최신순","조회수순"];
   const [menus, setMenus] = useState([
     {
-      title: "최신순",  
+      title: "최신순",
       id: 0,
     },
     {
       title: "조회수순",
       id: 1,
+    },
+  ]);
+
+  // 더미---------------------------- 아래는 카테고리
+  // const [subjects, setSubjects] = useState([
+  //   {
+  //     id: 0,
+  //     subject: "모두",
+  //   },
+  //   {
+  //     id: 1,
+  //     subject: "과학",
+  //   },
+  //   {
+  //     id: 2,
+  //     subject: "파이썬",
+  //   },
+  // ]);
+  const [subjects, setSubjects] = useState([
+    {
+      id: 0,
+      label: "일반교과",
+      values: [{
+        id:0,
+        subject:"과학"
+      },{
+        id:1,
+        subject:"수학"
+      }],
+    },
+    {
+      id: 1,
+      label: "프로그래밍",
+      values: [{
+        id:0,
+        subject:"파이썬",
+      },{
+        id:1,
+        subject:"자바스크립트",
+      }],
     },
   ]);
 
@@ -235,7 +276,7 @@ const QandA = () => {
             <Q.tempMyQ />
 
             {myQuestions.map((myQ) => (
-              <Q.MyQ key={myQ.id}>
+              <Q.MyQ key={myQ.id} isNew={myQ.new}>
                 <section>
                   <h3>{myQ.title}</h3>
                 </section>
@@ -243,7 +284,7 @@ const QandA = () => {
                   <Q.Category>
                     <div>{myQ.category}</div>
                   </Q.Category>
-                  <Q.MyQFootMenu></Q.MyQFootMenu>
+                  <Q.MyQFootMenu>{makeDate(myQ.time)}</Q.MyQFootMenu>
                 </Q.MyQFoot>
               </Q.MyQ>
             ))}
@@ -256,45 +297,63 @@ const QandA = () => {
           </Q.MyQWrapper>
         </Q.MyQContainer>
 
+        <Q.BridgeQ>
+          
+        </Q.BridgeQ>
+
         <Q.NewQContainer>
           <Q.NewQMenus>
-            {menus.map((menu, idx) => (
-              <Q.NewMenu
-                key={idx}
-                sortedBy={sortedBy == idx ? true : false}
-                onClick={() => setSortedBy(idx)}
-              >
-                {menu.title}
-              </Q.NewMenu>
-            ))}
+            <div>
+              {menus.map((menu, idx) => (
+                <Q.NewQMenuSorted
+                  key={idx}
+                  sortedBy={sortedBy == idx ? true : false}
+                  onClick={() => setSortedBy(idx)}
+                >
+                  {menu.title}
+                </Q.NewQMenuSorted>
+              ))}
+            </div>
+
+            {/* <Q.NewQMenuSearch>
+
+            </Q.NewQMenuSearch> */}
+
+            <Q.NewQMenuSubject>
+              <option>모두</option>
+              {subjects.map((subject) => (
+                // <option key={subject.id}>{subject.subject}</option>
+                <optgroup key={subject.id} label={subject.label}>
+                  {
+                    (subject.values).map((subject) => (
+                      <option key={subject.id}>{subject.subject}</option>
+                    ))
+                  }
+                </optgroup>
+              ))}
+            </Q.NewQMenuSubject>
           </Q.NewQMenus>
           <Q.NewQWrapper>
-
             {newQuestions.map((newQ) => (
               <div key={newQ.id}>
-
                 <Q.NewQListMenu>
-                  <Q.Category><div>{newQ.category}</div></Q.Category>
-                  <Q.NewQTitle>
-                    {newQ.title}
-                  </Q.NewQTitle>
+                  <Q.Category>
+                    <div>{newQ.category}</div>
+                  </Q.Category>
+                  <Q.NewQTitle>{newQ.title}</Q.NewQTitle>
                 </Q.NewQListMenu>
-                
+
                 <Q.NewQListInfo>
                   <Q.NewQInfoWriter>{newQ.writer}</Q.NewQInfoWriter>
                   <Q.NewQInfoDate>{makeDate(newQ.time)}</Q.NewQInfoDate>
-                  {/* <div>ㅎㅇ</div> */}
                 </Q.NewQListInfo>
-
               </div>
             ))}
-
           </Q.NewQWrapper>
         </Q.NewQContainer>
       </Q.Wrapper>
     </Q.Container>
   );
 };
-
 
 export default QandA;
