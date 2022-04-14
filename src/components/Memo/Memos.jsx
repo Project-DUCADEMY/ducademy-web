@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
 import Memo from './Memo'
-import FunctionBar from './FunctionBar'
+import LeftFunctionBar from './LeftFunctionBar'
 
-import { ReactComponent as TrashCanOpen } from './TrashCanOpen.svg'
-import { ReactComponent as TrashCanClose } from './TrashCanClose.svg'
-import { ReactComponent as Pen } from './Pen.svg'
+
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -73,7 +71,10 @@ const rand = (min, max) => {
 const Memos = () => {
 	const [getTrashCanHover, setTrashCanHover] = useState(false)
 	const [getModalOpen, setModalOpen] = useState(null)
+	const [getDragOn, setDragOn] = useState(null)
+	const [getDragOver, setDragOver] = useState('')
 	const [getMemos, setMemos] = useState([{},{},{},{},{},{},{},{},{},{},{},{}])
+
 	useEffect(() => {
 		let temp = [...getMemos]
 		temp.forEach((element, idx) => {
@@ -87,7 +88,7 @@ const Memos = () => {
 			<Main>
 				<SearchSpace/>
 				<FunctionWrapper>
-					<FunctionBar/>
+					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>
 					<CorkBoard>
 						<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(null)}}/>
 						<MemoContainer>
@@ -97,15 +98,16 @@ const Memos = () => {
 									Size={150}
 									Tilt={element.tilt}
 									Modal={[getModalOpen, setModalOpen]}
+									Drag={[getDragOn, setDragOn]}
+									DragOver={getDragOver}
 									Idx={idx + 1}
 									key={idx + 1}
+									draggable={true} 	
 								></Memo>
 							})
 						}
 						</MemoContainer>
-
 					</CorkBoard>
-					<FunctionBar/>
 				</FunctionWrapper>
 			</Main>
 			

@@ -1,4 +1,6 @@
 
+import { useState } from 'react'
+import ReactDOM from 'react-dom'
 import styled, { css } from 'styled-components'
 const Memo = styled.div`
 
@@ -16,9 +18,10 @@ const Memo = styled.div`
    font-family: 'Permanent Marker', cursive;
    font-size:19px;
    color:#130d6b;
-   transition: all 0.4s;
+   transition: transform 0.4s;
    padding:20px;
    border-radius:0 0 0 30px/45px;
+   opacity: ${({Dragged}) => Dragged ? 0 : 1};
    ${({Clicked}) => {
       return Clicked ? 
       css`
@@ -38,6 +41,33 @@ const Memo = styled.div`
       }  
       `
    }}
+
+   &:before{
+      content:"";
+      display:block;
+      position:absolute;
+      width:20px;
+      height:25px;
+      background:#ffa;
+      box-shadow:
+         3px -2px 10px rgba(0,0,0,0.1),
+         inset 15px -15px 15px rgba(0,0,0,0.3);
+      left:0;
+      bottom:0;
+      z-index:2;
+      transform:skewX(25deg);
+   }
+   &:after{
+      content:"";
+      display:block;
+      position:absolute;
+      width:75%;
+      height:20px; 
+      border-top:3px solid #130d6b;
+      border-radius: 40% ;
+      top:50px;
+      left:10%;
+   }
    
 `
 const EmptyMemo = styled(Memo)`
@@ -51,54 +81,47 @@ const MemoWrapper = styled.div`
    padding: 20px;
 
 `
-const Flutter = styled.div`
-   content:"";
-   display:block;
-   position:absolute;
-   width:20px;
-   height:25px;
-   background:#ffa;
-   box-shadow:
-      3px -2px 10px rgba(0,0,0,0.1),
-      inset 15px -15px 15px rgba(0,0,0,0.3);
-   left:0;
-   bottom:0;
-   z-index:2;
-   transform:skewX(25deg);
+const DragPostit = styled(Memo)`
+   height: 100px;
+   min-width: 100px;
+   max-width: 100px;
+   opacity: 1;
+   transform: scale(0.5);
 `
-const UnderLine = styled.div`
-   content:"";
-   display:block;
-   position:absolute;
-   width:75%;
-   height:20px; 
-   border-top:3px solid #130d6b;
-   border-radius: 40% ;
-   top:50px;
-   left:10%;
-`
-const Pin = styled.div`
 
-`
 const render = (props) => {
-   if(props.Idx === props.Modal) {
-      console.log(props.Idx)
+
+   const DragStartHandler = (event) => {
+      props.Drag[1](props.Idx)
+      const image = <DragPostit/>;
+      const ghost = document.getElementById('ghost')
+      ghost.style.transform = "translate(-10000px, -10000px)";
+      event.dataTransfer.setDragImage(ghost, 100, 100);
+      ReactDOM.render(image, ghost);
+   }
+   const DragEndHandler = () => {
+      props.Drag[1](null)
+      ReactDOM.unmountComponentAtNode(document.getElementById('ghost'))
    }
    return (
    <MemoWrapper Size={props.Size}>
-   <Memo 
-      Size={props.Size}
-      Tilt={props.Tilt}
-      onClick={() => {props.Modal[1](props.Idx); console.log(props.Idx)}}
-      Clicked={props.Idx === props.Modal[0]}
-   >
-      {
-         props.message
-      }
-      <Flutter/>
-      <UnderLine/>
-   </Memo>
-   </MemoWrapper>)
+      <Memo 
+         Size={props.Size}
+         Tilt={props.Tilt}
+         onClick={() => {props.Modal[1](props.Idx)}}
+         Clicked={props.Idx === props.Modal[0]}
+         Dragged={props.Idx === props.Drag[0]}
+         DragOver={props.DragOver}
+         draggable={true}
+         onDragStart={DragStartHandler}
+         onDragEnd={DragEndHandler}
+      >
+         {
+            props.message
+         }
+      </Memo>
+   </MemoWrapper>
+   )
 }
 
 

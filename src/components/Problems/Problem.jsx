@@ -237,8 +237,14 @@ const Render = ({ location }) => {
 					<CategoryContainer>
 						{
 							getProblem.info === undefined ? <>Loading</> :
-							getProblem.info.map((element) => {
-								return <CategoryCore color='blue'>{element}</CategoryCore>
+							getProblem.info.map((element, idx) => {
+								return (
+									<CategoryCore 
+										color='blue'
+										key={idx}>
+									{element}
+									</CategoryCore>
+								)
 							}) 
 						}
 					</CategoryContainer>
@@ -250,13 +256,6 @@ const Render = ({ location }) => {
 						CheckLoading(getProblem.source)
 					}
 					</MainBox>
-				</BoxWrapper>
-				<BoxWrapper>
-					<BoxText>입력</BoxText>
-					<InputExampleBox>
-						양의 정수 하나를 입력해야 한다. 이외의 문자는 허용되지 않는다.
-						허허허
-					</InputExampleBox>
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>제출</BoxText>
