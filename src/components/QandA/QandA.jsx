@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import Q from "./QandA.style"
-import * as Q from "./QandA.style";
+import * as Q from "../../style/Table.style";
 
 import moreInfo from "../../assets/image/q&aPage/more.svg";
 import chatting from "../../assets/image/q&aPage/chatting.svg";
