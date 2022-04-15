@@ -157,7 +157,7 @@ export const MyQFootMenu = styled.div`
 export const BridgeQ = styled.div`
   margin-top: 110px;
   width:100%;
-  /* height:500px;  */
+  height:500px; 
   border-radius:15px;
   box-sizing:border-box;
   box-shadow: 4px -4px 15px 0px #0000001a;
@@ -166,10 +166,6 @@ export const BridgeQ = styled.div`
   align-items:center;
   background-color: #3fe2a6;
   color:white;
-  padding:20px 0px 20px 0px;
-  > *{
-    margin:10px 0px 20px 0px;
-  }
   /* h1{
     margin-top:80px;
   }
@@ -179,25 +175,15 @@ export const BridgeQ = styled.div`
 `
 
 export const SearchContainer = styled.div`
-  /* min-width:500px; */
-  /* width:auto; */
+  width:500px;
   background-color:white;
   border-radius:15px;
+  padding-left:30px;
   display:flex;
   align-items:center;
   input{
-    height: 50px;
-    width:400px;
-    /* width:max-content; */
-    font-size:17px;
-    border-radius:15px;
-    padding-left:30px;
     outline:none;
     border:none;
-  }
-  img{
-    cursor:pointer;
-    padding-right:10px;
   }
 `
 

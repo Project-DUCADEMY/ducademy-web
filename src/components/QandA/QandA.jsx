@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import * as Q from "../../style/Table.style";
 
 import moreInfo from "../../assets/image/q&aPage/more.svg";
-import chatting from "../../assets/image/q&aPage/chatting.svg";
+import search from "../../assets/image/q&aPage/search.svg";
 
 // 60자로 해야함
 const QandA = () => {
@@ -210,21 +210,6 @@ const QandA = () => {
     },
   ]);
 
-  // 더미---------------------------- 아래는 카테고리
-  // const [subjects, setSubjects] = useState([
-  //   {
-  //     id: 0,
-  //     subject: "모두",
-  //   },
-  //   {
-  //     id: 1,
-  //     subject: "과학",
-  //   },
-  //   {
-  //     id: 2,
-  //     subject: "파이썬",
-  //   },
-  // ]);
   const [subjects, setSubjects] = useState([
     {
       id: 0,
@@ -252,11 +237,11 @@ const QandA = () => {
 
   function makeDate(time) {
     const tempTime = new Date(time);
-    console.log([
-      tempTime.getFullYear(),
-      tempTime.getMonth() + 1,
-      tempTime.getDate(),
-    ]);
+    // console.log([
+    //   tempTime.getFullYear(),
+    //   tempTime.getMonth() + 1,
+    //   tempTime.getDate(),
+    // ]);
     // return [tempTime.getFullYear(),
     //   tempTime.getMonth()+1 < 10 ? "0"+tempTime.getMonth()+1: tempTime.getMonth()+1,tempTime.getDate()]
     return `
@@ -265,6 +250,15 @@ const QandA = () => {
       .toString()
       .padStart(2, "0")} / ${tempTime.getDate().toString().padStart(2, "0")}
     `;
+  }
+
+  const [searchValue,setSearchValue] = useState("")
+
+  function changeSearchValue(value){
+    setSearchValue(value)
+  } 
+  function searchThat(){
+    console.log("서버통신",searchValue)
   }
 
   return (
@@ -300,7 +294,8 @@ const QandA = () => {
         <Q.BridgeQ>
               <h1>질문과 해설을 검색하세요</h1>
               <Q.SearchContainer>
-                <input type="text"/>
+                <input type="text" onChange={(e) => changeSearchValue(e.target.value)}/>
+                <img src={search} onClick={searchThat}/>
               </Q.SearchContainer>
               <h2>도움을 주고 받을 수 있습니다</h2>
         </Q.BridgeQ>
@@ -312,21 +307,25 @@ const QandA = () => {
                 <Q.NewQMenuSorted
                   key={idx}
                   sortedBy={sortedBy == idx ? true : false}
-                  onClick={() => setSortedBy(idx)}
+                  onClick={() => {
+                    setSortedBy(idx)
+                    goToAnswer()
+                  }}
                 >
                   {menu.title}
                 </Q.NewQMenuSorted>
               ))}
             </div>
 
-            <Q.NewQMenuSubject>
+            <Q.NewQMenuSubject onChange={goToAnswer}>
               <option>모두</option>
               {subjects.map((subject) => (
-                // <option key={subject.id}>{subject.subject}</option>
                 <optgroup key={subject.id} label={subject.label}>
                   {
                     (subject.values).map((subject) => (
-                      <option key={subject.id}>{subject.subject}</option>
+                      <option 
+                      key={subject.id}
+                      >{subject.subject}</option>
                     ))
                   }
                 </optgroup>
