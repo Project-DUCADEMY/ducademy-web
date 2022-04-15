@@ -22,10 +22,12 @@ export const Wrapper = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
+  align-items:center;
 `;
 
 export const MyQContainer = styled.div`
   width: 100%;
+
   height: 310px;
   overflow-x: scroll;
   /* margin-top:100px; */
@@ -145,7 +147,6 @@ export const Category = styled.div`
 export const MyQFootMenu = styled.div`
   width: 100px;
   height: 30px;
-  /* background-color: blue; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -154,17 +155,43 @@ export const MyQFootMenu = styled.div`
 // -----------------------------------
 
 export const BridgeQ = styled.div`
-  /* width:100vw;
-  height:500px; */
-  /* position:relative; */
-  /* background-color:blue; */
+  margin-top: 110px;
+  width:100%;
+  height:500px; 
+  border-radius:15px;
+  box-sizing:border-box;
+  box-shadow: 4px -4px 15px 0px #0000001a;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color: #3fe2a6;
+  color:white;
+  /* h1{
+    margin-top:80px;
+  }
+  h2{
+    margin-top:80px;
+  } */
+`
+
+export const SearchContainer = styled.div`
+  width:500px;
+  background-color:white;
+  border-radius:15px;
+  padding-left:30px;
+  display:flex;
+  align-items:center;
+  input{
+    outline:none;
+    border:none;
+  }
 `
 
 // -----------------------------------
 
 export const NewQContainer = styled.div`
-  width: 100%;
-  margin-top: 150px;
+  width: 85vw;
+  margin-top: 100px;
 `;
 
 export const NewQMenus = styled.div`
@@ -175,8 +202,6 @@ export const NewQMenus = styled.div`
   > div {
     display: flex;
   }
-  /* position: relative; */
-
 `;
 
 export const NewQMenuSorted = styled.div`
@@ -202,19 +227,6 @@ export const NewQMenuSorted = styled.div`
   font-weight: bold;
   user-select: none;
 `
-
-// export const NewQMenuSearch = styled.input`
-//   width: 300px;
-//   height: 50px;
-//   margin-right:3vw;
-//   position:relative;
-//   bottom:12px;
-//   border-radius:15px;
-//   box-shadow: 4px 4px 15px 0px #0000001a;
-//   outline:none;
-//   border:none;
-//   padding-left:30px;
-// `
 
 export const NewQMenuSubject = styled.select`
   min-width:200px;
@@ -244,11 +256,8 @@ export const NewQWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* height:50px; */
-  /* background-color:#3fe2a6; */
   border-radius: 0px 15px 15px 15px;
   box-shadow: 4px 4px 15px 0px #0000001a;
-  /* box-shadow: 4px 4px 15px 0px #0000001A; */
   > div {
     padding:5px 30px 5px 20px;
     height: 60px;
@@ -265,36 +274,24 @@ export const NewQWrapper = styled.div`
 export const NewQListMenu = styled.div`
   display: flex;
   align-items: center;
+  width:55%;
 `;
 export const NewQListInfo = styled(NewQListMenu)`
   min-width: 240px;
+  display:flex;
+  justify-content:flex-end;
 `;
 export const NewQTitle = styled.div`
-  /* min-width:300px; */
-  /* width:700px; */
-  /* width: 80%; */
-  /* min-width:400px; */
-  width: 40vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex-shrink:4;
 `;
 
-// margin:100px;
-//         outline: 1px solid black;
-//         display: block;
-//         color: black;
-//         width: 630px;
-//         font-size: 20px;
-//         font-weight: bolder !important;
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//         white-space: nowrap;
 export const NewQInfoDate = styled.div`
   font-size: 15px;
   min-width: 99.1px;
 `;
 export const NewQInfoWriter = styled(NewQInfoDate)`
   margin-right: 40px;
-  margin-left: 40px;
 `;
