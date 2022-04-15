@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import Q from "./QandA.style"
-import * as Q from "./QandA.style";
+import * as Q from "../../style/Table.style";
 
 import moreInfo from "../../assets/image/q&aPage/more.svg";
 import chatting from "../../assets/image/q&aPage/chatting.svg";
@@ -298,7 +298,11 @@ const QandA = () => {
         </Q.MyQContainer>
 
         <Q.BridgeQ>
-          
+              <h1>질문과 해설을 검색하세요</h1>
+              <Q.SearchContainer>
+                <input type="text"/>
+              </Q.SearchContainer>
+              <h2>도움을 주고 받을 수 있습니다</h2>
         </Q.BridgeQ>
 
         <Q.NewQContainer>
@@ -314,10 +318,6 @@ const QandA = () => {
                 </Q.NewQMenuSorted>
               ))}
             </div>
-
-            {/* <Q.NewQMenuSearch>
-
-            </Q.NewQMenuSearch> */}
 
             <Q.NewQMenuSubject>
               <option>모두</option>
