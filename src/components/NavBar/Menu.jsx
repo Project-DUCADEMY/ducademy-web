@@ -33,12 +33,16 @@ const StyledLink = styled(Link)`
     bottom: 13px;
 `
 const UnderBar = styled.div`
-	height: 2px;
+	border-radius:15px;
+	height: 3.5px;
+	/* height: 2px; */
 	background-color: ${({color}) => color};
 	position: relative;
 	top: 5px;
 	transition: all 0.1s;
-	width: ${({color}) => { return color === 'black' ? '0%' : '70%' }};
+	width:25%;
+	width: ${({color}) => { return color === 'black' ? '0%' : '30%' }};
+	/* width: ${({color}) => { return color === 'black' ? '0%' : '70%' }}; */
 `
 const Menu = (props) => {
 	const [getOnOver, setOnOver] = useState(false)

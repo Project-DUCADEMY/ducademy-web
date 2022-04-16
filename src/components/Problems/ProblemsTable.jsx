@@ -37,7 +37,7 @@ const Tr = styled.tr`
 		background-color: #AED581;
 	}
 	cursor: pointer;
-	background-color: ${props => props.idx % 2 == 1 ? '#F9FFF9' : ''}
+	background-color: ${props => props.idx % 2 == 1 ? '#F9FFF9' : ''};
 `
 const ProblemsTable = (props) => {
 	const [getProblems, setProblems] = useRecoilState(problems)
