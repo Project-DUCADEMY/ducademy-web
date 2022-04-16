@@ -21,74 +21,21 @@ const ModeifyInformation = () => {
 
   return (
     <div>
-      <M.InfoTitle>정보 수정</M.InfoTitle>
+      <M.Title>정보 수정</M.Title>
       <M.Hr />
+
       <M.InfoEditContainer>
-        <M.Photo>사진</M.Photo>
+        <M.SubName>사진</M.SubName>
+
+        {/* 사진 박스 */}
+        <div> {fileImage ? <M.Img src={fileImage} /> : <M.Img src="default.jpeg" />}</div>
 
         <M.PhotoChangeButtonContainer>
-          <M.Img src="default.jpeg"></M.Img>
-          <M.PhotoChangeButtonContainer>
-            {/* <M.Label htmlFor="file">사진 변경</M.Label>
-            <M.InputFile type="file" id="image" accept="img/*" onChange={onLoadFile} id="file" /> */}
+          <M.FileSelectContainer>
+            <input name="imgUpload" type="file" accept="image/*" onChange={saveFileImage} />
+          </M.FileSelectContainer>
 
-            {/* <form encType="multipart/form-data">
-              <label htmlFor="file">이미지 업로드</label>
-              <input type="file" id="file" accept="image/jpg, image/jpeg, image/png" />
-            </form> */}
-
-            {/* <h1>이미지 미리보기</h1> */}
-            <table>
-              <tbody>
-                <tr>
-                  <th>이미지</th>
-                  <td>
-                    <div>
-                      {fileImage && (
-                        <img
-                          alt="sample"
-                          src={fileImage}
-                          style={{
-                            width: "100px",
-                            height: "85%",
-                            objectFit: "cover",
-                            marginTop: "10px",
-                            borderRadius: "40%",
-                          }}
-                        />
-                      )}
-                      <div
-                        style={{
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <input
-                          name="imgUpload"
-                          type="file"
-                          accept="image/*"
-                          onChange={saveFileImage}
-                        />
-
-                        <button
-                          style={{
-                            backgroundColor: "gray",
-                            color: "white",
-                            width: "55px",
-                            height: "40px",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => deleteFileImage()}
-                        >
-                          삭제
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </M.PhotoChangeButtonContainer>
+          <M.DleteButton onClick={() => deleteFileImage()}>삭제</M.DleteButton>
         </M.PhotoChangeButtonContainer>
       </M.InfoEditContainer>
     </div>
