@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import Q from "./QandA.style"
-import * as Q from "../../style/Table.style";
+import * as Q from "./QandA.style";
 
 import moreInfo from "../../assets/image/q&aPage/more.svg";
 import search from "../../assets/image/q&aPage/search.svg";
+
+import ProblemList from "../common/ProblemList";
 
 // 60자로 해야함
 const QandA = () => {
@@ -332,7 +334,9 @@ const QandA = () => {
               ))}
             </Q.NewQMenuSubject>
           </Q.NewQMenus>
-          <Q.NewQWrapper>
+
+          <ProblemList newQuestions={newQuestions}/>
+          {/* <Q.NewQWrapper>
             {newQuestions.map((newQ) => (
               <div key={newQ.id}>
                 <Q.NewQListMenu>
@@ -348,8 +352,10 @@ const QandA = () => {
                 </Q.NewQListInfo>
               </div>
             ))}
-          </Q.NewQWrapper>
+          </Q.NewQWrapper> */}
         </Q.NewQContainer>
+
+
       </Q.Wrapper>
     </Q.Container>
   );
