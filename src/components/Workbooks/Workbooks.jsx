@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 import Workbook from './Workbook'
 import { palette } from '../../style/palette'
-const Background = styled.div`
+const Main = styled.div`
 	width: 100%;
-	height: 100vh - 52px;
+	height: 100vh - 75px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: white;
-	margin-top: 52px;
+	margin-top: 30px;
 `
 const BookShelf = styled.div`
 	display: flex;
@@ -27,7 +27,7 @@ const BookShelf = styled.div`
 const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, palette.theme5, palette.theme6]
 const Workbooks = () => {
 	return (
-		<Background>
+		<Main>
 			<h1>문제집</h1>
 			<BookShelf>
 				<Workbook color={themes[0]}/>
@@ -40,7 +40,7 @@ const Workbooks = () => {
 				<Workbook color={themes[0]}/>
 				<Workbook color={themes[0]}/>
 			</BookShelf>
-		</Background>
+		</Main>
 	)
 }
 

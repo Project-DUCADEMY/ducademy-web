@@ -2,9 +2,19 @@ import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
 import ProblemsTable from './ProblemsTable'
 
-const Main = styled.div	`
+const Background = styled.div`
+	width: 100%;
+	height: 100vh - 75px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
 	margin-top: 75px;
+`
+const Main = styled.div	`
 	width: 70%;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
     align-content: center;
@@ -19,12 +29,10 @@ const MainWrapper = styled.div	`
 
 const Problems = () => {
 	return (
-		<MainWrapper>
 			<Main>
-				<SearchSpace/>
-				<ProblemsTable/>
+				<SearchSpace />
+				<ProblemsTable />
 			</Main>
-		</MainWrapper>
 	)
 }
 

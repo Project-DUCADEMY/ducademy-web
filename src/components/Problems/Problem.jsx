@@ -6,12 +6,12 @@ import { route } from "react-router";
 
 let Challenge = 1
 let BookMarked = true
-const Background = styled.div`
+const Main = styled.div`
   	width: 100%;
 	display: flex;
 	justify-content: center;
 	background-color: rgb(255, 255, 255);
-	margin-top: 52px;
+	margin-top: 30px;
 	padding-top: 50px;
 `
 const Wrapper = styled.div`
@@ -198,7 +198,7 @@ const Render = ({ location }) => {
 		}
 	}
 	return (
-		<Background>
+		<Main>
 			<Wrapper>
 				<ButtonWrapper>
 					<LikeButton></LikeButton><BookMarkButton Yellow={BookMarked}>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
@@ -284,7 +284,7 @@ const Render = ({ location }) => {
 					</RecommendBox>
 				</BoxWrapper>
 			</Wrapper>
-		</Background>
+		</Main>
 	)
 }
 
