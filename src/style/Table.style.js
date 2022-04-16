@@ -259,11 +259,6 @@ export const NewQMenuSubject = styled.select`
   :focus{
     border:solid #3fe2a6;
   }
-  option{
-    :hover{
-      background:solid #3fe2a6;
-    }
-  }
 `
 
 export const NewQWrapper = styled.div`
