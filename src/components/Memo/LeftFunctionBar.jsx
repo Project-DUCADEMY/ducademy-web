@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { ReactComponent as Delete } from './delete.svg'
 import { ReactComponent as Create } from './create.svg'
+import { ReactComponent as Edit } from './edit.svg'
 import { useEffect } from 'react'
 
 const Main = styled.div`
@@ -24,13 +25,14 @@ const EventHandleDiv = styled.div`
     z-index: 100;
 `
 const FunctionBox = styled.div`
+    margin-top: 20px;
     width: 100%;
     height: 100%;
     background-color: ${({color}) => color};
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.7;
     ${({isDragOver}) => isDragOver ? 
     css`
         transform : translateX(-80px);
@@ -53,16 +55,51 @@ const IconWrapper = styled.div`
 `
 const TextWrapper = styled.div`
     float: right;
-    clear: both;
     position: relative;
     right: 70px;
-    bottom: 17px;
+    top: 25px;
     z-index: -1;
 `
 const render = (props) => {
     return (
         <Main>
             <FunctionBoxContainer>
+                <FunctionBox 
+                    color={'blue'}
+                    onDragEnter={() => {
+                        props.DragOver[1]('등록')
+                    }}
+                    onDragLeave={() => {
+                        props.DragOver[1]('')
+                    }}
+                    isDragOver={props.DragOver[0] === '등록'}
+                >
+                    <IconWrapper>
+                        <Create/>
+                    </IconWrapper>
+                    <TextWrapper>
+                        등록
+                    </TextWrapper>
+                    <EventHandleDiv/>
+                </FunctionBox>
+                <FunctionBox 
+                    color={'green'}
+                    onDragEnter={() => {
+                        props.DragOver[1]('수정')
+                    }}
+                    onDragLeave={() => {
+                        props.DragOver[1]('')
+                    }}
+                    isDragOver={props.DragOver[0] === '수정'}
+                >
+                    <IconWrapper>
+                        <Edit/>
+                    </IconWrapper>
+                    <TextWrapper>
+                        수정
+                    </TextWrapper>
+                    <EventHandleDiv/>
+                </FunctionBox>
                 <FunctionBox 
                     color={'red'}
                     onDragEnter={() => {
@@ -74,9 +111,7 @@ const render = (props) => {
                     isDragOver={props.DragOver[0] === '삭제'}
                 >
                     <IconWrapper>
-                        <Delete
-                            fill={"#222222"}
-                        />
+                        <Delete/>
                     </IconWrapper>
                     <TextWrapper>
                         삭제

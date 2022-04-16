@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import SearchSpace from './SearchSpace'
 import Memo from './Memo'
 import LeftFunctionBar from './LeftFunctionBar'
+import RightFunctionBar from './RightFunctionBar'
 
 
 
@@ -82,11 +83,9 @@ const Memos = () => {
 		})
 		setMemos(temp)
 	}, [])
-	
 	return (
 		<MainWrapper>
 			<Main>
-				<SearchSpace/>
 				<FunctionWrapper>
 					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>
 					<CorkBoard>
@@ -108,6 +107,7 @@ const Memos = () => {
 						}
 						</MemoContainer>
 					</CorkBoard>
+					<RightFunctionBar/>
 				</FunctionWrapper>
 			</Main>
 			

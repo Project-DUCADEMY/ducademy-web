@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import styled, { css } from 'styled-components'
 const Memo = styled.div`
@@ -103,6 +103,7 @@ const render = (props) => {
       props.Drag[1](null)
       ReactDOM.unmountComponentAtNode(document.getElementById('ghost'))
    }
+
    return (
    <MemoWrapper Size={props.Size}>
       <Memo 
