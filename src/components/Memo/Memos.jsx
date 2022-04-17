@@ -1,11 +1,8 @@
 import styled from 'styled-components'
-import SearchSpace from './SearchSpace'
 
 import LeftFunctionBar from './LeftFunctionBar'
 import RightFunctionBar from './RightFunctionBar'
 import WhiteBoard from './WhiteBoard'
-
-
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -29,15 +26,12 @@ const MainWrapper = styled.div	`
 
 const FunctionWrapper = styled.div`
 	display: flex;
-	margin-top: 50px;
 	width: 110%;
-	height: 90%;
+	height: 80%;
 	align-items: flex-end;
 	justify-content: space-evenly;
 `
-const PenWrapper = styled.div`
-	width: 100px;
-`
+
 
 const Memos = () => {
 	const [getDragOver, setDragOver] = useState('')

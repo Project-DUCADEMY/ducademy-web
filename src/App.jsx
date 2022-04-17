@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import AppRouter from './AppRouter';
 const AppStyle = styled.div`
 	margin-top: 75px;
-
 `
 const Background = styled.div`
 	width: 100%;

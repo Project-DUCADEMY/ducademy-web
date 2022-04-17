@@ -17,6 +17,7 @@ const FunctionBoxContainer = styled.div`
     bottom: 20px;
     flex-direction: column;
     justify-content: flex-end;
+    gap: 20px
 
 `
 const EventHandleDiv = styled.div`
@@ -26,7 +27,6 @@ const EventHandleDiv = styled.div`
     z-index: 100;
 `
 const FunctionBox = styled.div`
-    margin-top: 20px;
     width: 100%;
     height: 70px;
     background-color: ${({color}) => color};

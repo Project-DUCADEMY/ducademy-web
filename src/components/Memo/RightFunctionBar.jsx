@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 import { ReactComponent as Delete } from './delete.svg'
 import { ReactComponent as Create } from './create.svg'
-import { ReactComponent as Edit } from './edit.svg'
-import { useEffect } from 'react'
+import { ReactComponent as Search } from './search.svg'
+import { useEffect, useState } from 'react'
 
 const Main = styled.div`
     height: 100%;
@@ -16,6 +16,7 @@ const FunctionBoxContainer = styled.div`
     right: 130px;
     position: relative;
     flex-direction: column;
+    gap: 20px;
 
 `
 const EventHandleDiv = styled.div`
@@ -32,12 +33,34 @@ const FunctionBox = styled.div`
     transition: all 0.3s;
     cursor: pointer;
     opacity: 0.7;
-    &:hover{
-        transform : translateX(80px);
+    ${({getClickSearch}) => getClickSearch ? 
+    css`
         opacity: 0.9;
-    };
-    border-radius: 20px;
+        transform : translateX(80px);
+    `:
+    css`
+        &:hover{
+            opacity: 0.9;
+            transform : translateX(80px);
+        };
+    `}
 
+    border-radius: 20px;
+`
+const OpctionBox = styled(FunctionBox)`
+    ${({getClickOpction}) => getClickOpction ? 
+    css`
+        height: 85%;
+        opacity: 0.9;
+        transform : translateX(80px);
+    `:
+    css`
+        &:hover{
+            height: 85%;
+            opacity: 0.9;
+            transform : translateX(80px);
+        };
+    `}
 `
 const IconWrapper = styled.div`
     position: relative;
@@ -53,24 +76,41 @@ const TextWrapper = styled.div`
     top: 25px;
     z-index: -1;
 `
-const render = (props) => {
+const Render = (props) => {
+    const [getClickSearch, setClickSearch] = useState(false)
+    const [getClickOpction, setClickOpction] = useState(false)
     return (
         <Main>
             <FunctionBoxContainer>
                 <FunctionBox 
                     color={'blue'}
+                    getClickSearch={getClickSearch}
+                    onClick={() => setClickSearch(!getClickSearch)}
+                >
+                    <IconWrapper>
+                        <Search/>
+                    </IconWrapper>
+                    <TextWrapper>
+                        검색
+                    </TextWrapper>
+                    <EventHandleDiv/>
+                </FunctionBox>
+                <OpctionBox 
+                    color={'blue'}
+                    getClickOpction={getClickOpction}
+                    onClick={() => setClickOpction(!getClickOpction)}
                 >
                     <IconWrapper>
                         <Create/>
                     </IconWrapper>
                     <TextWrapper>
-                        등록
+                        검색
                     </TextWrapper>
                     <EventHandleDiv/>
-                </FunctionBox>
+                </OpctionBox>
             </FunctionBoxContainer>
         </Main>
     )
 }
 
-export default render
+export default Render

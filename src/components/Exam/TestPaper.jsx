@@ -9,25 +9,21 @@ const Paper = styled.div`
     height: 90%;
     transform: rotate(${({Rotate}) => Rotate}deg);
 `
-const ExamContainer = styled.div`
-
-    position: relative;
+const ExamContainer = styled.div`    
     cursor: pointer;
     ${({click, myIdx}) => {
+
         return click === null ? css`
             width: 300px;
             height: 420px;
-
         `:
         click === myIdx ? css`
             width: 70%;
             height: 100%;
             transition: all, 0.3s;
-            position: relative;
-            left: 13%;
         `:
         css`
-            transition: transform, 4s;
+            transition: transform, 2s;
             transform: translateY(-1000%);
         `
     }}
