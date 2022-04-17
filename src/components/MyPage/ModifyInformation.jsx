@@ -42,9 +42,15 @@ const ModeifyInformation = () => {
           </M.FileSelectContainer>
 
           <M.Label for="imgUpload">이미지 변경</M.Label>
-          <M.DleteButton onClick={() => deleteFileImage()}>삭제</M.DleteButton>
+          <M.DeleteButton onClick={() => deleteFileImage()}>삭제</M.DeleteButton>
         </M.PhotoChangeButtonContainer>
       </M.InfoEditContainer>
+
+      <M.Title>내가 만든 문제</M.Title>
+      <M.Hr />
+
+      {/* <M.Title>나의 그룹</M.Title>
+      <M.Hr /> */}
     </div>
   );
 };

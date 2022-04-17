@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Title = styled.h2`
-  /* display : block; */
+  margin-top: 60px;
 `;
 
 export const SubName = styled.div`
@@ -9,6 +9,7 @@ export const SubName = styled.div`
   height: 100px;
   display: flex;
   align-items: center;
+  font-size: 18px;
 `;
 
 export const Img = styled.img`
@@ -37,7 +38,7 @@ export const PhotoChangeButtonContainer = styled.div`
   width: 600px;
   height: 100px;
 `;
-export const DleteButton = styled.button`
+export const DeleteButton = styled.button`
   display: flex;
   font-size: 15px;
   background-color: white;
@@ -49,7 +50,7 @@ export const DleteButton = styled.button`
   border-radius: 10px;
   border: none;
   border-color: gray;
-  margin-left: 50px;
+  margin-left: 30%;
   align-items: center;
   justify-content: center;
   :hover {
@@ -76,7 +77,6 @@ export const Label = styled.label`
   border-radius: 10px;
   border: none;
   border-color: gray;
-  margin-left: 50px;
   align-items: center;
   justify-content: center;
   :hover {
