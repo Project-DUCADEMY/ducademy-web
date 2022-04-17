@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
-import React, { useEffect, FileInput } from "react";
-import * as M from "./ModifyInformation.style";
+import React, { useEffect } from "react";
+import * as MI from "./ModifyInformation.style";
+import * as P from "./Public.style";
 
 const ModeifyInformation = () => {
   //파일 미리볼 url을 저장해줄 state
@@ -21,17 +21,17 @@ const ModeifyInformation = () => {
 
   return (
     <div>
-      <M.Title>정보 수정</M.Title>
-      <M.Hr />
+      <P.Title>정보 수정</P.Title>
+      <P.Hr />
 
-      <M.InfoEditContainer>
-        <M.SubName>사진</M.SubName>
+      <P.Container>
+        <P.SubName>사진</P.SubName>
 
         {/* 사진 박스 */}
-        <div> {fileImage ? <M.Img src={fileImage} /> : <M.Img src="default.jpeg" />}</div>
+        <div> {fileImage ? <MI.Img src={fileImage} /> : <MI.Img src="default.jpeg" />}</div>
 
-        <M.PhotoChangeButtonContainer>
-          <M.FileSelectContainer>
+        <MI.PhotoChangeButtonContainer>
+          <MI.FileSelectContainer>
             <input
               type="file"
               id="imgUpload"
@@ -39,18 +39,12 @@ const ModeifyInformation = () => {
               onChange={saveFileImage}
               style={{ display: "none" }}
             />
-          </M.FileSelectContainer>
+          </MI.FileSelectContainer>
 
-          <M.Label for="imgUpload">이미지 변경</M.Label>
-          <M.DeleteButton onClick={() => deleteFileImage()}>삭제</M.DeleteButton>
-        </M.PhotoChangeButtonContainer>
-      </M.InfoEditContainer>
-
-      <M.Title>내가 만든 문제</M.Title>
-      <M.Hr />
-
-      {/* <M.Title>나의 그룹</M.Title>
-      <M.Hr /> */}
+          <MI.Label for="imgUpload">이미지 변경</MI.Label>
+          <MI.DeleteButton onClick={() => deleteFileImage()}>삭제</MI.DeleteButton>
+        </MI.PhotoChangeButtonContainer>
+      </P.Container>
     </div>
   );
 };

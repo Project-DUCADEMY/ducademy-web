@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {ReactComponent as Icon} from '../../assets/image/DUCAMI.svg'
+import { ReactComponent as Icon } from '../../assets/image/DUCAMI.svg'
 const Main = styled.footer`
     display: flex;
     box-sizing: border-box;
@@ -7,7 +7,6 @@ const Main = styled.footer`
     align-items: center;
     width: 100%;
     height: 100px;
-    color: #c8c8c8;
     background-color: #222222;
     padding: 18px 22px;
     margin-top: 25%;
@@ -20,13 +19,19 @@ const TextBox = styled.div`
 
 `
 const Text = styled.span`
+    color: #c8c8c8;
     font-size: 15px;
+`
+const LinkText = styled.a`
+    font-size: 15px;
+    color: #c8c8c8;
+    text-decoration: underline;
 `
 
 const Logo = styled(Icon)`
     height: 50%;
     width: 30%;
-    fill: red;
+
 `
 const Footer = () => {
     return (
@@ -38,8 +43,14 @@ const Footer = () => {
                 <Text>
                     대표자명 : 김건호
                 </Text>
+                <Text>
+                    주소 : 대구광역시 달성군 구지면 창리로11길 93 기숙사동 1층
+                </Text>
+                <Text>
+                    Github : <LinkText href='https://github.com/Project-DUCADEMY'>https://github.com/Project-DUCADEMY</LinkText>
+                </Text>
             </TextBox>
-                <Logo></Logo>
+            <Logo></Logo>
         </Main>
     )
 }

@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
-export const Title = styled.h2`
-  margin-top: 60px;
-`;
-
-export const SubName = styled.div`
-  width: 190px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-`;
-
+//정보 수정
 export const Img = styled.img`
   width: 100px;
   height: 100px;
@@ -20,17 +9,6 @@ export const Img = styled.img`
   border-radius: 40%;
 `;
 
-export const Hr = styled.div`
-  width: 100%;
-  height: 3px;
-  background-color: black;
-`;
-
-export const InfoEditContainer = styled.div`
-  width: 100%;
-  height: 120px;
-  display: flex;
-`;
 export const PhotoChangeButtonContainer = styled.div`
   display: flex;
   align-items: center;
@@ -38,6 +16,7 @@ export const PhotoChangeButtonContainer = styled.div`
   width: 600px;
   height: 100px;
 `;
+
 export const DeleteButton = styled.button`
   display: flex;
   font-size: 15px;

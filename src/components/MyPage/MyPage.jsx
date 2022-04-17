@@ -1,66 +1,62 @@
-import userData from '../../store/userData'
-import { useRecoilValue } from 'recoil'
-import axios from 'axios'
-import styled from 'styled-components'
+import userData from "../../store/userData";
+import { useRecoilValue } from "recoil";
+import axios from "axios";
+import styled from "styled-components";
 
-import CommitGraph from './CommitGraph'
-import InfoCard from './InfoCard'
-import Graph from './Graph'
-import ModeifyInformation from './ModifyInformation'
+import CommitGraph from "./CommitGraph";
+import InfoCard from "./InfoCard";
+import Graph from "./Graph";
+import ModeifyInformation from "./ModifyInformation";
+import MyProblem from "./MyProblem";
 
 const MainContainer = styled.div`
-	flex-direction: column;
-	width: 80%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
-	margin-top: 52px;
-`
+  flex-direction: column;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin-top: 52px;
+`;
 const Background = styled.div`
-	display: flex;
-	justify-content: center;
-	width: 100%;
-`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 const MyInfoContainer = styled.div`
-	margin-top: 20px;
-	width: 100%;
-	/* display: flex; */
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-content: flex-start;
-`
+  margin-top: 20px;
+  width: 100%;
+  /* display: flex; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+`;
 const Title = styled.h1`
-	margin-left: 10px;
-	margin-bottom: 10px;
-	margin-right: auto;
-`
-const ProfileTitle = styled(Title)`
-
-`
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: auto;
+`;
+const ProfileTitle = styled(Title)``;
 
 const MyPage = () => {
-	const getUserData = useRecoilValue(userData)
-	return (
-		<Background>
-			<MainContainer>
-				<ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
-					<CommitGraph><Graph/></CommitGraph>
-					<MyInfoContainer>
-						{/* <InfoCard><ModeifyInformation/></InfoCard>
-						<InfoCard>내 Q&A</InfoCard>
-						<InfoCard>내 문제</InfoCard>
-						<InfoCard>즐겨찾기한 문제집</InfoCard>
-						<InfoCard>그룹 관리</InfoCard> */}
-						<ModeifyInformation/>
-					</MyInfoContainer>
-			</MainContainer>
-		</Background>
-	)
-}
+  const getUserData = useRecoilValue(userData);
+  return (
+    <Background>
+      <MainContainer>
+        <ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
+        <CommitGraph>
+          <Graph />
+        </CommitGraph>
+        <MyInfoContainer>
+          <ModeifyInformation />
+          <MyProblem />
+        </MyInfoContainer>
+      </MainContainer>
+    </Background>
+  );
+};
 
 export default MyPage;
-
 
 // const Title = styled.h1`
 // 	margin-left: 10px;
@@ -91,7 +87,7 @@ export default MyPage;
 //   	position: relative;
 // `
 // const StatWrapper = styled.div`
-	
+
 // `
 // const StatContainer = styled.div`
 // 	box-sizing: border-box;
@@ -112,7 +108,7 @@ export default MyPage;
 
 // `
 // const StatValue = styled.td`
-	
+
 // `
 // const StreakWrapper = styled.div`
 // `
