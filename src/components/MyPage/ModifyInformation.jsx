@@ -32,9 +32,16 @@ const ModeifyInformation = () => {
 
         <M.PhotoChangeButtonContainer>
           <M.FileSelectContainer>
-            <input name="imgUpload" type="file" accept="image/*" onChange={saveFileImage} />
+            <input
+              type="file"
+              id="imgUpload"
+              accept="image/*"
+              onChange={saveFileImage}
+              style={{ display: "none" }}
+            />
           </M.FileSelectContainer>
 
+          <M.Label for="imgUpload">이미지 변경</M.Label>
           <M.DleteButton onClick={() => deleteFileImage()}>삭제</M.DleteButton>
         </M.PhotoChangeButtonContainer>
       </M.InfoEditContainer>

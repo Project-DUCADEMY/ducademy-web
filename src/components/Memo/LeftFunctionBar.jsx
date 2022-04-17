@@ -10,12 +10,13 @@ const Main = styled.div`
     overflow: visible;
 `
 const FunctionBoxContainer = styled.div`
-    height: 70px;
+    height: 100%;
     width: 200px;
     display: flex;
     position: relative;
+    bottom: 20px;
     flex-direction: column;
-    margin-top: 30px;
+    justify-content: flex-end;
 
 `
 const EventHandleDiv = styled.div`
@@ -27,7 +28,7 @@ const EventHandleDiv = styled.div`
 const FunctionBox = styled.div`
     margin-top: 20px;
     width: 100%;
-    height: 100%;
+    height: 70px;
     background-color: ${({color}) => color};
     position: relative;
     transition: all 0.3s;
@@ -64,7 +65,7 @@ const render = (props) => {
     return (
         <Main>
             <FunctionBoxContainer>
-                <FunctionBox 
+                {/* <FunctionBox 
                     color={'blue'}
                     onDragEnter={() => {
                         props.DragOver[1]('등록')
@@ -81,7 +82,7 @@ const render = (props) => {
                         등록
                     </TextWrapper>
                     <EventHandleDiv/>
-                </FunctionBox>
+                </FunctionBox> */}
                 <FunctionBox 
                     color={'green'}
                     onDragEnter={() => {

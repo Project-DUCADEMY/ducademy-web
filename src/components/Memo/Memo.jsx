@@ -3,14 +3,12 @@ import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import styled, { css } from 'styled-components'
 const Memo = styled.div`
+   width: 90%;
+   height: 90%;
 
-   height: ${({Size}) => Size}px;
-   min-width: ${({Size}) => Size}px;
-   max-width: ${({Size}) => Size}px;
    transform: rotate(${({Tilt}) => Tilt}deg);
    position:relative;
-   right: 20px;
-   bottom: 20px;
+   right: 15px;
    background:#fff44f;
    overflow:hidden;
       inset 0 -40px 40px rgba(0,0,0,0.2),
@@ -22,11 +20,14 @@ const Memo = styled.div`
    padding:20px;
    border-radius:0 0 0 30px/45px;
    opacity: ${({Dragged}) => Dragged ? 0 : 1};
+   box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
    ${({Clicked}) => {
       return Clicked ? 
       css`
          box-sizing: border-box;
          position: absolute;
+         width: 18vh;
+         height: 18vh;
          left: 50%;
          top: 50%;
          z-index: 1000;
@@ -70,16 +71,12 @@ const Memo = styled.div`
    }
    
 `
-const EmptyMemo = styled(Memo)`
 
-`
 const MemoWrapper = styled.div`
-   height: ${({Size}) => Size}px;
-   min-width: ${({Size}) => Size}px;
-   max-width: ${({Size}) => Size}px;
+   width: 175px;
+   height: 175px;
    margin: 10px auto;
    padding: 20px;
-
 `
 const DragPostit = styled(Memo)`
    height: 100px;
@@ -89,7 +86,7 @@ const DragPostit = styled(Memo)`
    transform: scale(0.5);
 `
 
-const render = (props) => {
+const Render = (props) => {
 
    const DragStartHandler = (event) => {
       props.Drag[1](props.Idx)
@@ -105,9 +102,8 @@ const render = (props) => {
    }
 
    return (
-   <MemoWrapper Size={props.Size}>
+   <MemoWrapper>
       <Memo 
-         Size={props.Size}
          Tilt={props.Tilt}
          onClick={() => {props.Modal[1](props.Idx)}}
          Clicked={props.Idx === props.Modal[0]}
@@ -126,4 +122,4 @@ const render = (props) => {
 }
 
 
-export default render;
+export default Render;

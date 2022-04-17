@@ -10,13 +10,12 @@ const Main = styled.div`
     overflow: visible;
 `
 const FunctionBoxContainer = styled.div`
-    height: 70px;
+    height: 100%;
     width: 200px;
     display: flex;
     right: 130px;
     position: relative;
     flex-direction: column;
-    margin-top: 30px;
 
 `
 const EventHandleDiv = styled.div`
@@ -26,15 +25,13 @@ const EventHandleDiv = styled.div`
     z-index: 100;
 `
 const FunctionBox = styled.div`
-    margin-top: 20px;
     width: 100%;
-    height: 100%;
+    height: 70px;
     background-color: ${({color}) => color};
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
     opacity: 0.7;
-
     &:hover{
         transform : translateX(80px);
         opacity: 0.9;

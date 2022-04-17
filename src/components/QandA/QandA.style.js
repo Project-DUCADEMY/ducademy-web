@@ -4,7 +4,6 @@ export const Container = styled.div`
   /* width:100vw; */
 
   display: flex;
-  height: 100vh;
   flex-direction: column;
   align-items: center;
 
@@ -267,4 +266,3 @@ export const NewQContainer = styled.div`
 //     }
 //   }
 // `
-
