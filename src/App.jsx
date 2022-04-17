@@ -2,10 +2,7 @@ import styled from 'styled-components'
 import AppRouter from './AppRouter';
 const AppStyle = styled.div`
 	margin-top: 75px;
-	// display:flex;
-	// flex-direction: column;
-	// align-items: center;
-	height: 100%;
+
 `
 const Background = styled.div`
 	width: 100%;

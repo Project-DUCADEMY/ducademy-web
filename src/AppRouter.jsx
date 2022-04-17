@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
 import NavBar from "./components/NavBar/NavBar";
-// import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer'
 
 import Mainpage from "./components/Mainpage/Mainpage";
 import MyPage from "./components/MyPage/MyPage";
@@ -61,6 +61,7 @@ const AppRouter = () => {
         )}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
