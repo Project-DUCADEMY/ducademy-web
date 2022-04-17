@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import Q from "./QandA.style"
 import * as Q from "./QandA.style";
+import * as M from "../../style/menu.style"
 
 import moreInfo from "../../assets/image/q&aPage/more.svg";
 import search from "../../assets/image/q&aPage/search.svg";
@@ -303,10 +304,10 @@ const QandA = () => {
         </Q.BridgeQ>
 
         <Q.NewQContainer>
-          <Q.NewQMenus>
+          <M.NewQMenus>
             <div>
               {menus.map((menu, idx) => (
-                <Q.NewQMenuSorted
+                <M.NewQMenuSorted
                   key={idx}
                   sortedBy={sortedBy == idx ? true : false}
                   onClick={() => {
@@ -315,11 +316,11 @@ const QandA = () => {
                   }}
                 >
                   {menu.title}
-                </Q.NewQMenuSorted>
+                </M.NewQMenuSorted>
               ))}
             </div>
 
-            <Q.NewQMenuSubject onChange={goToAnswer}>
+            <M.NewQMenuSubject onChange={goToAnswer}>
               <option>모두</option>
               {subjects.map((subject) => (
                 <optgroup key={subject.id} label={subject.label}>
@@ -332,8 +333,8 @@ const QandA = () => {
                   }
                 </optgroup>
               ))}
-            </Q.NewQMenuSubject>
-          </Q.NewQMenus>
+            </M.NewQMenuSubject>
+          </M.NewQMenus>
 
           <ProblemList newQuestions={newQuestions}/>
           {/* <Q.NewQWrapper>
