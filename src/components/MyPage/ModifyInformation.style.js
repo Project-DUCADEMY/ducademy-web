@@ -38,6 +38,8 @@ export const PhotoChangeButtonContainer = styled.div`
   height: 100px;
 `;
 export const DleteButton = styled.button`
+  display: flex;
+  font-size: 15px;
   background-color: white;
   color: black;
   width: 55px;
@@ -47,6 +49,9 @@ export const DleteButton = styled.button`
   border-radius: 10px;
   border: none;
   border-color: gray;
+  margin-left: 50px;
+  align-items: center;
+  justify-content: center;
   :hover {
     background-color: red;
     color: white;
@@ -59,19 +64,24 @@ export const FileSelectContainer = styled.div`
   justify-content: center;
 `;
 
-// export const Label = styled.label`
-//   display: flex;
-//   padding: 10px 10px;
-//   color: black;
-//   background-color: white;
-//   height: 20px;
-//   border-color: black;
-//   border: 1.5px solid lightgray;
-//   font-size: 18px;
-//   align-items: center;
-//   justify-content: center;
-//   text-align: center;
-//   :hover {
-//     border-color: black;
-//   }
-// `;
+export const Label = styled.label`
+  font-size: 15px;
+  display: flex;
+  background-color: white;
+  color: black;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 4px 4px 15px 0px #0000001a;
+  border-radius: 10px;
+  border: none;
+  border-color: gray;
+  margin-left: 50px;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    background-color: #3fe2a6;
+    color: white;
+    transition-duration: 0.5s;
+  }
+`;
