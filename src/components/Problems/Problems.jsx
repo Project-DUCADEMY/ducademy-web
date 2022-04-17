@@ -3,7 +3,6 @@ import SearchSpace from "./SearchSpace";
 // import ProblemsTable from "./ProblemsTable";
 import React, { useState } from "react";
 import ProblemList from "../common/ProblemList";
-
 import * as M from "../../style/menu.style";
 
 const Background = styled.div`
@@ -15,7 +14,33 @@ const Background = styled.div`
   justify-content: center;
   background-color: white;
   margin-top: 75px;
-`;
+`
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+	justify-content: right;
+`
+const Button = styled.button`
+	width: 20%;
+	height: 50px;
+  margin-top: 20px;
+	background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		color: #cccccc;
+		background-color: #cccccc;
+	}
+	cursor: pointer;
+`
 const Main = styled.div`
   width: 70%;
   margin-top: 30px;
@@ -24,6 +49,7 @@ const Main = styled.div`
   align-content: center;
   align-items: center;
 `;
+
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -237,8 +263,9 @@ const Problems = () => {
         </M.NewQMenuSubject>
       </M.NewQMenus>
       <ProblemList newQuestions={newQuestions} />
+      <ButtonWrapper><Button>문제 등록</Button></ButtonWrapper>
     </Main>
-  );
-};
+  )
+}
 
 export default Problems;
