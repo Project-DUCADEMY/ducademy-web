@@ -26,7 +26,7 @@ export const LogoWrapper = styled(Link)`
 	bottom: 5px;
 `
 export const Logo = styled(Icon)`
-fill: "red";
+	fill: "red";
 `
 export const MenuWrapper = styled.div`
 	width: 40%;
