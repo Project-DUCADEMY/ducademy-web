@@ -1,10 +1,17 @@
-import styled from "styled-components";
-import SearchSpace from "./SearchSpace";
-// import ProblemsTable from "./ProblemsTable";
-import React, { useState } from "react";
-import ProblemList from "../common/ProblemList";
-import * as M from "../../style/menu.style";
+import styled from "styled-components"
+import SearchSpace from "./SearchSpace"
+// import ProblemsTable from "./ProblemsTable"
+import React, { useState } from "react"
+import { Link } from 'react-router-dom'
+import ProblemList from "../common/ProblemList"
+import * as M from "../../style/menu.style"
 
+const StyledLink = styled(Link)`
+  margin-top: 20px;
+  width: 20%;
+  color: #222222;
+  text-decoration: none;
+`
 const Background = styled.div`
   width: 100%;
   height: 100vh - 75px;
@@ -21,9 +28,7 @@ const ButtonWrapper = styled.div`
 	justify-content: right;
 `
 const Button = styled.button`
-	width: 20%;
 	height: 50px;
-  margin-top: 20px;
 	background-color: #fbfbfb;
 	border : 1px solid #dcdcdc;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -34,13 +39,15 @@ const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	position: relative;
+  text-decoration: none;
 	transition: background-color ease-in-out .15s, color ease-in-out .15s;
 	&:hover {
-		color: #cccccc;
 		background-color: #cccccc;
 	}
 	cursor: pointer;
 `
+
+
 const Main = styled.div`
   width: 70%;
   margin-top: 30px;
@@ -263,7 +270,7 @@ const Problems = () => {
         </M.NewQMenuSubject>
       </M.NewQMenus>
       <ProblemList newQuestions={newQuestions} />
-      <ButtonWrapper><Button>문제 등록</Button></ButtonWrapper>
+      <ButtonWrapper><StyledLink to='/resister'><Button>문제 등록</Button></StyledLink></ButtonWrapper>
     </Main>
   )
 }
