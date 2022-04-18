@@ -1,12 +1,12 @@
+import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import styled, { css } from "styled-components";
 
-import { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
-import styled, { css } from 'styled-components'
 const Memo = styled.div`
    width: 90%;
    height: 90%;
 
-   transform: rotate(${({Tilt}) => Tilt}deg);
+   transform: rotate(${({ Tilt }) => Tilt}deg);
    position:relative;
    right: 15px;
    background:#fff44f;
@@ -19,28 +19,29 @@ const Memo = styled.div`
    transition: transform 0.4s;
    padding:20px;
    border-radius:0 0 0 30px/45px;
-   opacity: ${({Dragged}) => Dragged ? 0 : 1};
+   opacity: ${({ Dragged }) => (Dragged ? 0 : 1)};
    box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
-   ${({Clicked}) => {
-      return Clicked ? 
-      css`
-         box-sizing: border-box;
-         position: absolute;
-         width: 18vh;
-         height: 18vh;
-         left: 50%;
-         top: 50%;
-         z-index: 1000;
-         overflow: auto;
-         outline: 0;
-         transform: rotate(0deg) scale(3) translate(calc(-50% + 50px), calc(-50% + 50px));
-      `:
-      css`
-      :hover{
-         cursor: pointer;
-         transform: rotate(0deg) scale(1.2);
-      }  
-      `
+   ${({ Clicked }) => {
+     return Clicked
+       ? css`
+           box-sizing: border-box;
+           position: absolute;
+           width: 18vh;
+           height: 18vh;
+           left: 50%;
+           top: 50%;
+           z-index: 1000;
+           overflow: auto;
+           outline: 0;
+           transform: rotate(0deg) scale(3)
+             translate(calc(-50% + 50px), calc(-50% + 50px));
+         `
+       : css`
+           :hover {
+             cursor: pointer;
+             transform: rotate(0deg) scale(1.2);
+           }
+         `;
    }}
 
    &:before{
@@ -70,56 +71,54 @@ const Memo = styled.div`
       left:10%;
    }
    
-`
+`;
 
 const MemoWrapper = styled.div`
-   width: 175px;
-   height: 175px;
-   margin: 10px auto;
-   padding: 20px;
-`
+  width: 175px;
+  height: 175px;
+  margin: 10px auto;
+  padding: 20px;
+`;
 const DragPostit = styled(Memo)`
-   height: 100px;
-   min-width: 100px;
-   max-width: 100px;
-   opacity: 1;
-   transform: scale(0.5);
-`
+  height: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  opacity: 1;
+  transform: scale(0.5);
+`;
 
 const Render = (props) => {
+  const DragStartHandler = (event) => {
+    props.Drag[1](props.Idx);
+    const image = <DragPostit />;
+    const ghost = document.getElementById("ghost");
+    ghost.style.transform = "translate(-10000px, -10000px)";
+    event.dataTransfer.setDragImage(ghost, 100, 100);
+    ReactDOM.render(image, ghost);
+  };
+  const DragEndHandler = () => {
+    props.Drag[1](null);
+    ReactDOM.unmountComponentAtNode(document.getElementById("ghost"));
+  };
 
-   const DragStartHandler = (event) => {
-      props.Drag[1](props.Idx)
-      const image = <DragPostit/>;
-      const ghost = document.getElementById('ghost')
-      ghost.style.transform = "translate(-10000px, -10000px)";
-      event.dataTransfer.setDragImage(ghost, 100, 100);
-      ReactDOM.render(image, ghost);
-   }
-   const DragEndHandler = () => {
-      props.Drag[1](null)
-      ReactDOM.unmountComponentAtNode(document.getElementById('ghost'))
-   }
-
-   return (
-   <MemoWrapper>
-      <Memo 
-         Tilt={props.Tilt}
-         onClick={() => {props.Modal[1](props.Idx)}}
-         Clicked={props.Idx === props.Modal[0]}
-         Dragged={props.Idx === props.Drag[0]}
-         DragOver={props.DragOver}
-         draggable={true}
-         onDragStart={DragStartHandler}
-         onDragEnd={DragEndHandler}
+  return (
+    <MemoWrapper>
+      <Memo
+        Tilt={props.Tilt}
+        onClick={() => {
+          props.Modal[1](props.Idx);
+        }}
+        Clicked={props.Idx === props.Modal[0]}
+        Dragged={props.Idx === props.Drag[0]}
+        DragOver={props.DragOver}
+        draggable={true}
+        onDragStart={DragStartHandler}
+        onDragEnd={DragEndHandler}
       >
-         {
-            props.message
-         }
+        {props.message}
       </Memo>
-   </MemoWrapper>
-   )
-}
-
+    </MemoWrapper>
+  );
+};
 
 export default Render;

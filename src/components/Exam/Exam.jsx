@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import TestPaper from './TestPaper'
+import PlusButton from "../common/PlusButton";
+
 const Main = styled.div`
     position: relative;
     top: 50px;
@@ -27,6 +29,7 @@ const Render = () => {
     // }, [getClickTestPaper])
     return (
         <Main>
+            <PlusButton url="/시험추가"/>
             <TestPaperContainer>
                 {
                     Test.map((element, idx) => {

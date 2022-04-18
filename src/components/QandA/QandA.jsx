@@ -8,6 +8,8 @@ import search from "../../assets/image/q&aPage/search.svg";
 
 import ProblemList from "../common/ProblemList";
 
+import PlusButton from "../common/PlusButton";
+
 // 60자로 해야함
 const QandA = () => {
   // 더미----------------------------
@@ -265,6 +267,9 @@ const QandA = () => {
   }
 
   return (
+    <>
+    <PlusButton url="/질문추가"/>
+
     <Q.Container>
       <Q.Wrapper>
         <Q.temp />
@@ -359,6 +364,8 @@ const QandA = () => {
 
       </Q.Wrapper>
     </Q.Container>
+
+    </>
   );
 };
 
