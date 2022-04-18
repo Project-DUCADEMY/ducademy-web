@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //공용
 export const Title = styled.h2`
-  margin-top: 60px;
+  margin-top: 7DE0px;
 `;
 
 export const Hr = styled.div`

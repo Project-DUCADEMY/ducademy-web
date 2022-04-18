@@ -7,7 +7,7 @@ import CommitGraph from "./CommitGraph";
 import InfoCard from "./InfoCard";
 import Graph from "./Graph";
 import ModeifyInformation from "./ModifyInformation";
-import MyProblem from "./MyProblem";
+import MyProblem from "./Problem/Problem";
 
 const MainContainer = styled.div`
   flex-direction: column;
@@ -26,6 +26,7 @@ const Background = styled.div`
 const MyInfoContainer = styled.div`
   margin-top: 20px;
   width: 100%;
+  height: 2000px;
   /* display: flex; */
   justify-content: space-between;
   flex-wrap: wrap;
