@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import * as P from "./ProblemList.style";
 import { useNavigate } from "react-router-dom";
 
-const ProblemList = (
-    {newQuestions}
-) => {
-    function makeDate(time) {
+import PlusButton from "../common/PlusButton";
+
+const ProblemList = ({ newQuestions }) => {
+  function makeDate(time) {
     const tempTime = new Date(time);
     // console.log([
     //   tempTime.getFullYear(),
@@ -23,18 +23,24 @@ const ProblemList = (
   }
   const navigate = useNavigate();
   const problemClick = (idx) => {
-		navigate(`/problem/${idx}`)
-	}
+    navigate(`/problem/${idx}`);
+  };
   return (
-    <P.NewQWrapper>
-      {newQuestions.map((newQ) => (
-        <div key={newQ.questionNumber} onClick={() => problemClick(newQ.questionNumber)}>
-          <P.NewQListMenu>
-            <P.Category>
-              <div>{newQ.questionNumber}</div>
-            </P.Category>
-            <P.NewQTitle>{newQ.title}</P.NewQTitle>
-          </P.NewQListMenu>
+    <>
+      <PlusButton url="/문제추가"/>
+
+      <P.NewQWrapper>
+        {newQuestions.map((newQ) => (
+          <div
+            key={newQ.questionNumber}
+            onClick={() => problemClick(newQ.questionNumber)}
+          >
+            <P.NewQListMenu>
+              <P.Category>
+                <div>{newQ.questionNumber}</div>
+              </P.Category>
+              <P.NewQTitle>{newQ.title}</P.NewQTitle>
+            </P.NewQListMenu>
 
           <P.NewQListInfo>
             <P.NewQInfoWriter>{newQ.owner}</P.NewQInfoWriter>
@@ -43,6 +49,7 @@ const ProblemList = (
         </div>
       ))}
     </P.NewQWrapper>
+    </>
   );
 };
 

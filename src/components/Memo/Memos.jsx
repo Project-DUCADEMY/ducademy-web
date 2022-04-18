@@ -7,6 +7,9 @@ import WhiteBoard from './WhiteBoard'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
+import PlusButton from "../common/PlusButton";
+
+
 const Main = styled.div	`
 	margin-top: 75px;
 	width: 70%;
@@ -39,6 +42,7 @@ const Memos = () => {
 
 	return (
 		<MainWrapper>
+			<PlusButton url="/메모추가"/>
 			<Main>
 				<FunctionWrapper>
 					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>

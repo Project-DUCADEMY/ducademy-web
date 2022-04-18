@@ -11,7 +11,6 @@ export const MainContainer = styled.div`
 `;
 
 
-
 export const Content = styled.div`
     /* background-color:#3fe2a6; */
     
@@ -40,6 +39,7 @@ export const explains =styled(Link)`
     :hover{
         /* background-color:#DDDDDD; */
         background-color:#3fe2a6;
+        color:white;
     }
     :active{
         color:black;

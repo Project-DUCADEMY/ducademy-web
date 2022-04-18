@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import Workbook from './Workbook'
 import { palette } from '../../style/palette'
+import PlusButton from "../common/PlusButton";
+
 const Main = styled.div`
 	width: 100%;
 	height: 100vh - 75px;
@@ -28,6 +30,7 @@ const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, 
 const Workbooks = () => {
 	return (
 		<Main>
+			<PlusButton url="/문제집추가"/>
 			<h1>문제집</h1>
 			<BookShelf>
 				<Workbook color={themes[0]}/>

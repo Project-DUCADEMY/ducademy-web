@@ -296,8 +296,7 @@ const Problems = () => {
           ))}
         </M.NewQMenuSubject>
       </M.NewQMenus>
-      <ProblemList newQuestions={getProblems} />
-      <ButtonWrapper><StyledLink to='/resister'>문제 등록</StyledLink></ButtonWrapper>
+			<ProblemList newQuestions={getProblems} />
     </Main>
   )
 }

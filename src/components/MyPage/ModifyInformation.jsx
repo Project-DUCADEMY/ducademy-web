@@ -25,7 +25,7 @@ const ModeifyInformation = () => {
       <P.Hr />
 
       <P.Container>
-        <P.SubName>사진</P.SubName>
+        <P.SubName style={{ height: "120px" }}>사진</P.SubName>
 
         {/* 사진 박스 */}
         <div> {fileImage ? <MI.Img src={fileImage} /> : <MI.Img src="default.jpeg" />}</div>
