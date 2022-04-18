@@ -19,6 +19,7 @@ import Joinpage from "./components/Authentication/JoinPage";
 
 import NotFound from "./NotFound";
 import Register from "./components/RegisterProblem/RegisterProblem";
+import ScrollToTop from './components/common/ScrollToTop'
 
 import userData from "./store/userData";
 import { useRecoilState } from "recoil";
@@ -37,6 +38,7 @@ const AppRouter = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Mainpage />} />
