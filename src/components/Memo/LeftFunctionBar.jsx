@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
-import { ReactComponent as Delete } from './delete.svg'
-import { ReactComponent as Create } from './create.svg'
-import { ReactComponent as Edit } from './edit.svg'
+import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
+import { ReactComponent as Edit } from './../../assets/image/memo/edit.svg'
 import { useEffect } from 'react'
 
 const Main = styled.div`

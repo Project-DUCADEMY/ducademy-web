@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
-import { ReactComponent as Delete } from './delete.svg'
-import { ReactComponent as Create } from './create.svg'
-import { ReactComponent as Search } from './search.svg'
+import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
+import { ReactComponent as Option } from './../../assets/image/memo/option.svg'
+import { ReactComponent as Search } from './../../assets/image/memo/search.svg'
 import { useEffect, useState } from 'react'
 
 const Main = styled.div`
@@ -18,12 +18,6 @@ const FunctionBoxContainer = styled.div`
     flex-direction: column;
     gap: 20px;
 
-`
-const EventHandleDiv = styled.div`
-    height: 70px;
-    width: 200px;
-    cursor: pointer;
-    z-index: 100;
 `
 const FunctionBox = styled.div`
     width: 100%;
@@ -48,6 +42,7 @@ const FunctionBox = styled.div`
     border-radius: 20px;
 `
 const OpctionBox = styled(FunctionBox)`
+    
     ${({getClickOpction}) => getClickOpction ? 
     css`
         height: 85%;
@@ -64,7 +59,7 @@ const OpctionBox = styled(FunctionBox)`
 `
 const IconWrapper = styled.div`
     position: relative;
-    left: 15px;
+    right: 15px;
     top: 15px;
     float: right;
     z-index: -1;
@@ -93,7 +88,6 @@ const Render = (props) => {
                     <TextWrapper>
                         검색
                     </TextWrapper>
-                    <EventHandleDiv/>
                 </FunctionBox>
                 <OpctionBox 
                     color={'blue'}
@@ -101,12 +95,11 @@ const Render = (props) => {
                     onClick={() => setClickOpction(!getClickOpction)}
                 >
                     <IconWrapper>
-                        <Create/>
+                        <Option/>
                     </IconWrapper>
                     <TextWrapper>
-                        검색
+                        옵션
                     </TextWrapper>
-                    <EventHandleDiv/>
                 </OpctionBox>
             </FunctionBoxContainer>
         </Main>

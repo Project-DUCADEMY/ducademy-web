@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { useState } from 'react'
 import axios from 'axios'
 import '../../assets/fonts/Nanum_Gothic_Coding.css'
+import { useNavigate } from 'react-router-dom'
 
 const Background = styled.div`
 	width: 100%;
@@ -89,7 +90,7 @@ const Joinpage = () => {
     const handleInputPwCh = (e) => {
         setPwCh(e.target.value)
     }
-
+	const navigate = useNavigate();
     const join = (e) => {
     	axios.post(
         '/authenticate/join', 
@@ -99,9 +100,12 @@ const Joinpage = () => {
         	password: getPw,
         	passwordCh: getPwCh
         })
-        .then(console.log)
-        .catch(console.log)
+        .then(() => {
+			navigate('/login')
+		})
+        .catch((error) => alert(error.response.data.errorMessage))
     }
+
     //name, username, email, password, passwordCh
 	return (
 		<Background>
