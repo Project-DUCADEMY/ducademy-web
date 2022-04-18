@@ -37,7 +37,7 @@ const ProblemList = (
           </P.NewQListMenu>
 
           <P.NewQListInfo>
-            <P.NewQInfoWriter>{1}</P.NewQInfoWriter>
+            <P.NewQInfoWriter>{newQ.owner}</P.NewQInfoWriter>
             <P.NewQInfoDate>{makeDate(newQ.day)}</P.NewQInfoDate>
           </P.NewQListInfo>
         </div>

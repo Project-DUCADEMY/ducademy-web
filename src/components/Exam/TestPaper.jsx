@@ -4,30 +4,16 @@ import styled, { css } from 'styled-components'
 const Paper = styled.div`
     background-color: white;
     box-shadow: 4px 4px 15px 0px #0000001A;
-    position: absolute;
-    width: 90%;
-    height: 90%;
     transform: rotate(${({Rotate}) => Rotate}deg);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    bottom: ${({correction}) => correction}%;
 `
 const ExamContainer = styled.div`    
     cursor: pointer;
-    ${({click, myIdx}) => {
-
-        return click === null ? css`
-            width: 300px;
-            height: 420px;
-        `:
-        click === myIdx ? css`
-            width: 70%;
-            height: 100%;
-            transition: all, 0.3s;
-        `:
-        css`
-            transition: transform, 2s;
-            transform: translateY(-1000%);
-        `
-    }}
-    
+    width: 300px;
+    height: 430px;
 `
 const Render = (props) => {
 
@@ -36,9 +22,9 @@ const Render = (props) => {
             onClick={() => {props.click[1](props.idx)}}
             myIdx={props.idx}
             click={props.click[0]}>
-            <Paper Rotate={10}></Paper>
-            <Paper Rotate={-10}></Paper>
-            <Paper></Paper>
+            <Paper Rotate={10} correction={0}></Paper>
+            <Paper Rotate={-10} correction={100}></Paper>
+            <Paper correction={200}></Paper>
         </ExamContainer>
     )
 }
