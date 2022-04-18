@@ -42,7 +42,7 @@ const FunctionBox = styled.div`
     border-radius: 20px;
 `
 const OpctionBox = styled(FunctionBox)`
-    
+
     ${({getClickOpction}) => getClickOpction ? 
     css`
         height: 85%;
@@ -70,6 +70,13 @@ const TextWrapper = styled.div`
     right: 40px;
     top: 25px;
     z-index: -1;
+`
+const OptionBar = styled.select`
+    float: right;
+    position: relative;
+    top: 50%;
+    right: -20%;
+    width: 50%;
 `
 const Render = (props) => {
     const [getClickSearch, setClickSearch] = useState(false)
@@ -100,6 +107,7 @@ const Render = (props) => {
                     <TextWrapper>
                         옵션
                     </TextWrapper>
+                    {getClickOpction ? <OptionBar></OptionBar> : null}
                 </OpctionBox>
             </FunctionBoxContainer>
         </Main>
