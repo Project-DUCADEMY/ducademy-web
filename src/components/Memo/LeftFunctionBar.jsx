@@ -16,7 +16,7 @@ const FunctionBoxContainer = styled.div`
     bottom: 20px;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 20px
+    gap: 20px;
 
 `
 const EventHandleDiv = styled.div`
