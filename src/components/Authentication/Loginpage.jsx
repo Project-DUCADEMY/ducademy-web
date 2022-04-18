@@ -5,6 +5,7 @@ import '../../assets/fonts/Nanum_Gothic_Coding.css'
 
 import userData from '../../store/userData'
 import { useSetRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
 
 
 const Background = styled.div`
@@ -124,6 +125,7 @@ const Loginpage = () => {
     const handleInputPw = (e) => {
         setPw(e.target.value)
     }
+	const navigate = useNavigate();
     const login = (e) => {
     	axios.post(
         '/authenticate/login', 
@@ -135,10 +137,10 @@ const Loginpage = () => {
         	axios.post('/user/userinfo')
         	.then(response => setUserData(response.data))
         	.catch(error => setUserData(null))
-            window.location.replace('/')
+			navigate(-1)
         })
         .catch(error => {
-        	console.log(error.message)
+			alert(error.response.data.errorMessage)
         })
     }
 

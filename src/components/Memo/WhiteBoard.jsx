@@ -7,14 +7,15 @@ const Main = styled.div`
     background-color: white;
     z-index: 1;
     border: 20px solid grey;
-    border-radius: 10px;
+    border-radius: 20px;
+    overflow-y: scroll;
 `
 const MemoContainer = styled.div`
 	width: 100%;
-
 	display: flex;
 	flex-wrap: wrap; 
 	gap: 20px;
+
 `
 const ModalOverlay = styled.div`
   box-sizing: border-box;
@@ -30,7 +31,7 @@ const ModalOverlay = styled.div`
 
 const rand = (min, max) => { return Math.floor(Math.random() * (max - min + 1)) + min; }
 const Render =(props) => {
-    const [getMemos, setMemos] = useState([{},{},{},{},{},{},{},{},{},{},{},{}])
+    const [getMemos, setMemos] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}])
 	const [getDragOn, setDragOn] = useState(null)
     const getDragOver = props.getDragOver
     const [getModalOpen, setModalOpen] = useState(null)

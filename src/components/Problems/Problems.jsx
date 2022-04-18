@@ -1,10 +1,35 @@
-import styled from "styled-components";
-import SearchSpace from "./SearchSpace";
-// import ProblemsTable from "./ProblemsTable";
-import React, { useState } from "react";
-import ProblemList from "../common/ProblemList";
-import * as M from "../../style/menu.style";
+import styled from "styled-components"
+import React, { useState, useEffect } from "react"
+import { Link, useNavigate } from 'react-router-dom'
+import ProblemList from "./ProblemList"
+import * as M from "../../style/menu.style"
+import axios from 'axios'
+import problems from '../../store/problems'
+import { useRecoilState } from 'recoil'
 
+const StyledLink = styled(Link)`
+  margin-top: 20px;
+  width: 20%;
+  color: #222222;
+  text-decoration: none;
+  height: 50px;
+	background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+  text-decoration: none;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		background-color: #cccccc;
+	}
+	cursor: pointer;
+`
 const Background = styled.div`
   width: 100%;
   height: 100vh - 75px;
@@ -21,9 +46,7 @@ const ButtonWrapper = styled.div`
 	justify-content: right;
 `
 const Button = styled.button`
-	width: 20%;
 	height: 50px;
-  margin-top: 20px;
 	background-color: #fbfbfb;
 	border : 1px solid #dcdcdc;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -34,13 +57,15 @@ const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	position: relative;
+  text-decoration: none;
 	transition: background-color ease-in-out .15s, color ease-in-out .15s;
 	&:hover {
-		color: #cccccc;
 		background-color: #cccccc;
 	}
 	cursor: pointer;
 `
+
+
 const Main = styled.div`
   width: 70%;
   margin-top: 30px;
@@ -232,6 +257,15 @@ const Problems = () => {
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
   ]);
+  const [getProblems, setProblems] = useRecoilState(problems)
+	useEffect(() => {
+		axios.get('/problem/problems')
+		.then(response => {
+			setProblems(response.data.questionInfo)
+      console.log(response.data.questionInfo)
+		})
+		.catch(error => console.log(error))
+	}, [])
 
   return (
     <Main>
@@ -262,8 +296,7 @@ const Problems = () => {
           ))}
         </M.NewQMenuSubject>
       </M.NewQMenus>
-      <ProblemList newQuestions={newQuestions} />
-      <ButtonWrapper><Button>문제 등록</Button></ButtonWrapper>
+			<ProblemList newQuestions={getProblems} />
     </Main>
   )
 }

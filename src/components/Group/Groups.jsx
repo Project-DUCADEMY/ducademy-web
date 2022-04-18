@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import GroupsTable from './GroupsTable'
 import SearchSpace from './SearchSpace'
-
+import PlusButton from '../common/PlusButton'
 
 const Main = styled.div`
 	width: 70%;
@@ -21,6 +21,7 @@ const MainWrapper = styled.div	`
 const Groups = () => {
     return (
         <Main>
+            <PlusButton url="/그룹추가"/>
             <SearchSpace />
             <GroupsTable />
         </Main>

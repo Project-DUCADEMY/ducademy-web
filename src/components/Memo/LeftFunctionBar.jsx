@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
-import { ReactComponent as Delete } from './delete.svg'
-import { ReactComponent as Create } from './create.svg'
-import { ReactComponent as Edit } from './edit.svg'
+import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
+import { ReactComponent as Edit } from './../../assets/image/memo/edit.svg'
 import { useEffect } from 'react'
 
 const Main = styled.div`
@@ -17,6 +16,7 @@ const FunctionBoxContainer = styled.div`
     bottom: 20px;
     flex-direction: column;
     justify-content: flex-end;
+    gap: 20px;
 
 `
 const EventHandleDiv = styled.div`
@@ -26,7 +26,6 @@ const EventHandleDiv = styled.div`
     z-index: 100;
 `
 const FunctionBox = styled.div`
-    margin-top: 20px;
     width: 100%;
     height: 70px;
     background-color: ${({color}) => color};

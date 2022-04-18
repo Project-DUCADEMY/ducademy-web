@@ -7,7 +7,7 @@ export const Carousel = styled.div`
 export const CarouselWrapper = styled.div`
     overflow:hidden;
     width:100vw;
-    height:100vh;
+    height:97vh;
     position:relative;
 `
 
