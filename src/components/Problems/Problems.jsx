@@ -1,10 +1,11 @@
 import styled from "styled-components"
-import SearchSpace from "./SearchSpace"
-// import ProblemsTable from "./ProblemsTable"
-import React, { useState } from "react"
-import { Link } from 'react-router-dom'
-import ProblemList from "../common/ProblemList"
+import React, { useState, useEffect } from "react"
+import { Link, useNavigate } from 'react-router-dom'
+import ProblemList from "./ProblemList"
 import * as M from "../../style/menu.style"
+import axios from 'axios'
+import problems from '../../store/problems'
+import { useRecoilState } from 'recoil'
 
 const StyledLink = styled(Link)`
   margin-top: 20px;
@@ -239,6 +240,14 @@ const Problems = () => {
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
     },
   ]);
+  const [getProblems, setProblems] = useRecoilState(problems)
+	useEffect(() => {
+		axios.get('/problem/problems')
+		.then(response => {
+			setProblems(response.data.questionInfo)
+		})
+		.catch(error => console.log(error))
+	}, [])
 
   return (
     <Main>
@@ -269,7 +278,7 @@ const Problems = () => {
           ))}
         </M.NewQMenuSubject>
       </M.NewQMenus>
-      <ProblemList newQuestions={newQuestions} />
+      <ProblemList newQuestions={getProblems} />
       <ButtonWrapper><StyledLink to='/resister'><Button>문제 등록</Button></StyledLink></ButtonWrapper>
     </Main>
   )
