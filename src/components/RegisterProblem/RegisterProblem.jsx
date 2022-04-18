@@ -1,6 +1,7 @@
 import ReactQuill from 'react-quill';
 import axios from 'axios';
 import { useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "react-quill/dist/quill.snow.css";
 
 import styled from 'styled-components'
@@ -207,6 +208,7 @@ function ProblemResister() {
     // 현재 에디터 안에 어떤 데이터가 들어있는지 확인해 보자
     console.log(quillRef.current.getEditorContents());
   };
+  const navigate = useNavigate()
   const submit = () => {
     axios.post('/problem/register', 
     {
@@ -217,8 +219,11 @@ function ProblemResister() {
       info: getInfo,
       source: getSource
     })
-    .then(response => console.log(response))
-    .catch(error => console.log(error))
+    .then(response => {
+      alert('문제 등록 성공!')
+      navigate(-1)
+    })
+    .catch(error => alert(error.response.data))
     console.log(getTitle, getAnswer, quillRef.current.getEditorContents())
   }
 

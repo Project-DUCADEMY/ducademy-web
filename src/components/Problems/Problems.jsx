@@ -245,6 +245,7 @@ const Problems = () => {
 		axios.get('/problem/problems')
 		.then(response => {
 			setProblems(response.data.questionInfo)
+      console.log(response.data.questionInfo)
 		})
 		.catch(error => console.log(error))
 	}, [])

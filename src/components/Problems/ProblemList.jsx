@@ -38,7 +38,7 @@ const ProblemList = (
 
           <P.NewQListInfo>
             <P.NewQInfoWriter>{1}</P.NewQInfoWriter>
-            <P.NewQInfoDate>{1}</P.NewQInfoDate>
+            <P.NewQInfoDate>{makeDate(newQ.day)}</P.NewQInfoDate>
           </P.NewQListInfo>
         </div>
       ))}
