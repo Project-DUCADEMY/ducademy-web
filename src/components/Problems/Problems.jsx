@@ -12,6 +12,23 @@ const StyledLink = styled(Link)`
   width: 20%;
   color: #222222;
   text-decoration: none;
+  height: 50px;
+	background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+  text-decoration: none;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		background-color: #cccccc;
+	}
+	cursor: pointer;
 `
 const Background = styled.div`
   width: 100%;
@@ -280,7 +297,7 @@ const Problems = () => {
         </M.NewQMenuSubject>
       </M.NewQMenus>
       <ProblemList newQuestions={getProblems} />
-      <ButtonWrapper><StyledLink to='/resister'><Button>문제 등록</Button></StyledLink></ButtonWrapper>
+      <ButtonWrapper><StyledLink to='/resister'>문제 등록</StyledLink></ButtonWrapper>
     </Main>
   )
 }
