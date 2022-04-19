@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
 import { ReactComponent as Edit } from './../../assets/image/memo/edit.svg'
+import { ReactComponent as Search } from './../../assets/image/memo/search.svg'
 import { useEffect } from 'react'
 
 const Main = styled.div`
@@ -15,15 +16,10 @@ const FunctionBoxContainer = styled.div`
     position: relative;
     bottom: 20px;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 20px;
+    cursor: default;
 
-`
-const EventHandleDiv = styled.div`
-    height: 70px;
-    width: 200px;
-    cursor: pointer;
-    z-index: 100;
 `
 const FunctionBox = styled.div`
     width: 100%;
@@ -31,7 +27,6 @@ const FunctionBox = styled.div`
     background-color: ${({color}) => color};
     position: relative;
     transition: all 0.3s;
-    cursor: pointer;
     opacity: 0.7;
     ${({isDragOver}) => isDragOver ? 
     css`
@@ -46,6 +41,7 @@ const FunctionBox = styled.div`
     border-radius: 20px;
 
 `
+
 const IconWrapper = styled.div`
     position: relative;
     left: 15px;
@@ -60,11 +56,30 @@ const TextWrapper = styled.div`
     top: 25px;
     z-index: -1;
 `
+const SearchContainer = styled.input`
+    height: 30px;
+    width:100px;
+    font-size:17px;
+    border-radius:15px;
+    padding-left:30px;
+    outline:none;
+    border:none;
+    margin-top: 18px;
+    margin-left: 25px;
+`
+const SearchBox = styled(FunctionBox)`
+    width: 120%;
+    cursor: pointer;
+    &:hover{
+        transform : translateX(-120px);
+        opacity: 0.9;
+    };
+`
 const render = (props) => {
     return (
         <Main>
             <FunctionBoxContainer>
-                {/* <FunctionBox 
+                <SearchBox 
                     color={'blue'}
                     onDragEnter={() => {
                         props.DragOver[1]('등록')
@@ -75,13 +90,13 @@ const render = (props) => {
                     isDragOver={props.DragOver[0] === '등록'}
                 >
                     <IconWrapper>
-                        <Create/>
+                        <Search/>
                     </IconWrapper>
-                    <TextWrapper>
-                        등록
-                    </TextWrapper>
-                    <EventHandleDiv/>
-                </FunctionBox> */}
+                    <SearchContainer>
+                        {/* <input type="text" onChange={(e) => changeSearchValue(e.target.value)}/>
+                        <img src={search} onClick={searchThat}/> */}
+                    </SearchContainer>
+                </SearchBox>
                 <FunctionBox 
                     color={'green'}
                     onDragEnter={() => {
@@ -98,7 +113,6 @@ const render = (props) => {
                     <TextWrapper>
                         수정
                     </TextWrapper>
-                    <EventHandleDiv/>
                 </FunctionBox>
                 <FunctionBox 
                     color={'red'}
@@ -116,7 +130,6 @@ const render = (props) => {
                     <TextWrapper>
                         삭제
                     </TextWrapper>
-                    <EventHandleDiv/>
                 </FunctionBox>
             </FunctionBoxContainer>
         </Main>
