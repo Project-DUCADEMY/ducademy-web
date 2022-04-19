@@ -7,7 +7,7 @@ import CommitGraph from "./CommitGraph";
 import InfoCard from "./InfoCard";
 import Graph from "./Graph";
 import ModeifyInformation from "./ModifyInformation";
-import MyProblem from "./Problem/Problem";
+import MyProblem from "./Problem/Problem.jsx";
 
 const MainContainer = styled.div`
   flex-direction: column;
