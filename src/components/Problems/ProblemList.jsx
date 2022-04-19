@@ -27,7 +27,7 @@ const ProblemList = ({ newQuestions }) => {
   };
   return (
     <>
-      <PlusButton url="/문제추가"/>
+      <PlusButton url="/resister"/>
 
       <P.NewQWrapper>
         {newQuestions.map((newQ) => (

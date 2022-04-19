@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from "styled-components";
+import Redirect from "./components/common/Redirect";
 
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -41,24 +41,26 @@ const AppRouter = () => {
       <ScrollToTop/>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Mainpage />} />
+        <Route path="/" element={<Mainpage />} />
 
-        <Route exact path="/problems" element={<Problems />} />
-        <Route exact path="/problem/:number" element={<Problem />} />
-        <Route exact path="/workbook" element={<Workbooks />} />
-        <Route exact path="/exam" element={<Exam />} />
-        <Route exact path="/QandA" element={<QnA />} />
-        <Route exact path="/Group" element={<Groups />} />
-        <Route exact path="/memo" element={<Memos />} />
+        <Route path="/problems" element={<Problems />} />
+        <Route path="/problem/:number" element={<Problem />} />
+        <Route path="/workbook" element={<Workbooks />} />
+        <Route path="/exam" element={<Exam />} />
+        <Route path="/QandA" element={<QnA />} />
+        <Route path="/Group" element={<Groups />} />
+        <Route path="/memo" element={<Memos />} />
         {getUserData === null ? (
           <>
-            <Route exact path="/login" element={<Loginpage />} />
-            <Route exact path="/join" element={<Joinpage />} />
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/join" element={<Joinpage />} />
+            <Route path="/mypage" element={<Redirect to={"/login"} />} />
+            <Route path="/resister" element={<Redirect to={"/login"} />} />
           </>
         ) : (
           <>
-            <Route exact path="/mypage" element={<MyPage />} />
-            <Route exact path="/resister" element={<Register />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/resister" element={<Register />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />

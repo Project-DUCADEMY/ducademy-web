@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
-import { route } from "react-router";
+import { route, useParams } from "react-router";
 
 let Challenge = 1
 let BookMarked = true
@@ -179,8 +179,9 @@ const CategoryContainer = styled(Box)`
 
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
+	const { number } = useParams();
 	useEffect(() => {
-		axios.get(`/problem/problem/?id=${document.location.href.split('/')[document.location.href.split('/').length - 1]}`)
+		axios.get(`/problem/problem/?id=${number}`)
 			.then(response => {
 				setProblem(response.data.question)
 				console.log(response.data.question)
