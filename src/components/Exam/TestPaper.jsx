@@ -12,8 +12,10 @@ const Paper = styled.div`
 `
 const ExamContainer = styled.div`    
     cursor: pointer;
-    width: 300px;
-    height: 430px;
+    max-width: 300px;
+    max-height: 430px;
+    min-width: 260px;
+    min-height: 390px;
 `
 const Render = (props) => {
 

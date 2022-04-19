@@ -5,7 +5,6 @@ import PlusButton from "../common/PlusButton";
 
 const Main = styled.div`
     position: relative;
-    top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -23,7 +22,7 @@ const TestPaperContainer = styled.div`
 `
 const Render = () => {
     const [getClickTestPaper, setClickPaper] = useState(null)
-    const Test = [1]
+    const Test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     // useEffect(() => {
     //     console.log(getClickTestPaper)
     // }, [getClickTestPaper])
