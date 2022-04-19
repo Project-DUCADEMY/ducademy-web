@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { route, useParams } from "react-router";
+import RegisterMemo from './RegisterMemo'
 
 let Challenge = 1
 let BookMarked = true
@@ -173,12 +174,22 @@ const CategoryContainer = styled(Box)`
     align-items: center;
 	gap: 10px;
 
-
 `
 
-
+const ModalOverlay = styled.div`
+  box-sizing: border-box;
+  display: ${(props) => (props.visable ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
+	const [getModalOpen, setModalOpen] = useState(false)
 	const { number } = useParams();
 	useEffect(() => {
 		axios.get(`/problem/problem/?id=${number}`)
@@ -200,8 +211,11 @@ const Render = ({ location }) => {
 	}
 	return (
 		<Main>
+			<RegisterMemo visable={getModalOpen}/>
+			<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(false)}}/>
 			<Wrapper>
 				<ButtonWrapper>
+					<button onClick={() => setModalOpen(true)}>test</button>
 					<LikeButton></LikeButton><BookMarkButton Yellow={BookMarked}>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
 				</ButtonWrapper>
 				<BoxWrapper>
