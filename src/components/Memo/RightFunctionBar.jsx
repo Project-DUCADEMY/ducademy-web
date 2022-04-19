@@ -26,36 +26,13 @@ const FunctionBox = styled.div`
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
-    opacity: 0.7;
-    ${({getClickSearch}) => getClickSearch ? 
-    css`
-        opacity: 0.9;
-        transform : translateX(80px);
-    `:
-    css`
-        &:hover{
-            opacity: 0.9;
-            transform : translateX(80px);
-        };
-    `}
-
+    opacity: 0.9;
+    transform : translateX(80px);
     border-radius: 20px;
 `
 const OpctionBox = styled(FunctionBox)`
-
-    ${({getClickOpction}) => getClickOpction ? 
-    css`
-        height: 85%;
-        opacity: 0.9;
-        transform : translateX(80px);
-    `:
-    css`
-        &:hover{
-            height: 85%;
-            opacity: 0.9;
-            transform : translateX(80px);
-        };
-    `}
+    height: 500px;
+    min-height: 
 `
 const IconWrapper = styled.div`
     position: relative;
@@ -80,14 +57,11 @@ const OptionBar = styled.select`
 `
 const Render = (props) => {
     const [getClickSearch, setClickSearch] = useState(false)
-    const [getClickOpction, setClickOpction] = useState(false)
     return (
         <Main>
             <FunctionBoxContainer>
                 <FunctionBox 
                     color={'blue'}
-                    getClickSearch={getClickSearch}
-                    onClick={() => setClickSearch(!getClickSearch)}
                 >
                     <IconWrapper>
                         <Search/>
@@ -98,8 +72,6 @@ const Render = (props) => {
                 </FunctionBox>
                 <OpctionBox 
                     color={'blue'}
-                    getClickOpction={getClickOpction}
-                    onClick={() => setClickOpction(!getClickOpction)}
                 >
                     <IconWrapper>
                         <Option/>
@@ -107,7 +79,12 @@ const Render = (props) => {
                     <TextWrapper>
                         옵션
                     </TextWrapper>
-                    {getClickOpction ? <OptionBar></OptionBar> : null}
+                    <OptionBar>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </OptionBar>
                 </OpctionBox>
             </FunctionBoxContainer>
         </Main>

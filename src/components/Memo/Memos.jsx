@@ -47,7 +47,6 @@ const Memos = () => {
 				<FunctionWrapper>
 					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>
 					<WhiteBoard getDragOver={getDragOver}/>					
-					<RightFunctionBar/>
 				</FunctionWrapper>
 			</Main>
 			
