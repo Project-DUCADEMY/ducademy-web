@@ -122,6 +122,7 @@ const InfoBody = styled.div`
 
 const MainBox = styled(Box)`
 	justify-content: flex-start;
+	display: block;
 `
 const RecommendBox = styled(Box)`
 	justify-content: flex-start;

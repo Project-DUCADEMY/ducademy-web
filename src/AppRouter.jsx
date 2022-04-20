@@ -20,6 +20,7 @@ import Joinpage from "./components/Authentication/JoinPage";
 import NotFound from "./NotFound";
 import Register from "./components/Register/RegisterProblem";
 import RegisterWorkbook from './components/Register/RegisterWorkbook'
+import RegisterQuestion from './components/Register/RegisterQuestion';
 import ScrollToTop from './components/common/ScrollToTop'
 
 import userData from "./store/userData";
@@ -42,28 +43,27 @@ const AppRouter = () => {
       <ScrollToTop/>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Mainpage />} />
 
-        <Route path="/problems" element={<Problems />} />
-        <Route path="/problem/:number" element={<Problem />} />
-        <Route path="/workbook" element={<Workbooks />} />
-        <Route path="/exam" element={<Exam />} />
-        <Route path="/QandA" element={<QnA />} />
-        <Route path="/Group" element={<Groups />} />
-        <Route path="/memo" element={<Memos />} />
         {getUserData === null ? (
           <>
             <Route path="/login" element={<Loginpage />} />
             <Route path="/join" element={<Joinpage />} />
-            <Route path="/mypage" element={<Redirect to={"/login"} />} />
-            <Route path="/register" element={<Redirect to={"/login"} />} />
-            <Route path="/registerWorkbook" element={<Redirect to={"/login"} />} />
+            <Route path="*" element={<Redirect to={"/login"}/>}/>
           </>
         ) : (
           <>
+            <Route path="/" element={<Mainpage />} />
+            <Route path="/problems" element={<Problems />} />
+            <Route path="/problem/:number" element={<Problem />} />
+            <Route path="/workbook" element={<Workbooks />} />
+            <Route path="/exam" element={<Exam />} />
+            <Route path="/QandA" element={<QnA />} />
+            <Route path="/Group" element={<Groups />} />
+            <Route path="/memo" element={<Memos />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/registerWorkbook" element={<RegisterWorkbook/>} />
+            <Route path="/registerQuestion" element={<RegisterQuestion/>} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
