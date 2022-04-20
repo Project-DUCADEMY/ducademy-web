@@ -215,6 +215,7 @@ const QandA = () => {
     },
   ]);
 
+  const [selectedSubject,setSelectedSubject] = useState([0,0])
   const [subjects, setSubjects] = useState([
     {
       id: 0,
@@ -276,7 +277,6 @@ const QandA = () => {
         <Q.MyQContainer>
           <Q.MyQWrapper>
             <Q.tempMyQ />
-
             {myQuestions.map((myQ) => (
               <Q.MyQ key={myQ.id} isNew={myQ.new}>
                 <section>
