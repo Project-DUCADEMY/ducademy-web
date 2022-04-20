@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import Workbook from './Workbook'
+import { useEffect, useState } from 'react'
 import { palette } from '../../style/palette'
-import PlusButton from "../common/PlusButton";
+import PlusButton from "../common/PlusButton"
+import axios from 'axios'
 
 const Main = styled.div`
 	width: 100%;
@@ -28,20 +30,33 @@ const BookShelf = styled.div`
 `
 const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, palette.theme5, palette.theme6]
 const Workbooks = () => {
+	const [getWorkbooks, setWorkbooks] = useState([])
+	useEffect(() => {
+		axios.get('/workbook/list')
+		.then((result) => {
+			setWorkbooks(result.data.workBookAllList)
+			console.log(result.data.workBookAllList)
+		})
+		.catch(console.log)
+	}, [])
+
+	
 	return (
 		<Main>
 			<PlusButton url="/registerWorkbook"/>
 			<h1>문제집</h1>
 			<BookShelf>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[1]}/>
-				<Workbook color={themes[2]}/>
-				<Workbook color={themes[3]}/>
-				<Workbook color={themes[4]}/>
-				<Workbook color={themes[5]}/>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[0]}/>
-				<Workbook color={themes[0]}/>
+				{
+					getWorkbooks.map((element, idx) => {
+						return <Workbook
+							key={idx}
+							color={themes[5]}
+							owner={element.owner}
+							title={element.title}
+						>
+						</Workbook>
+					})
+				}
 			</BookShelf>
 		</Main>
 	)
