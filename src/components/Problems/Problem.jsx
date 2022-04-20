@@ -33,7 +33,7 @@ const ButtonWrapper = styled(BoxWrapper)`
 	column-gap: 20px;
 `
 const Button = styled.button`
-	width: 20%;
+	width: 50px;
 	height: 50px;
 	background-color: #fbfbfb;
 	border : 1px solid #dcdcdc;
@@ -56,7 +56,7 @@ const MemoButton = styled(Button)`
 `
 
 const LikeButton = styled(Button)`
-		
+	font-size: 20px;
 `
 const BookMarkButton = styled(Button)`
 	color: ${props => props.Yellow ? "yellow" : "#fbfbfb"};
