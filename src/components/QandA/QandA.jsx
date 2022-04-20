@@ -269,7 +269,7 @@ const QandA = () => {
 
   return (
     <>
-    <PlusButton url="/질문추가"/>
+    <PlusButton url="/registerQuestion"/>
 
     <Q.Container>
       <Q.Wrapper>

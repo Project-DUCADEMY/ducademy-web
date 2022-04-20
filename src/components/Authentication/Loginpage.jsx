@@ -139,7 +139,7 @@ const Loginpage = () => {
         	axios.post('/user/userinfo')
         	.then(response => setUserData(response.data))
         	.catch(error => setUserData(null))
-			navigate(-1)
+			navigate('/')
         })
         .catch(error => {
 			alert(error.response.data.errorMessage)
