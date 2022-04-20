@@ -6,117 +6,119 @@ import "react-quill/dist/quill.snow.css";
 
 import styled from 'styled-components'
 
-const Background = styled.div`
-  width: 100%;
-	height: calc(1150px - 52px);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: white;
-	margin-top: 52px;
-`
+import * as R from "./RegisterProblem.style"
 
-const Main = styled.div`
-  width: 800px;
-  height: 1050px;
-  background-color: #fbfbfb;
-	border : 1px solid #dcdcdc;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-  position: relative;
-`
+// const Background = styled.div`
+//   width: 100%;
+// 	height: calc(1150px - 52px);
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	background-color: white;
+// 	margin-top: 52px;
+// `
 
-const Wrapper = styled.div`
-	width: 700px;
-	height: 600px;
-	overflow-y: scroll;
-  background-color: white;
-	&::-webkit-scrollbar {
-		display: none;
-	}
-`
+// const Main = styled.div`
+//   width: 800px;
+//   height: 1050px;
+//   background-color: #fbfbfb;
+// 	border : 1px solid #dcdcdc;
+// 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//   display: flex;
+//   flex-direction: column;
+//   align-content: center;
+//   align-items: center;
+//   justify-content: space-evenly;
+//   position: relative;
+// `
 
-const InputTheme = styled.input`
-  box-sizing: border-box;
-  padding: 12px 10px;
-  height: 35px;
-  font-size: 14px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
-  &:focus {
-    box-shadow: 0 0 2px #c9c9c9;
-    border-color: #bbb;
-  }
-`
-const Inputs = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  height: 70px;
-  font-size: 20px;
-  padding: 24px 20px;
-  background-color: #eff1ee;
-  border: 0px;
-  outline: none;
-`
-const TitleInput = styled(InputTheme)`
-  width: 100%;
-`
-const CategoryInput = styled(InputTheme)`
-  width: 180px;
-`
-const TopInputContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 700px;
-`
-const BottomInputContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 250px;
-  height: 120px;
-  flex-direction: column;
-  align-items: flex-start;
-`
-const BottomInput = styled(InputTheme)`
-  width: 300px;
-`
-const CommentInput = styled.textarea`
-  resize: none;
-  width: 350px;
-  padding: 12px 10px;
-  outline: none;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
-  &:focus {
-    box-shadow: 0 0 2px #c9c9c9;
-    border-color: #bbb;
-  }
-`
-const ConfirmButton = styled.button`
-	width: 230px;
-	height: 65px;
-	border-radius: 30px;
-	border: none;
-	background-color: #3fe2a6;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 20px;
-	cursor: pointer;
-	transition: opacity ease-in-out .1s;
-	color : white;
-	margin: 10px auto;
-	&:hover {
-		opacity: 0.7;
-	}
-`
+// const Wrapper = styled.div`
+// 	width: 700px;
+// 	height: 600px;
+// 	overflow-y: scroll;
+//   background-color: white;
+// 	&::-webkit-scrollbar {
+// 		display: none;
+// 	}
+// `
+
+// const InputTheme = styled.input`
+//   box-sizing: border-box;
+//   padding: 12px 10px;
+//   height: 35px;
+//   font-size: 14px;
+//   background-color: #ffffff;
+//   border: 1px solid #ccc;
+//   outline: none;
+//   transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
+//   &:focus {
+//     box-shadow: 0 0 2px #c9c9c9;
+//     border-color: #bbb;
+//   }
+// `
+// const Inputs = styled.input`
+//   box-sizing: border-box;
+//   width: 100%;
+//   height: 70px;
+//   font-size: 20px;
+//   padding: 24px 20px;
+//   background-color: #eff1ee;
+//   border: 0px;
+//   outline: none;
+// `
+// const TitleInput = styled(InputTheme)`
+//   width: 100%;
+// `
+// const CategoryInput = styled(InputTheme)`
+//   width: 180px;
+// `
+// const TopInputContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   width: 700px;
+// `
+// const BottomInputContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   width: 250px;
+//   height: 120px;
+//   flex-direction: column;
+//   align-items: flex-start;
+// `
+// const BottomInput = styled(InputTheme)`
+//   width: 300px;
+// `
+// const CommentInput = styled.textarea`
+//   resize: none;
+//   width: 350px;
+//   padding: 12px 10px;
+//   outline: none;
+//   border: 1px solid #ccc;
+//   font-size: 14px;
+//   transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
+//   &:focus {
+//     box-shadow: 0 0 2px #c9c9c9;
+//     border-color: #bbb;
+//   }
+// `
+// const ConfirmButton = styled.button`
+// 	width: 230px;
+// 	height: 65px;
+// 	border-radius: 30px;
+// 	border: none;
+// 	background-color: #3fe2a6;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	font-size: 20px;
+// 	cursor: pointer;
+// 	transition: opacity ease-in-out .1s;
+// 	color : white;
+// 	margin: 10px auto;
+// 	&:hover {
+// 		opacity: 0.7;
+// 	}
+// `
 
 function ProblemResister() {
   const [value, setValue] = useState('');
@@ -233,14 +235,14 @@ function ProblemResister() {
   const [getSource, setSource] = useState('')
   const [getDescription, setDescription] = useState('')
   return (
-    <Background>
-      <Main>
-        <TopInputContainer>
-          <TitleInput placeholder={"제목"} value={getTitle}
+    <R.Background>
+      <R.Main>
+        <R.TopInputContainer>
+          <R.TitleInput placeholder={"제목"} value={getTitle}
             onChange={(e) => setTitle(e.target.value)} />
           {/*<CategoryInput placeholder={"유형"} />*/}
-        </TopInputContainer>
-        <Wrapper>
+        </R.TopInputContainer>
+        <R.Wrapper>
           {/*<button onClick={onClickContents}>에디터 안의 내용들</button>*/}
           <ReactQuill
             bounds={'self'}
@@ -252,18 +254,18 @@ function ProblemResister() {
             modules={modules}
             formats={formats}
           />
-        </Wrapper>
-        <TopInputContainer>
-          <BottomInputContainer>
-            <BottomInput placeholder={"정답"} onChange={(e) => setAnswer(e.target.value)}/>
-            <BottomInput placeholder={"정보"} onChange={(e) => setInfo(e.target.value)}/>
-            <BottomInput placeholder={"출처"} onChange={(e) => setSource(e.target.value)}/>
-          </BottomInputContainer>
-          <CommentInput placeholder={"풀이"} onChange={(e) => setDescription(e.target.value)}></CommentInput>
-        </TopInputContainer>
-        <ConfirmButton onClick={submit}>Confirm</ConfirmButton>
-      </Main>
-    </Background>
+        </R.Wrapper>
+        <R.TopInputContainer>
+          <R.BottomInputContainer>
+            <R.BottomInput placeholder={"정답"} onChange={(e) => setAnswer(e.target.value)}/>
+            <R.BottomInput placeholder={"정보"} onChange={(e) => setInfo(e.target.value)}/>
+            <R.BottomInput placeholder={"출처"} onChange={(e) => setSource(e.target.value)}/>
+          </R.BottomInputContainer>
+          <R.CommentInput placeholder={"풀이"} onChange={(e) => setDescription(e.target.value)}></R.CommentInput>
+        </R.TopInputContainer>
+        <R.ConfirmButton onClick={submit}>Confirm</R.ConfirmButton>
+      </R.Main>
+    </R.Background>
   );
 }
 

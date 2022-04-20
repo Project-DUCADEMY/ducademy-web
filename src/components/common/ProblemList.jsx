@@ -6,13 +6,6 @@ const ProblemList = (
 ) => {
     function makeDate(time) {
     const tempTime = new Date(time);
-    // console.log([
-    //   tempTime.getFullYear(),
-    //   tempTime.getMonth() + 1,
-    //   tempTime.getDate(),
-    // ]);
-    // return [tempTime.getFullYear(),
-    //   tempTime.getMonth()+1 < 10 ? "0"+tempTime.getMonth()+1: tempTime.getMonth()+1,tempTime.getDate()]
     return `
       ${tempTime.getFullYear()} / ${tempTime
       .getMonth()
@@ -20,12 +13,15 @@ const ProblemList = (
       .padStart(2, "0")} / ${tempTime.getDate().toString().padStart(2, "0")}
     `;
   }
+  function clickCategory(category){
+    
+  }
   return (
     <P.NewQWrapper>
       {newQuestions.map((newQ) => (
         <div key={newQ.id}>
           <P.NewQListMenu>
-            <P.Category>
+            <P.Category onClick={() => clickCategory(newQ.category)}>
               <div>{newQ.category}</div>
             </P.Category>
             <P.NewQTitle>{newQ.title}</P.NewQTitle>
