@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { route, useParams } from "react-router";
 import RegisterMemo from './RegisterMemo'
-
-let Challenge = 1
-let BookMarked = true
+import {ReactComponent as Edit} from '../../assets/image/memo/edit.svg'
+// import memo from '../../assets/image/button/memo.svg'
 const Main = styled.div`
   	width: 100%;
 	display: flex;
@@ -48,17 +47,20 @@ const Button = styled.button`
 	position: relative;
 	transition: background-color ease-in-out .15s, color ease-in-out .15s;
 	&:hover {
-		color: #cccccc;
 		background-color: #cccccc;
 	}
 	cursor: pointer;
 `
+const MemoButton = styled(Button)`
+	
+`
+
 const LikeButton = styled(Button)`
 		
 `
 const BookMarkButton = styled(Button)`
 	color: ${props => props.Yellow ? "yellow" : "#fbfbfb"};
-	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-width: 2px;
 	-webkit-text-stroke-color: black;
 	transition: background-color ease-in-out .15s, color ease-in-out .15s;
 	&:hover {
@@ -89,6 +91,11 @@ const Box = styled.div`
 	word-break: break-all;
 	flex-wrap: wrap;
 `
+const IconWrapper = styled.div`
+    position: relative;
+    float: center;
+`
+
 const BoxText = styled.h2`
 	
 `
@@ -190,6 +197,9 @@ const ModalOverlay = styled.div`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
 	const [getModalOpen, setModalOpen] = useState(false)
+	const [getLike, setLike] = useState(0)
+	const [getBookMark, setBookMark] = useState(false)
+	let Challenge = 1
 	const { number } = useParams();
 	useEffect(() => {
 		axios.get(`/problem/problem/?id=${number}`)
@@ -215,8 +225,11 @@ const Render = ({ location }) => {
 			<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(false)}}/>
 			<Wrapper>
 				<ButtonWrapper>
-					<button onClick={() => setModalOpen(true)}>test</button>
-					<LikeButton></LikeButton><BookMarkButton Yellow={BookMarked}>★</BookMarkButton><EditButton>수정</EditButton><DeleteButton>삭제</DeleteButton>
+					<MemoButton onClick={() => setModalOpen(true)}>📝</MemoButton>
+					<LikeButton>{getLike} 🖒</LikeButton>
+					<BookMarkButton Yellow={getBookMark} onClick={() => setBookMark(!getBookMark)}>★</BookMarkButton>
+					<EditButton>✎</EditButton>
+					<DeleteButton>🗙</DeleteButton>
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>

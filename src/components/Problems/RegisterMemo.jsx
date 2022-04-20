@@ -87,7 +87,6 @@ const InputTheme = styled.textarea`
     }
 `
 const BoxText = styled.h2`
-    color: contrast(#000000, #ffffff);
     text-align: center;
 `
 const Button = styled.button`
