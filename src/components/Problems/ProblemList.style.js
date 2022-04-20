@@ -30,6 +30,7 @@ export const NewQWrapper = styled.div`
   > div {
     padding:5px 30px 5px 20px;
     height: 60px;
+    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -4,7 +4,7 @@ import axios from 'axios'
 import '../../assets/fonts/Nanum_Gothic_Coding.css'
 
 import userData from '../../store/userData'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -117,7 +117,9 @@ const Loginpage = () => {
 	const [getEmail, setEmail] = useState('')
     const [getPw, setPw] = useState('')
 
-    const setUserData = useSetRecoilState(userData)
+    const [getUserData, setUserData] = useRecoilState(userData)
+
+	const navigate = useNavigate();
 
     const handleInputEmail = (e) => {
         setEmail(e.target.value)
@@ -125,7 +127,7 @@ const Loginpage = () => {
     const handleInputPw = (e) => {
         setPw(e.target.value)
     }
-	const navigate = useNavigate();
+
     const login = (e) => {
     	axios.post(
         '/authenticate/login', 

@@ -7,67 +7,8 @@ import axios from 'axios'
 import problems from '../../store/problems'
 import { useRecoilState } from 'recoil'
 
-const StyledLink = styled(Link)`
-  margin-top: 20px;
-  width: 20%;
-  color: #222222;
-  text-decoration: none;
-  height: 50px;
-	background-color: #fbfbfb;
-	border : 1px solid #dcdcdc;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	font-size: 20px;
-	font-weight: bold;
-	display: flex;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-  text-decoration: none;
-	transition: background-color ease-in-out .15s, color ease-in-out .15s;
-	&:hover {
-		background-color: #cccccc;
-	}
-	cursor: pointer;
-`
-const Background = styled.div`
-  width: 100%;
-  height: 100vh - 75px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  margin-top: 75px;
-`
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-	justify-content: right;
-`
-const Button = styled.button`
-	height: 50px;
-	background-color: #fbfbfb;
-	border : 1px solid #dcdcdc;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	font-size: 20px;
-	font-weight: bold;
-	display: flex;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-  text-decoration: none;
-	transition: background-color ease-in-out .15s, color ease-in-out .15s;
-	&:hover {
-		background-color: #cccccc;
-	}
-	cursor: pointer;
-`
-
-
 const Main = styled.div`
-  width: 70%;
+  width: ${({fullSize}) => fullSize? 95 : 70}%;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -82,7 +23,7 @@ const MainWrapper = styled.div`
   height: 100%;
 `;
 
-const Problems = () => {
+const Problems = ({forRegister}) => {
   const [sortedBy, setSortedBy] = useState(0);
   // const menus = ["최신순","조회수순"];
   const [menus, setMenus] = useState([
@@ -145,7 +86,7 @@ const Problems = () => {
 	}, [])
 
   return (
-    <Main>
+    <Main fullSize={forRegister}>
       {/* <SearchSpace /> */}
       <M.NewQMenus>
         <div>
@@ -173,7 +114,7 @@ const Problems = () => {
           ))}
         </M.NewQMenuSubject>
       </M.NewQMenus>
-			<ProblemList newQuestions={getProblems} />
+			<ProblemList newQuestions={getProblems} forRegister={forRegister}/>
     </Main>
   )
 }

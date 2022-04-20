@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import PlusButton from "../common/PlusButton";
 
-const ProblemList = ({ newQuestions }) => {
+const ProblemList = ({ newQuestions, forRegister, hidePlusButton }) => {
   function makeDate(time) {
     const tempTime = new Date(time);
     // console.log([
@@ -27,13 +27,16 @@ const ProblemList = ({ newQuestions }) => {
   };
   return (
     <>
-      <PlusButton url="/resister"/>
-
+      {
+        forRegister || hidePlusButton? <></> : <PlusButton url="/register"/>
+      }
       <P.NewQWrapper>
         {newQuestions.map((newQ) => (
           <div
             key={newQ.questionNumber}
-            onClick={() => problemClick(newQ.questionNumber)}
+            onClick={forRegister ? 
+            () => forRegister(newQ) :
+            () => problemClick(newQ.questionNumber)}
           >
             <P.NewQListMenu>
               <P.Category>

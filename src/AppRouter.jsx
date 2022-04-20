@@ -18,7 +18,8 @@ import Loginpage from "./components/Authentication/Loginpage";
 import Joinpage from "./components/Authentication/JoinPage";
 
 import NotFound from "./NotFound";
-import Register from "./components/RegisterProblem/RegisterProblem";
+import Register from "./components/Register/RegisterProblem";
+import RegisterWorkbook from './components/Register/RegisterWorkbook'
 import ScrollToTop from './components/common/ScrollToTop'
 
 import userData from "./store/userData";
@@ -55,12 +56,14 @@ const AppRouter = () => {
             <Route path="/login" element={<Loginpage />} />
             <Route path="/join" element={<Joinpage />} />
             <Route path="/mypage" element={<Redirect to={"/login"} />} />
-            <Route path="/resister" element={<Redirect to={"/login"} />} />
+            <Route path="/register" element={<Redirect to={"/login"} />} />
+            <Route path="/registerWorkbook" element={<Redirect to={"/login"} />} />
           </>
         ) : (
           <>
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/resister" element={<Register />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/registerWorkbook" element={<RegisterWorkbook/>} />
           </>
         )}
         <Route path="*" element={<NotFound />} />

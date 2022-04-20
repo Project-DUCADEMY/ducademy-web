@@ -7,12 +7,16 @@ export const NewQMenus = styled.div`
   justify-content: space-between;
   > div {
     display: flex;
+    width: 50%
   }
 `;
 
 export const NewQMenuSorted = styled.div`
   height: 50px;
-  width: 130px;
+  min-width: 80px;
+  max-width: 130px;
+  width: 25%;
+  ${'' /* width: 130px; */}
   display: flex;
   justify-content: center;
   align-items: center;

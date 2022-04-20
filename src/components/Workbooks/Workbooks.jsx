@@ -30,7 +30,7 @@ const themes = [palette.theme1, palette.theme2, palette.theme3, palette.theme4, 
 const Workbooks = () => {
 	return (
 		<Main>
-			<PlusButton url="/문제집추가"/>
+			<PlusButton url="/registerWorkbook"/>
 			<h1>문제집</h1>
 			<BookShelf>
 				<Workbook color={themes[0]}/>
