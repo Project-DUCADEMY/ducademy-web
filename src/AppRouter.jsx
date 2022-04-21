@@ -36,7 +36,6 @@ const AppRouter = () => {
       .post("/user/userinfo")
       .then((response) => setUserData(response.data))
       .catch((error) => setUserData(null));
-    // .catch((error) => setUserData(1));
   }, []);
 
   return (
@@ -49,7 +48,7 @@ const AppRouter = () => {
           <>
             <Route path="/login" element={<Loginpage />} />
             <Route path="/join" element={<Joinpage />} />
-            <Route path="*" element={<Redirect to={"/login"}/>}/>
+            {/* <Route path="*" element={<Redirect to={"/login"}/>}/> */}
           </>
         ) : (
           <>

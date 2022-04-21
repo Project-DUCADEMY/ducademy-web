@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled,{css} from 'styled-components'
 import { useState } from 'react'
 const Box = styled.div`
 	background-color: #fbfbfb;
@@ -9,7 +9,51 @@ const Box = styled.div`
 	justify-content: center;
 	word-break: break-all;
 	flex-wrap: wrap;
-    `
+`
+const Memo = styled.div`
+    width: 50%;
+    height: 70%;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+   position:absolute;
+   right: 15px;
+   background:#fff44f;
+   overflow:hidden;
+      inset 0 -40px 40px rgba(0,0,0,0.2),
+      0 5px 6px 5px rgba(0,0,0,0.2);
+   font-family: 'Permanent Marker', cursive;
+   font-size:19px;
+   color:#130d6b;
+   transition: transform 0.4s;
+   padding:20px;
+   border-radius:0 0 0 30px/45px;
+   opacity: ${({ Dragged }) => (Dragged ? 0 : 1)};
+   box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
+
+   &:before{
+      content:"";
+      display:block;
+      position:absolute;
+      width:20px;
+      height:25px;
+      background:#ffa;
+      box-shadow:
+         3px -2px 10px rgba(0,0,0,0.1),
+         inset 15px -15px 15px rgba(0,0,0,0.3);
+      left:0;
+      bottom:0;
+      z-index:2;
+      transform:skewX(25deg);
+   }
+
+   ${({ r, g, b }) => {
+        return `background-color: rgb(${r == '' ? 255 : r}, ${g == '' ? 255 : g}, ${b == '' ? 255 : b})`
+    }};
+    display: ${(props) => (props.visable ? 'block' : 'none')};
+`;
+    
 const Main = styled(Box)`
     position: absolute;
     ${({ r, g, b }) => {
@@ -85,6 +129,9 @@ const InputTheme = styled.textarea`
         box-shadow: 0 0 2px #c9c9c9;
         border-color: #bbb;
     }
+    ${({ r, g, b }) => {
+        return `background-color: rgb(${r == '' ? 255 : r}, ${g == '' ? 255 : g}, ${b == '' ? 255 : b})`
+    }};
 `
 const BoxText = styled.h2`
     text-align: center;
@@ -124,7 +171,7 @@ const Render = ({visable}) => {
         setBlue(e.target.value)
     }
     return(
-        <Main visable={visable} r={red} g={green} b={blue}>
+        <Memo visable={visable} r={red} g={green} b={blue}>
             <Container>
                 <BoxText>메모 등록</BoxText>
                 <InputTheme r={red} g={green} b={blue} />
@@ -144,7 +191,7 @@ const Render = ({visable}) => {
                 </RGBContainer>
                 <Button>등록</Button>
             </Container>
-        </Main>
+        </Memo>
     )
 }
 export default Render;

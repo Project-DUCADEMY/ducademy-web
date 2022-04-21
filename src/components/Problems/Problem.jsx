@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 import { route, useParams } from "react-router";
+import { useRecoilValue } from 'recoil';
 import RegisterMemo from './RegisterMemo'
-import {ReactComponent as Edit} from '../../assets/image/memo/edit.svg'
-// import memo from '../../assets/image/button/memo.svg'
+import userData from '../../store/userData';
+import { useNavigate } from "react-router-dom";
 const Main = styled.div`
   	width: 100%;
 	display: flex;
@@ -14,6 +14,7 @@ const Main = styled.div`
 	margin-top: 30px;
 	padding-top: 50px;
 `
+
 const Wrapper = styled.div`
 	box-sizing: border-box;
 	padding-bottom: 10px;
@@ -67,16 +68,7 @@ const BookMarkButton = styled(Button)`
 		color: ${props => props.Yellow ? "#c4c42c" : "#cccccc"}
 	}
 `
-const EditButton = styled(Button)`
-	&:hover { 
-		color: blue;
-	}
-`
-const DeleteButton = styled(Button)`
-	&:hover {
-		color: red;
-	}
-`
+
 const Box = styled.div`
 	width: 100%;
 	background-color: #fbfbfb;
@@ -90,10 +82,6 @@ const Box = styled.div`
 	position: relative;
 	word-break: break-all;
 	flex-wrap: wrap;
-`
-const IconWrapper = styled.div`
-    position: relative;
-    float: center;
 `
 
 const BoxText = styled.h2`
@@ -198,15 +186,14 @@ const ModalOverlay = styled.div`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
 	const [getModalOpen, setModalOpen] = useState(false)
-	const [getLike, setLike] = useState(0)
-	const [getBookMark, setBookMark] = useState(false)
+	const getUserData = useRecoilValue(userData)
+	const navigate = useNavigate();
 	let Challenge = 1
 	const { number } = useParams();
 	useEffect(() => {
 		axios.get(`/problem/problem/?id=${number}`)
 			.then(response => {
 				setProblem(response.data.question)
-				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
 	}, [])
@@ -220,17 +207,32 @@ const Render = ({ location }) => {
 			return param
 		}
 	}
+	const DeleteProblem = () => {
+		axios.delete(`/problem/delete/?id=${number}`)
+		.then(() => {
+			alert("삭제 성공")
+			navigate(-1)
+		})
+		.catch(console.log)
+	}
 	return (
 		<Main>
 			<RegisterMemo visable={getModalOpen}/>
 			<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(false)}}/>
 			<Wrapper>
 				<ButtonWrapper>
-					<MemoButton onClick={() => setModalOpen(true)}>📝</MemoButton>
-					<LikeButton>{getLike} 🖒</LikeButton>
-					<BookMarkButton Yellow={getBookMark} onClick={() => setBookMark(!getBookMark)}>★</BookMarkButton>
-					<EditButton>✎</EditButton>
-					<DeleteButton>🗙</DeleteButton>
+					<Button onClick={() => setModalOpen(true)}>🗒</Button>
+					<Button>👍</Button>
+					<Button>☆</Button>
+					{
+						getUserData.username === getProblem.owner ? 
+						<>
+							<Button>✏️</Button>
+							<Button onClick={DeleteProblem}>❌</Button>
+						</>
+						:
+						<></>
+					}
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
@@ -248,27 +250,6 @@ const Render = ({ location }) => {
 						<InfoItem>
 							<InfoHead>내 제출</InfoHead>
 							<InfoBody>13</InfoBody>
-						</InfoItem>
-					</InfoBox>
-				</BoxWrapper>
-				<BoxWrapper>
-					<BoxText>문제 정보</BoxText>
-					<InfoBox>
-						<InfoItem>
-							<InfoHead>제출</InfoHead>
-							<InfoBody>160042</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>정답</InfoHead>
-							<InfoBody>88384</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>오답</InfoHead>
-							<InfoBody>71658</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>정답 비율</InfoHead>
-							<InfoBody>{(88384 / 160042 * 100).toFixed(3)}%</InfoBody >
 						</InfoItem>
 					</InfoBox>
 				</BoxWrapper>
