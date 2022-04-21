@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 // import Q from "./QandA.style"
 import * as Q from "./QandA.style";
 import * as M from "../../style/menu.style"
@@ -6,9 +6,10 @@ import * as M from "../../style/menu.style"
 import moreInfo from "../../assets/image/q&aPage/more.svg";
 import search from "../../assets/image/q&aPage/search.svg";
 
-import ProblemList from "../common/ProblemList";
+import ProblemList from "./ProblemList";
 
 import PlusButton from "../common/PlusButton";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 // 60자로 해야함
 const QandA = () => {
@@ -21,6 +22,7 @@ const QandA = () => {
       title: "국어시간 너무 잠옴",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: true,
+      objectId : "park1",
     },
     {
       id: 2,
@@ -28,6 +30,7 @@ const QandA = () => {
       title: "잘하고싶다",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: false,
+      objectId : "park1"
     },
     {
       id: 3,
@@ -36,6 +39,7 @@ const QandA = () => {
         "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사사사사오오오오오오오오오오육육육육육육육육육육",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: true,
+      objectId : "park2"
     },
     {
       id: 4,
@@ -43,6 +47,7 @@ const QandA = () => {
       title: "잘하고싶다",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: false,
+      objectId : "park3"
     },
     {
       id: 5,
@@ -50,6 +55,7 @@ const QandA = () => {
       title: "잘하고싶다",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: false,
+      objectId : "park4"
     },
     {
       id: 6,
@@ -57,6 +63,7 @@ const QandA = () => {
       title: "잘하고싶다",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: false,
+      objectId : "park5"
     },
     {
       id: 7,
@@ -64,6 +71,7 @@ const QandA = () => {
       title: "잘하고싶다 아 이거 어케함 기모찡 하하하하하하하",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
       new: false,
+      objectId : "park6"
     },
   ]);
 
@@ -76,6 +84,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park7",
     },
     {
       id: 2,
@@ -84,6 +93,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park8",
     },
     {
       id: 3,
@@ -92,6 +102,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park9",
     },
     {
       id: 4,
@@ -100,6 +111,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park10",
     },
     {
       id: 5,
@@ -108,6 +120,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park11",
     },
     {
       id: 6,
@@ -116,6 +129,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park12",
     },
     {
       id: 7,
@@ -124,6 +138,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park13",
     },
     {
       id: 8,
@@ -132,6 +147,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park14",
     },
     {
       id: 9,
@@ -140,6 +156,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park15",
     },
     {
       id: 10,
@@ -148,6 +165,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park16",
     },
     {
       id: 11,
@@ -156,6 +174,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park17",
     },
     {
       id: 12,
@@ -164,6 +183,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park18",
     },
     {
       id: 13,
@@ -172,6 +192,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park19",
     },
     {
       id: 14,
@@ -180,6 +201,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park20",
     },
     {
       id: 15,
@@ -188,6 +210,7 @@ const QandA = () => {
       comments: 4,
       writer: "codingbotPark",
       time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId : "park21",
     },
   ]);
 
@@ -215,7 +238,7 @@ const QandA = () => {
     },
   ]);
 
-  const [selectedSubject,setSelectedSubject] = useState([0,0])
+  const [selectedSubject,setSelectedSubject] = useState("모두")
   const [subjects, setSubjects] = useState([
     {
       id: 0,
@@ -241,15 +264,14 @@ const QandA = () => {
     },
   ]);
 
+  useEffect(() => {
+    console.log("서버통신",selectedSubject)
+  },[selectedSubject])
+
+  const dropBox = useRef();
+
   function makeDate(time) {
     const tempTime = new Date(time);
-    // console.log([
-    //   tempTime.getFullYear(),
-    //   tempTime.getMonth() + 1,
-    //   tempTime.getDate(),
-    // ]);
-    // return [tempTime.getFullYear(),
-    //   tempTime.getMonth()+1 < 10 ? "0"+tempTime.getMonth()+1: tempTime.getMonth()+1,tempTime.getDate()]
     return `
       ${tempTime.getFullYear()} / ${tempTime
       .getMonth()
@@ -267,6 +289,22 @@ const QandA = () => {
     console.log("서버통신",searchValue)
   }
 
+  const [hover,setHover] = useState(false)
+
+  const nevigate = useNavigate()
+  function clickMyQ(objectId){
+    if (hover){
+      // console.log("카테고리 변경")
+      
+      console.log(dropBox.current.value)
+      // console.log(dropBox.current.value)
+    } else {
+      nevigate(`/${objectId}`)
+    }
+  }
+
+ 
+
   return (
     <>
     <PlusButton url="/registerQuestion"/>
@@ -278,12 +316,20 @@ const QandA = () => {
           <Q.MyQWrapper>
             <Q.tempMyQ />
             {myQuestions.map((myQ) => (
-              <Q.MyQ key={myQ.id} isNew={myQ.new}>
+              <Q.MyQ 
+              key={myQ.id} 
+              isNew={myQ.new}
+              onClick={() => clickMyQ(myQ.objectId)}
+              >
                 <section>
                   <h3>{myQ.title}</h3>
                 </section>
                 <Q.MyQFoot>
-                  <Q.Category>
+                  <Q.Category 
+                  // onClick={() => console.log(myQ.category,"카테고리")}
+                  onMouseOver={() => setHover(true)}
+                  onMouseOut={() => setHover(false)}
+                  >
                     <div>{myQ.category}</div>
                   </Q.Category>
                   <Q.MyQFootMenu>{makeDate(myQ.time)}</Q.MyQFootMenu>
@@ -325,7 +371,12 @@ const QandA = () => {
               ))}
             </div>
 
-            <M.NewQMenuSubject onChange={goToAnswer}>
+            <M.NewQMenuSubject 
+            ref={dropBox}
+            onChange={(e) =>{
+            goToAnswer() 
+            setSelectedSubject(e.target.value)
+            }}>
               <option>모두</option>
               {subjects.map((subject) => (
                 <optgroup key={subject.id} label={subject.label}>
@@ -337,28 +388,16 @@ const QandA = () => {
                     ))
                   }
                 </optgroup>
-              ))}
+              ))}  
             </M.NewQMenuSubject>
           </M.NewQMenus>
 
-          <ProblemList newQuestions={newQuestions}/>
-          {/* <Q.NewQWrapper>
-            {newQuestions.map((newQ) => (
-              <div key={newQ.id}>
-                <Q.NewQListMenu>
-                  <Q.Category>
-                    <div>{newQ.category}</div>
-                  </Q.Category>
-                  <Q.NewQTitle>{newQ.title}</Q.NewQTitle>
-                </Q.NewQListMenu>
-
-                <Q.NewQListInfo>
-                  <Q.NewQInfoWriter>{newQ.writer}</Q.NewQInfoWriter>
-                  <Q.NewQInfoDate>{makeDate(newQ.time)}</Q.NewQInfoDate>
-                </Q.NewQListInfo>
-              </div>
-            ))}
-          </Q.NewQWrapper> */}
+          <ProblemList 
+          newQuestions={newQuestions} 
+          hover={hover}
+          setHover={setHover}
+          />
+          
         </Q.NewQContainer>
 
 

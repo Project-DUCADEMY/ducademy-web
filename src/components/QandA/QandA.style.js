@@ -130,6 +130,8 @@ export const Category = styled.div`
   align-items: center;
   margin-left: 10px;
   margin-right: 30px;
+  position:relative;
+  z-index:5;
   > div {
     box-shadow: 4px 4px 15px 0px #0000001a;
     border-radius: 20px;
