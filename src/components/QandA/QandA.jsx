@@ -303,7 +303,7 @@ const QandA = () => {
       setSelectedSubject(category)
       goToAnswer();
     } else {
-      nevigate(`/${objectId}`);
+      nevigate(`/QandA/${objectId}`);
     }
   }
 

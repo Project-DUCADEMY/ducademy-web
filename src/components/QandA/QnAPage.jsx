@@ -1,10 +1,14 @@
 import React from 'react';
 
+import * as Q from "./QnAPage.style"
+
 const QnAPage = () => {
     return (
-        <div>
-            병관아 화이팅
-        </div>
+        <Q.Wrapper>
+            {/* <Q.QuestionWrapper>
+
+            </Q.QuestionWrapper> */}
+        </Q.Wrapper>
     );
 };
 
