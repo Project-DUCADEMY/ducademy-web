@@ -48,9 +48,6 @@ const Memo = styled.div`
       transform:skewX(25deg);
    }
 
-   ${({ r, g, b }) => {
-        return `background-color: rgb(${r == '' ? 255 : r}, ${g == '' ? 255 : g}, ${b == '' ? 255 : b})`
-    }};
     display: ${(props) => (props.visable ? 'block' : 'none')};
 `;
     
@@ -121,17 +118,15 @@ const InputTheme = styled.textarea`
     width: 80%;
     height: 80%;
     font-size: 14px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
+    background-color: #fff44f;
+    border: 0px;
     outline: none;
     transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
     &:focus {
         box-shadow: 0 0 2px #c9c9c9;
         border-color: #bbb;
     }
-    ${({ r, g, b }) => {
-        return `background-color: rgb(${r == '' ? 255 : r}, ${g == '' ? 255 : g}, ${b == '' ? 255 : b})`
-    }};
+
 `
 const BoxText = styled.h2`
     text-align: center;
@@ -174,8 +169,8 @@ const Render = ({visable}) => {
         <Memo visable={visable} r={red} g={green} b={blue}>
             <Container>
                 <BoxText>메모 등록</BoxText>
-                <InputTheme r={red} g={green} b={blue} />
-                <RGBContainer>
+                <InputTheme/>
+                {/* <RGBContainer>
                     <RGBWrapper>
                         <RGBColor color={'red'}></RGBColor>
                         <RGBInput type="number" value={(red > 255 ? 255 : red < 0 ? 0 : red)} onChange={onChangeRed}/>
@@ -188,7 +183,7 @@ const Render = ({visable}) => {
                         <RGBColor color={'blue'}></RGBColor>
                         <RGBInput type="number" value={blue > 255 ? 255 : blue < 0 ? 0 : blue} onChange={onChangeBlue}/>
                     </RGBWrapper>
-                </RGBContainer>
+                </RGBContainer> */}
                 <Button>등록</Button>
             </Container>
         </Memo>
