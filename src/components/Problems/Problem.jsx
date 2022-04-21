@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { route, useParams } from "react-router";
+import { useRecoilValue } from 'recoil';
 import RegisterMemo from './RegisterMemo'
-import {ReactComponent as Edit} from '../../assets/image/memo/edit.svg'
-// import memo from '../../assets/image/button/memo.svg'
+import userData from '../../store/userData';
+import { useNavigate } from "react-router-dom";
 const Main = styled.div`
   	width: 100%;
 	display: flex;
@@ -13,6 +14,7 @@ const Main = styled.div`
 	margin-top: 30px;
 	padding-top: 50px;
 `
+
 const Wrapper = styled.div`
 	box-sizing: border-box;
 	padding-bottom: 10px;
@@ -80,10 +82,6 @@ const Box = styled.div`
 	position: relative;
 	word-break: break-all;
 	flex-wrap: wrap;
-`
-const IconWrapper = styled.div`
-    position: relative;
-    float: center;
 `
 
 const BoxText = styled.h2`
@@ -188,14 +186,14 @@ const ModalOverlay = styled.div`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
 	const [getModalOpen, setModalOpen] = useState(false)
-
+	const getUserData = useRecoilValue(userData)
+	const navigate = useNavigate();
 	let Challenge = 1
 	const { number } = useParams();
 	useEffect(() => {
 		axios.get(`/problem/problem/?id=${number}`)
 			.then(response => {
 				setProblem(response.data.question)
-				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
 	}, [])
@@ -209,6 +207,14 @@ const Render = ({ location }) => {
 			return param
 		}
 	}
+	const DeleteProblem = () => {
+		axios.delete(`/problem/delete/?id=${number}`)
+		.then(() => {
+			alert("삭제 성공")
+			navigate(-1)
+		})
+		.catch(console.log)
+	}
 	return (
 		<Main>
 			<RegisterMemo visable={getModalOpen}/>
@@ -218,8 +224,15 @@ const Render = ({ location }) => {
 					<Button onClick={() => setModalOpen(true)}>🗒</Button>
 					<Button>👍</Button>
 					<Button>☆</Button>
-					<Button>✏️</Button>
-					<Button>❌</Button>
+					{
+						getUserData.username === getProblem.owner ? 
+						<>
+							<Button>✏️</Button>
+							<Button onClick={DeleteProblem}>❌</Button>
+						</>
+						:
+						<></>
+					}
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
