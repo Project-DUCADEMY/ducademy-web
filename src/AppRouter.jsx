@@ -58,6 +58,7 @@ const AppRouter = () => {
             <Route path="/workbook" element={<Workbooks />} />
             <Route path="/exam" element={<Exam />} />
             <Route path="/QandA" element={<QnA />} />
+            <Route path="/QandA/:number" element={<QnAPage/>}/>
             <Route path="/Group" element={<Groups />} />
             <Route path="/memo" element={<Memos />} />
             <Route path="/mypage" element={<MyPage />} />

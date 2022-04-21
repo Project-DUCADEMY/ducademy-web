@@ -25,7 +25,7 @@ const ProblemList = ({
       setSelectedSubject(category)
       goToAnswer()
     } else{
-      nevigate(`/${objectId}`)
+      nevigate(`/QandA/${objectId}`);
     }
   }
   return (

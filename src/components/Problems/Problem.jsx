@@ -225,13 +225,19 @@ const Render = ({ location }) => {
 					<Button>👍</Button>
 					<Button>☆</Button>
 					{
-						getUserData.username === getProblem.owner ? 
+						// getUserData.username === getProblem.owner ? 
+						// <>
+						// 	<Button>✏️</Button>
+						// 	<Button onClick={DeleteProblem}>❌</Button>
+						// </>
+						// :
+						// <></>
+						getUserData.username === getProblem.owner && 
 						<>
 							<Button>✏️</Button>
 							<Button onClick={DeleteProblem}>❌</Button>
 						</>
-						:
-						<></>
+	
 					}
 				</ButtonWrapper>
 				<BoxWrapper>

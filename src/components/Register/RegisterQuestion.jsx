@@ -108,32 +108,34 @@ function ProblemResister() {
     console.log(quillRef.current.getEditorContents());
   };
   const navigate = useNavigate()
-//   const submit = () => {
-//     axios.post('/problem/register', 
-//     {
-//       title: getTitle,
-//       answer: getAnswer,
-//       content: quillRef.current.getEditorContents(),
-//       description: getDescription,
-//       info: getInfo,
-//       source: getSource
-//     })
-//     .then(response => {
-//       alert('문제 등록 성공!')
-//       navigate(-1)
-//     })
-//     .catch(error => alert(error.response.data))
-//     console.log(getTitle, getAnswer, quillRef.current.getEditorContents())
-//   }
+  const submit = () => {
+    axios.post('/question/register', 
+    {
+      title: getTitle,
+      category:getCategory,
+      content: quillRef.current.getEditorContents(),
+      // description: getDescription,
+      // info: getCategory,
+      // source: getSource
+    })
+    .then(response => {
+      alert('질문 등록 성공!')
+      navigate(-1)
+    })
+    .catch(error => alert(error.response.data))
+    // console.log(getTitle, getTitle, quillRef.current.getEditorContents())
+  }
 
-  const [getAnswer, setAnswer] = useState('')
-  const [getInfo, setInfo] = useState('')
+
+
+  const [getTitle, setTitle] = useState('')
+  const [getCategory, setCategory] = useState('')
   return (
     <R.Background>
       <QuestionMain>
         <R.TopInputContainer>
-            <TitleHolder placeholder={"제목"} onChange={(e) => setAnswer(e.target.value)}/>
-            <TagHolder placeholder={"태그"} onChange={(e) => setInfo(e.target.value)}/>
+            <TitleHolder placeholder={"제목"} onChange={(e) => setTitle(e.target.value)}/>
+            <TagHolder placeholder={"태그"} onChange={(e) => setCategory(e.target.value)}/>
           {/*<CategoryInput placeholder={"유형"} />*/}
         </R.TopInputContainer>
         <R.Wrapper>
@@ -149,7 +151,7 @@ function ProblemResister() {
             formats={formats}
           />
         </R.Wrapper>
-        <R.ConfirmButton >Confirm</R.ConfirmButton>
+        <R.ConfirmButton onClick={submit}>Confirm</R.ConfirmButton>
       </QuestionMain>
     </R.Background>
   );
