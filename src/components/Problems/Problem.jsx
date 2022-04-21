@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 import { route, useParams } from "react-router";
 import RegisterMemo from './RegisterMemo'
 import {ReactComponent as Edit} from '../../assets/image/memo/edit.svg'
@@ -67,16 +66,7 @@ const BookMarkButton = styled(Button)`
 		color: ${props => props.Yellow ? "#c4c42c" : "#cccccc"}
 	}
 `
-const EditButton = styled(Button)`
-	&:hover { 
-		color: blue;
-	}
-`
-const DeleteButton = styled(Button)`
-	&:hover {
-		color: red;
-	}
-`
+
 const Box = styled.div`
 	width: 100%;
 	background-color: #fbfbfb;
@@ -198,8 +188,7 @@ const ModalOverlay = styled.div`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
 	const [getModalOpen, setModalOpen] = useState(false)
-	const [getLike, setLike] = useState(0)
-	const [getBookMark, setBookMark] = useState(false)
+
 	let Challenge = 1
 	const { number } = useParams();
 	useEffect(() => {
@@ -226,11 +215,11 @@ const Render = ({ location }) => {
 			<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(false)}}/>
 			<Wrapper>
 				<ButtonWrapper>
-					<MemoButton onClick={() => setModalOpen(true)}>📝</MemoButton>
-					<LikeButton>{getLike} 🖒</LikeButton>
-					<BookMarkButton Yellow={getBookMark} onClick={() => setBookMark(!getBookMark)}>★</BookMarkButton>
-					<EditButton>✎</EditButton>
-					<DeleteButton>🗙</DeleteButton>
+					<Button onClick={() => setModalOpen(true)}>🗒</Button>
+					<Button>👍</Button>
+					<Button>☆</Button>
+					<Button>✏️</Button>
+					<Button>❌</Button>
 				</ButtonWrapper>
 				<BoxWrapper>
 					<TitleBox>
@@ -248,27 +237,6 @@ const Render = ({ location }) => {
 						<InfoItem>
 							<InfoHead>내 제출</InfoHead>
 							<InfoBody>13</InfoBody>
-						</InfoItem>
-					</InfoBox>
-				</BoxWrapper>
-				<BoxWrapper>
-					<BoxText>문제 정보</BoxText>
-					<InfoBox>
-						<InfoItem>
-							<InfoHead>제출</InfoHead>
-							<InfoBody>160042</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>정답</InfoHead>
-							<InfoBody>88384</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>오답</InfoHead>
-							<InfoBody>71658</InfoBody>
-						</InfoItem>
-						<InfoItem>
-							<InfoHead>정답 비율</InfoHead>
-							<InfoBody>{(88384 / 160042 * 100).toFixed(3)}%</InfoBody >
 						</InfoItem>
 					</InfoBox>
 				</BoxWrapper>
