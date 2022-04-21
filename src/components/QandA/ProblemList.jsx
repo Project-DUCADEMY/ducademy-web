@@ -6,6 +6,8 @@ const ProblemList = ({
   newQuestions,
   hover,
   setHover,
+  setSelectedSubject,
+  goToAnswer
  }) => {
 
   function makeDate(time) {
@@ -18,9 +20,10 @@ const ProblemList = ({
     `;
   }
   const nevigate = useNavigate()
-  function clickQnA(objectId){
+  function clickQnA(objectId,category){
     if (hover){
-      console.log("카테고리 변경")
+      setSelectedSubject(category)
+      goToAnswer()
     } else{
       nevigate(`/${objectId}`)
     }
@@ -28,10 +31,9 @@ const ProblemList = ({
   return (
     <P.NewQWrapper>
       {newQuestions.map((newQ) => (
-        <div key={newQ.id} onClick={() => clickQnA(newQ.objectId)}>
+        <div key={newQ.id} onClick={() => clickQnA(newQ.objectId,newQ.category)}>
           <P.NewQListMenu>
             <P.Category 
-            // onClick={() => clickCategory(newQ.category)}
             onMouseOver={() => setHover(true)}
             onMouseOut={() => setHover(false)}
             >
