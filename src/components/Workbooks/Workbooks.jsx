@@ -18,10 +18,10 @@ const Main = styled.div`
 const BookShelf = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	width: 70%;
+	width: 80%;
 	margin: 20px 0px 20px 0px;
-	padding: 18px 22px;
-	row-gap: 20px;
+	padding: 30px 15px;
+	row-gap: 30px;
 	background-color: #fbfbfb;
 	border : 1px solid #dcdcdc;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
