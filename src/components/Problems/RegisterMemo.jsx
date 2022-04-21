@@ -21,8 +21,8 @@ const Memo = styled.div`
    right: 15px;
    background:#fff44f;
    overflow:hidden;
-      inset 0 -40px 40px rgba(0,0,0,0.2),
-      0 5px 6px 5px rgba(0,0,0,0.2);
+    inset: 0 -40px 40px rgba(0,0,0,0.2),
+    0 5px 6px 5px rgba(0,0,0,0.2);
    font-family: 'Permanent Marker', cursive;
    font-size:19px;
    color:#130d6b;
