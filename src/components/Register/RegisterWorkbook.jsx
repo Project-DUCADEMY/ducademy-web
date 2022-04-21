@@ -4,19 +4,23 @@ import Problem from '../Problems/Problems'
 import ProblemList from '../Problems/ProblemList'
 import axios from 'axios'
 
-const ComponentContainer = styled.div`
-    width: 50%;
-    height: 100%;
-    overflow: scroll;
-    display: flex;
-    justify-content: center;
-`
 const MainContainer = styled.div`
     width: 90%;
     height: calc(100vh - 150px);
     display: flex;
     margin-top: 25px;
     justify-content: space-around;
+`
+const ComponentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const ComponentContainer = styled.div`
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
 `
 const OKbutton = styled.div`
     border-radius: 100%;
@@ -27,8 +31,28 @@ const OKbutton = styled.div`
     position: absolute;
     z-index: 1;
     cursor: pointer;
-    
 `
+const Button = styled.button`
+	width: 20%;
+	height: 50px;
+    margin: 10px;
+	background-color: #fbfbfb;
+	border : 1px solid #dcdcdc;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	font-size: 25px;
+	font-weight: bold;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transition: background-color ease-in-out .15s, color ease-in-out .15s;
+	&:hover {
+		background-color: #cccccc;
+	}
+	cursor: pointer;
+`
+
 const Render = () => {
     const [getProblems, setProblems] = useState([])
     const pushProblemList = (problem) => {
@@ -63,10 +87,10 @@ const Render = () => {
             <ComponentContainer>
                 <ProblemList newQuestions={getProblems} forRegister={popProblemList}/>
             </ComponentContainer>
-            <OKbutton onClick={registerWorkbook}/>
             <ComponentContainer>
                 <Problem fullSize={true} forRegister={pushProblemList} />
             </ComponentContainer>
+            <Button onClick={registerWorkbook}>등록</Button>
         </MainContainer>
     )
 }
