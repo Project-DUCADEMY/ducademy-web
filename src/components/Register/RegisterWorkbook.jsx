@@ -6,14 +6,13 @@ import axios from 'axios'
 
 const MainContainer = styled.div`
     width: 90%;
-    height: calc(100vh - 150px);
+    margin-top: 75px;
     display: flex;
-    margin-top: 25px;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: right;
 `
 const ComponentWrapper = styled.div`
     display: flex;
-    flex-direction: column;
 `
 const ComponentContainer = styled.div`
     width: 50%;
@@ -22,16 +21,7 @@ const ComponentContainer = styled.div`
     display: flex;
     justify-content: center;
 `
-const OKbutton = styled.div`
-    border-radius: 100%;
-    width: 50px;
-    height: 50px;
-    background-color: green;
-    margin: 0 auto;
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
-`
+
 const Button = styled.button`
 	width: 20%;
 	height: 50px;
@@ -84,12 +74,14 @@ const Render = () => {
     }
     return(
         <MainContainer>
-            <ComponentContainer>
-                <ProblemList newQuestions={getProblems} forRegister={popProblemList}/>
-            </ComponentContainer>
-            <ComponentContainer>
-                <Problem fullSize={true} forRegister={pushProblemList} />
-            </ComponentContainer>
+            <ComponentWrapper>
+                <ComponentContainer>
+                    <ProblemList newQuestions={getProblems} forRegister={popProblemList}/>
+                </ComponentContainer>
+                <ComponentContainer>
+                    <Problem fullSize={true} forRegister={pushProblemList} />
+                </ComponentContainer>
+            </ComponentWrapper>
             <Button onClick={registerWorkbook}>등록</Button>
         </MainContainer>
     )
