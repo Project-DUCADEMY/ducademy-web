@@ -100,8 +100,10 @@ const Render = ({ visable, questionNumber, onSuccessMemoRegister }) => {
     const [getClickedColor, setClickedColor] = useState(0)
     const [getText, setText] = useState('')
     const RegisterMemo = () => {
+        const Text = getText.replace(/\n/gi, '<br>')
+        console.log(getText)
         axios.post('/memo/create', {
-            content: getText,
+            content: Text,
             color: postitColorTheme[getClickedColor],
             questionNumber: questionNumber
         })

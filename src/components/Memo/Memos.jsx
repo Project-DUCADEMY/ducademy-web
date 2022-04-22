@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import LeftFunctionBar from './LeftFunctionBar'
-import RightFunctionBar from './RightFunctionBar'
 import WhiteBoard from './WhiteBoard'
 
 import axios from 'axios'
@@ -38,7 +37,15 @@ const FunctionWrapper = styled.div`
 
 const Memos = () => {
 	const [getDragOver, setDragOver] = useState('')
-
+	const [getMemos, setMemos] = useState([])
+	useEffect(() => {
+		axios.get('memo/list')
+		.then((res) => {
+			console.log(res.data.readMemo)
+			setMemos(res.data.readMemo)
+		})
+		.catch(console.log)
+	}, []) 
 
 	return (
 		<MainWrapper>
@@ -46,7 +53,7 @@ const Memos = () => {
 			<Main>
 				<FunctionWrapper>
 					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>
-					<WhiteBoard getDragOver={getDragOver}/>					
+					<WhiteBoard getDragOver={getDragOver} getMemos={getMemos} setMemos={setMemos}/>					
 				</FunctionWrapper>
 			</Main>
 			

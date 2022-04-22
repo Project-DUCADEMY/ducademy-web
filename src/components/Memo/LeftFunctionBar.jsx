@@ -39,9 +39,15 @@ const FunctionBox = styled.div`
         opacity: 0.9;
     };
     border-radius: 20px;
-
+    cursor: pointer;
+    z-index: 1;
 `
-
+const Core = styled.div`
+    width: 100%;
+    height: 70px;
+    z-index: 2;
+    position: absolute;
+`
 const IconWrapper = styled.div`
     position: relative;
     left: 15px;
@@ -106,7 +112,8 @@ const render = (props) => {
                         props.DragOver[1]('')
                     }}
                     isDragOver={props.DragOver[0] === '수정'}
-                >
+                >   
+                    <Core/>
                     <IconWrapper>
                         <Edit/>
                     </IconWrapper>
@@ -124,6 +131,7 @@ const render = (props) => {
                     }}
                     isDragOver={props.DragOver[0] === '삭제'}
                 >
+                    <Core/>
                     <IconWrapper>
                         <Delete/>
                     </IconWrapper>

@@ -4,6 +4,7 @@ import Memo from './Memo'
 const Main = styled.div`
     width: 100%;
     height: 100%;
+    min-width: 1000px;
     background-color: white;
     z-index: 1;
     border: 20px solid grey;
@@ -15,7 +16,6 @@ const MemoContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap; 
 	gap: 20px;
-
 `
 const ModalOverlay = styled.div`
   box-sizing: border-box;
@@ -26,36 +26,39 @@ const ModalOverlay = styled.div`
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
+  z-index: 1000;
 `
 
 const rand = (min, max) => { return Math.floor(Math.random() * (max - min + 1)) + min; }
 const Render =(props) => {
-    const [getMemos, setMemos] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}])
 	const [getDragOn, setDragOn] = useState(null)
-    const getDragOver = props.getDragOver
+    const [getTilt, setTilt] = useState([])
     const [getModalOpen, setModalOpen] = useState(null)
+    const getDragOver = props.getDragOver
     useEffect(() => {
-		let temp = [...getMemos]
-		temp.forEach((element, idx) => {
-			temp[idx].tilt = rand(-10, 10)
-		})
-		setMemos(temp)
-	}, [])
+		let temp = new Array(props.getMemos.length)
+        temp.length = props.getMemos.length
+        for(let i = 0; i < props.getMemos.length; i++) {
+            temp[i] = rand(-10, 10)
+        }
+		setTilt(temp)
+	}, [props.getMemos])
     return <Main>
         <MemoContainer>
 		<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(null)}}/>
         {
-            getMemos.map((element, idx) => {
+                props.getMemos.map((element, idx) => {
                 return <Memo
-                    Tilt={element.tilt}
+                    Tilt={getTilt[idx]}
                     Modal={[getModalOpen, setModalOpen]}
                     Drag={[getDragOn, setDragOn]}
                     DragOver={getDragOver}
                     Idx={idx + 1}
                     key={idx + 1}
-                    draggable={true} 	
-                ></Memo>
+                    draggable={true}
+                    info={element}
+                >
+                </Memo>
             })
         }
         </MemoContainer>
