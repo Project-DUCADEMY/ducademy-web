@@ -114,16 +114,12 @@ function ProblemResister() {
       title: getTitle,
       category:getCategory,
       content: quillRef.current.getEditorContents(),
-      // description: getDescription,
-      // info: getCategory,
-      // source: getSource
     })
     .then(response => {
       alert('질문 등록 성공!')
       navigate(-1)
     })
     .catch(error => alert(error.response.data))
-    // console.log(getTitle, getTitle, quillRef.current.getEditorContents())
   }
 
 
