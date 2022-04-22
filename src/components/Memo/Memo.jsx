@@ -83,7 +83,6 @@ const Render = (props) => {
   const navigate = useNavigate()
 
   const DragStartHandler = (event) => {
-    props.Drag[1](props.Idx);
     const image = <DragPostit color={props.info.color}>
         <NumberText>
           {props.info.questionNumber}
@@ -95,6 +94,8 @@ const Render = (props) => {
     ghost.style.transform = "translate(-10000px, -10000px)";
     event.dataTransfer.setDragImage(ghost, 100, 100);
     ReactDOM.render(image, ghost);
+    props.DragMemo[1](props.info)
+    props.Drag[1](props.Idx)
   };
   
   const DragEndHandler = () => {
@@ -110,13 +111,12 @@ const Render = (props) => {
         }}
         Clicked={props.Idx === props.Modal[0]}
         Dragged={props.Idx === props.Drag[0]}
-        DragOver={props.DragOver}
         draggable={props.Idx !== props.Modal[0]}
         onDragStart={DragStartHandler}
         onDragEnd={DragEndHandler}
+        onDrop={() => console.log('asd')}
         color={props.info.color}
       >
-      
         <NumberText 
           Clicked={props.Idx === props.Modal[0]}
           onClick={() => {navigate(`/problem/${props.info.questionNumber}`)}}>

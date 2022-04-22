@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import axios from 'axios'
 import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
 import { ReactComponent as Edit } from './../../assets/image/memo/edit.svg'
 import { ReactComponent as Search } from './../../assets/image/memo/search.svg'
@@ -81,7 +82,22 @@ const SearchBox = styled(FunctionBox)`
         opacity: 0.9;
     };
 `
-const render = (props) => {
+const Render = (props) => {
+    const DeleteMemoHandler = () => {
+        console.log(props.DragMemo)
+        axios.delete(`/memo/delete?id=${props.DragMemo._id}`, {
+            id: props.DragMemo._id
+        })
+        .then(() => {
+            axios.get('memo/list')
+            .then((res) => {
+                props.setMemos(res.data.readMemo)
+            })
+            .catch(console.log)
+        })
+        .catch(console.log)
+        props.DragOver[1]('')
+    }
     return (
         <Main>
             <FunctionBoxContainer>
@@ -105,10 +121,18 @@ const render = (props) => {
                 </SearchBox>
                 <FunctionBox 
                     color={'green'}
+                    onDragOver={(event) => {
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }}
                     onDragEnter={() => {
                         props.DragOver[1]('수정')
                     }}
                     onDragLeave={() => {
+                        props.DragOver[1]('')
+                    }}
+                    onDrop={() => {
+                        console.log('수정')
                         props.DragOver[1]('')
                     }}
                     isDragOver={props.DragOver[0] === '수정'}
@@ -123,6 +147,10 @@ const render = (props) => {
                 </FunctionBox>
                 <FunctionBox 
                     color={'red'}
+                    onDragOver={(event) => {
+                        event.stopPropagation();
+                        event.preventDefault();
+                    }}
                     onDragEnter={() => {
                         props.DragOver[1]('삭제')
                     }}
@@ -130,6 +158,7 @@ const render = (props) => {
                         props.DragOver[1]('')
                     }}
                     isDragOver={props.DragOver[0] === '삭제'}
+                    onDrop={DeleteMemoHandler}
                 >
                     <Core/>
                     <IconWrapper>
@@ -144,4 +173,4 @@ const render = (props) => {
     )
 }
 
-export default render
+export default Render

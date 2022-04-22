@@ -37,6 +37,7 @@ const FunctionWrapper = styled.div`
 
 const Memos = () => {
 	const [getDragOver, setDragOver] = useState('')
+	const [getDragMemo, setDragMemo] = useState({})
 	const [getMemos, setMemos] = useState([])
 	useEffect(() => {
 		axios.get('memo/list')
@@ -52,8 +53,16 @@ const Memos = () => {
 			<PlusButton url="/메모추가"/>
 			<Main>
 				<FunctionWrapper>
-					<LeftFunctionBar DragOver={[getDragOver, setDragOver]}/>
-					<WhiteBoard getDragOver={getDragOver} getMemos={getMemos} setMemos={setMemos}/>					
+					<LeftFunctionBar 
+						DragOver={[getDragOver, setDragOver]} 
+						DragMemo={getDragMemo}
+						setMemos={setMemos}/>
+					<WhiteBoard 
+						getDragOver={getDragOver} 
+						DragMemo={[getDragMemo, setDragMemo]} 
+						getMemos={getMemos} 
+						setMemos={setMemos} 
+					/>					
 				</FunctionWrapper>
 			</Main>
 			

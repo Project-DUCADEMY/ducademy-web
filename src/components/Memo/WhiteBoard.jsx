@@ -53,6 +53,7 @@ const Render =(props) => {
                     Modal={[getModalOpen, setModalOpen]}
                     Drag={[getDragOn, setDragOn]}
                     DragOver={getDragOver}
+                    DragMemo={props.DragMemo}
                     Idx={idx + 1}
                     key={idx + 1}
                     draggable={true}
