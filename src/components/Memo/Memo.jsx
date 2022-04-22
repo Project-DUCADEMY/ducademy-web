@@ -10,8 +10,8 @@ const Memo = styled.div`
     position:relative;
     right: 15px;
     background:${({color}) => color};
-    overflow:hidden;
-        inset 0 -40px 40px rgba(0,0,0,0.2),
+    overflow: hidden;
+        inset: 0 -40px 40px rgba(0,0,0,0.2),
         0 5px 6px 5px rgba(0,0,0,0.2);
     font-size:12px;
     transition: all 0.4s;
@@ -65,18 +65,20 @@ const MemoWrapper = styled.div`
   height: 175px;
   margin: 10px auto;
   padding: 20px;
-`;
+`
+
 const DragPostit = styled(Memo)`
   height: 100px;
   min-width: 100px;
   max-width: 100px;
   opacity: 1;
   transform: scale(0.5);
-`;
+`
+
 const NumberText = styled.p`
   font-size: ${({Clicked}) => Clicked ? 28 : 16}px;
   margin-top: 0px;
-  cursor: pointer
+  cursor: pointer;
 `
 
 const Render = (props) => {
@@ -122,7 +124,7 @@ const Render = (props) => {
           onClick={() => {navigate(`/problem/${props.info.questionNumber}`)}}>
           {props.info.questionNumber}
         </NumberText>
-        {props.info.content}
+        {props.info.content.replace(/<br>/gi, '\n')}
       </Memo>
     </MemoWrapper>
   );

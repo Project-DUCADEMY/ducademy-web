@@ -66,8 +66,6 @@ const BottomContainer = styled.div`
     justify-content: space-between;
     position: relative;
     bottom: 20px;
-
-}
 `
 const ColorSelectorContainer = styled.div`
     height: 100px;
