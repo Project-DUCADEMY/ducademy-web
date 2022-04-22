@@ -152,8 +152,8 @@ const Loginpage = () => {
 			<Container>
 				<LoginTitle>Login</LoginTitle>
 				<InputWrap>
-					<LoginInput type="text" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
-					<LoginInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
+					<LoginInput type="text" placeholder="email" value={getEmail} onChange={handleInputEmail}/>
+					<LoginInput type="password" placeholder="password" value={getPw} onChange={handleInputPw}/>
 				</InputWrap>
 				<CheckboxContainer>
 					<Checkbox onClick={()=>setClick(!click)}>

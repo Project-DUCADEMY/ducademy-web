@@ -112,10 +112,10 @@ const Joinpage = () => {
 			<Container>
 				<JoinTitle>Join</JoinTitle>
 				<InputWrap>
-					<JoinInput type="text" placeholder="Nickname" value={getUsername} onChange={handleInputUsername}/>
-					<JoinInput type="Email" placeholder="Email" value={getEmail} onChange={handleInputEmail}/>
-					<JoinInput type="password" placeholder="Password" value={getPw} onChange={handleInputPw}/>
-					<JoinInput type="password" placeholder="Password Check" value={getPwCh} onChange={handleInputPwCh}/>
+					<JoinInput type="text" placeholder="nickname" value={getUsername} onChange={handleInputUsername}/>
+					<JoinInput type="Email" placeholder="email" value={getEmail} onChange={handleInputEmail}/>
+					<JoinInput type="password" placeholder="password" value={getPw} onChange={handleInputPw}/>
+					<JoinInput type="password" placeholder="password Check" value={getPwCh} onChange={handleInputPwCh}/>
 				</InputWrap>
 				<ConfirmButton onClick={join}>Confirm</ConfirmButton>
 			</Container>
