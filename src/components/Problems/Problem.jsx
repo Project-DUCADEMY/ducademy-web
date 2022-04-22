@@ -186,6 +186,7 @@ const ModalOverlay = styled.div`
 const Render = ({ location }) => {
 	const [getProblem, setProblem] = useState({})
 	const [getModalOpen, setModalOpen] = useState(false)
+	const [getAnswer, setAnswer] = useState('')
 	const getUserData = useRecoilValue(userData)
 	const navigate = useNavigate();
 	let Challenge = 1
@@ -194,8 +195,13 @@ const Render = ({ location }) => {
 		axios.get(`/problem/problem/?id=${number}`)
 			.then(response => {
 				setProblem(response.data.question)
+				console.log(response.data.question)
 			})
 			.catch(error => console.log(error))
+
+		axios.get(`/problem/submittime/?id=${number}`)
+			.then(console.log)
+			.catch(console.log)
 	}, [])
 
 
@@ -218,6 +224,17 @@ const Render = ({ location }) => {
 	const onSuccessMemoRegister = () => {
 		alert('메모 등록 성공')
 		setModalOpen(false)
+	}
+	const submitAnswer = () => {
+		axios.post('/problem/answer', {
+			answer: getAnswer,
+			questionNumber: number
+		})
+		.then((result) => {
+			console.log(result)
+			alert(result.data.Message)
+		})
+		.catch(console.log)
 	}
 	return (
 		<Main>
@@ -288,7 +305,10 @@ const Render = ({ location }) => {
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>제출</BoxText>
-					<Box><Submit></Submit><SubmitButton>제출</SubmitButton></Box>
+					<Box>
+						<Submit value={getAnswer} onChange={(e) => {setAnswer(e.target.value)}}/>
+						<SubmitButton onClick={submitAnswer}>제출</SubmitButton>
+					</Box>
 				</BoxWrapper>
 				<BoxWrapper>
 					<BoxText>추천 문제</BoxText>
