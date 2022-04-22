@@ -215,9 +215,13 @@ const Render = ({ location }) => {
 		})
 		.catch(console.log)
 	}
+	const onSuccessMemoRegister = () => {
+		alert('메모 등록 성공')
+		setModalOpen(false)
+	}
 	return (
 		<Main>
-			<RegisterMemo visable={getModalOpen}/>
+			<RegisterMemo visable={getModalOpen} questionNumber={number} onSuccessMemoRegister={onSuccessMemoRegister}/>
 			<ModalOverlay visable={getModalOpen} onClick={() => {setModalOpen(false)}}/>
 			<Wrapper>
 				<ButtonWrapper>
@@ -225,13 +229,6 @@ const Render = ({ location }) => {
 					<Button>👍</Button>
 					<Button>☆</Button>
 					{
-						// getUserData.username === getProblem.owner ? 
-						// <>
-						// 	<Button>✏️</Button>
-						// 	<Button onClick={DeleteProblem}>❌</Button>
-						// </>
-						// :
-						// <></>
 						getUserData.username === getProblem.owner && 
 						<>
 							<Button>✏️</Button>
