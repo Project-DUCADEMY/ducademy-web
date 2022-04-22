@@ -1,13 +1,12 @@
 import userData from "../../store/userData";
 import { useRecoilValue } from "recoil";
-import axios from "axios";
 import styled from "styled-components";
 
 import CommitGraph from "./CommitGraph";
 import InfoCard from "./InfoCard";
 import Graph from "./Graph";
-import ModeifyInformation from "./ModifyInformation";
-import MyProblem from "./Problem/Problem.jsx";
+import ModeifyInformation from "./ModifyInformation/ModifyInformation";
+import Problem from "./Problem/Problem.jsx";
 
 const MainContainer = styled.div`
   flex-direction: column;
@@ -50,7 +49,7 @@ const MyPage = () => {
         </CommitGraph>
         <MyInfoContainer>
           <ModeifyInformation />
-          <MyProblem />
+          <Problem />
         </MyInfoContainer>
       </MainContainer>
     </Background>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //공용
 export const Title = styled.h2`
-  margin-top: 7DE0px;
+  margin-top: 100px;
 `;
 
 export const Hr = styled.div`
@@ -13,8 +13,8 @@ export const Hr = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 120px;
   display: flex;
+  /* background-color: blue; */
 `;
 
 export const SubName = styled.div`
