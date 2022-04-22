@@ -1,6 +1,5 @@
 import styled,{css} from 'styled-components'
 import { useState } from 'react'
-import Slider from 'rc-slider'
 const Box = styled.div`
 	background-color: #fbfbfb;
 	border : 1px solid black;
