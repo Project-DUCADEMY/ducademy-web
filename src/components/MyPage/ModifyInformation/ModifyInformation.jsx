@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import React, { useEffect } from "react";
 import * as MI from "./ModifyInformation.style";
-import * as P from "./Public.style";
+import * as P from "../Public.style";
 
 const ModeifyInformation = () => {
   //파일 미리볼 url을 저장해줄 state
