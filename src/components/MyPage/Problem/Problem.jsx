@@ -13,6 +13,9 @@ const Problem = () => {
       RightProblemNum: "1001",
     },
     {
+      RightProblemNum: "1002",
+    },
+    {
       RightProblemNum: "10002",
     },
     {
@@ -865,21 +868,15 @@ const Problem = () => {
   }, []);
 
   const MakeRightProblem = rightproblem.map((rightproblem) => (
-    <MP.RP href={`problem/problem/${rightproblem.RightProblemNum}`}>
-      {rightproblem.RightProblemNum}
-    </MP.RP>
+    <MP.RP href={`problem/${rightproblem.RightProblemNum}`}>{rightproblem.RightProblemNum}</MP.RP>
   ));
 
   const MakeWrongProblem = wrongproblem.map((wrongproblem) => (
-    <MP.WP href={`problem/problem/${wrongproblem.WrongProblemNum}`}>
-      {wrongproblem.WrongProblemNum}
-    </MP.WP>
+    <MP.WP href={`problem/${wrongproblem.WrongProblemNum}`}>{wrongproblem.WrongProblemNum}</MP.WP>
   ));
 
   const MakeMakeProblem = makeproblem.map((makeproblem) => (
-    <MP.MP href={`problem/problem/${makeproblem.MakeProblemNum}`}>
-      {makeproblem.MakeProblemNum}
-    </MP.MP>
+    <MP.MP href={`problem/${makeproblem.MakeProblemNum}`}>{makeproblem.MakeProblemNum}</MP.MP>
   ));
 
   return (
