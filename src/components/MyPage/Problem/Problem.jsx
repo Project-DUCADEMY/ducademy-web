@@ -803,6 +803,8 @@ const Problem = () => {
     },
   ]);
 
+  const [makeprolem,setmakeproblem] = useState
+
   useEffect(() => {
     // 무작위 번호로 들어오는 RightProblemNum을 기준으로 오름차순으로 정렬
     setrightproblem(
@@ -817,6 +819,12 @@ const Problem = () => {
         return a.WrongProblemNum - b.WrongProblemNum;
       })
     );
+
+    setmakeproblem(
+      makeproblem.srot(function(a,b){
+        return a.
+      })
+    )
   }, []);
 
   const MakeRightProblem = rightproblem.map((rightproblem) => (
@@ -842,7 +850,6 @@ const Problem = () => {
         <MP.ProblemList>{MakeRightProblem}</MP.ProblemList>
       </MP.Container>
 
-      {/* <P.Container style={{ marginTop: "100px" }}> */}
       <MP.Container>
         <P.SubName style={{ height: "450px" }}>틀린 문제</P.SubName>
 
