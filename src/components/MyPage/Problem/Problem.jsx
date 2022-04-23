@@ -820,11 +820,11 @@ const Problem = () => {
       })
     );
 
-    setmakeproblem(
-      makeproblem.srot(function(a,b){
-        return a.
-      })
-    )
+    // setmakeproblem(
+    //   makeproblem.srot(function(a,b){
+    //     return a
+    //   })
+    // )
   }, []);
 
   const MakeRightProblem = rightproblem.map((rightproblem) => (
