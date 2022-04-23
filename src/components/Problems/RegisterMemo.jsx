@@ -74,7 +74,7 @@ const ColorSelectorContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
-    cursor: pointer
+    cursor: pointer;
 
 `
 const ColorSelector = styled.div`

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as P from "./ProblemList.style";
 import { useNavigate } from "react-router-dom";
-
 import PlusButton from "../common/PlusButton";
 
 const ProblemList = ({ newQuestions, forRegister, hidePlusButton }) => {
