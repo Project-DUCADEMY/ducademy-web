@@ -6,13 +6,6 @@ import PlusButton from "../common/PlusButton";
 const ProblemList = ({ newQuestions, forRegister, hidePlusButton }) => {
   function makeDate(time) {
     const tempTime = new Date(time);
-    // console.log([
-    //   tempTime.getFullYear(),
-    //   tempTime.getMonth() + 1,
-    //   tempTime.getDate(),
-    // ]);
-    // return [tempTime.getFullYear(),
-    //   tempTime.getMonth()+1 < 10 ? "0"+tempTime.getMonth()+1: tempTime.getMonth()+1,tempTime.getDate()]
     return `
       ${tempTime.getFullYear()} / ${tempTime
       .getMonth()

@@ -56,6 +56,7 @@ const SearchContainer = styled.div`
 const Problems = ({forRegister}) => {
   const [getSortedBy, setSortedBy] = useState('정렬');
   const [getType, setType] = useState(0)
+  const [getSearch, setSearch] = useState('')
   const [menus, setMenus] = useState([
     "전체",
     "저장",
@@ -68,13 +69,12 @@ const Problems = ({forRegister}) => {
   ]);
   const [getProblems, setProblems] = useRecoilState(problems)
 	useEffect(() => {
-		axios.get('/problem/problems')
+		axios.get(`/problem/problems/?query=${getSearch}`)
 		.then(response => {
 			setProblems(response.data.questionInfo)
-      console.log(response.data.questionInfo)
 		})
 		.catch(error => console.log(error))
-	}, [])
+	}, [getSearch])
   
   return (
     <Main fullSize={forRegister}>
@@ -100,7 +100,7 @@ const Problems = ({forRegister}) => {
               <option key={idx}>{subject}</option>
             ))}
           </M.NewQMenuSubject>
-          <SearchContainer>
+          <SearchContainer value={getSearch} onChange={(e) => setSearch(e.target.value)}>
             <input type="text" />
             <img src={search} />
           </SearchContainer>
