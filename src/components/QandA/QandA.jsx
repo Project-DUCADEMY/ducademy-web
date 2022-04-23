@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { selected } from "../../store/qna";
+
 // import Q from "./QandA.style"
 import * as Q from "./QandA.style";
 import * as M from "../../style/menu.style";
@@ -83,7 +86,146 @@ const QandA = () => {
       objectId: "park6",
     },
   ]);
-  const [newQuestions, setNewQuestions] = useState([]);
+
+  const [newQuestions, setNewQuestions] = useState([
+    {
+      id: 1,
+      category: "수학",
+      title:
+        "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park7",
+    },
+    {
+      id: 2,
+      category: "과학",
+      title: "원석쌤도 몰랐음",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park8",
+    },
+    {
+      id: 3,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park9",
+    },
+    {
+      id: 4,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park10",
+    },
+    {
+      id: 5,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park11",
+    },
+    {
+      id: 6,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park12",
+    },
+    {
+      id: 7,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park13",
+    },
+    {
+      id: 8,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park14",
+    },
+    {
+      id: 9,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park15",
+    },
+    {
+      id: 10,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park16",
+    },
+    {
+      id: 11,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park17",
+    },
+    {
+      id: 12,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park18",
+    },
+    {
+      id: 13,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park19",
+    },
+    {
+      id: 14,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park20",
+    },
+    {
+      id: 15,
+      category: "수학",
+      title: "4의 n제곱근 중 실수 구하기",
+      comments: 4,
+      writer: "codingbotPark",
+      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
+      objectId: "park21",
+    },
+  ]);
+
   const [menus, setMenus] = useState([
     {
       title: "최신순",
@@ -131,7 +273,7 @@ const QandA = () => {
   // 현재 선택 된 정렬방식
   const [sortedBy, setSortedBy] = useState(0);
   // 현재 선택된 옵션
-  const [selectedSubject, setSelectedSubject] = useState("모두");
+  const [selectedSubject, setSelectedSubject] = useRecoilState(selected);
 
   function goToAnswer() {
     window.scrollTo({
@@ -174,6 +316,14 @@ const QandA = () => {
       nevigate(`/QandA/${objectId}`);
     }
   }
+
+  // 이 함수 때문에 goToAnswer함수가 두 번 실행되는 걸 알지만
+  // QnA 확인 페이지에서 카테고리를 누르고 이동 했을 때를 위해 사용
+  useEffect(() => {
+    if (selectedSubject != "모두"){
+      goToAnswer();
+    }
+  }, [selectedSubject]);
 
   return (
     <>

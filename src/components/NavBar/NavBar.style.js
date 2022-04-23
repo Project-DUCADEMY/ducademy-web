@@ -5,7 +5,7 @@ import { ReactComponent as Icon } from '../../assets/image/DUCAMI.svg'
 
 export const NavBarMainWrapper = styled.div`
 	position: fixed;
-	z-index: 2;
+	z-index: 10;
 	width: 100%;
     box-shadow: 4px 4px 15px 0px #0000001a;
 	background-color: white;

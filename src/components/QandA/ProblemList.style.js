@@ -64,3 +64,4 @@ export const NewQInfoDate = styled.div`
 export const NewQInfoWriter = styled(NewQInfoDate)`
   margin-right: 40px;
 `;
+
