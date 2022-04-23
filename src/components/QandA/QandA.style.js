@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 `;
 
 export const MyQContainer = styled.div`
@@ -73,7 +73,7 @@ export const MyQ = styled.article`
   margin-top: 7px;
   margin-right: 40px;
   border-radius: 20px;
-  padding:5px 30px 10px 30px;
+  padding: 5px 30px 10px 30px;
   box-sizing: border-box;
   position: relative;
   font-size: 15px;
@@ -130,8 +130,8 @@ export const Category = styled.div`
   align-items: center;
   margin-left: 10px;
   margin-right: 30px;
-  position:relative;
-  z-index:5;
+  position: relative;
+  z-index: 5;
   > div {
     box-shadow: 4px 4px 15px 0px #0000001a;
     border-radius: 20px;
@@ -158,19 +158,19 @@ export const MyQFootMenu = styled.div`
 
 export const BridgeQ = styled.div`
   margin-top: 110px;
-  width:100%;
+  width: 100%;
   /* height:500px;  */
-  border-radius:15px;
-  box-sizing:border-box;
+  border-radius: 15px;
+  box-sizing: border-box;
   box-shadow: 4px -4px 15px 0px #0000001a;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #3fe2a6;
-  color:white;
-  padding:20px 0px 20px 0px;
-  > *{
-    margin:10px 0px 20px 0px;
+  color: white;
+  padding: 20px 0px 20px 0px;
+  > * {
+    margin: 10px 0px 20px 0px;
   }
   /* h1{
     margin-top:80px;
@@ -178,33 +178,32 @@ export const BridgeQ = styled.div`
   h2{
     margin-top:80px;
   } */
-`
+`;
 
 export const SearchContainer = styled.div`
   /* min-width:500px; */
   /* width:auto; */
-  background-color:white;
-  border-radius:15px;
-  display:flex;
-  align-items:center;
-  input{
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  input {
     height: 50px;
-    width:400px;
+    width: 400px;
     /* width:max-content; */
-    font-size:17px;
-    border-radius:15px;
-    padding-left:30px;
-    outline:none;
-    border:none;
+    font-size: 17px;
+    border-radius: 15px;
+    padding-left: 30px;
+    outline: none;
+    border: none;
   }
-  img{
-    cursor:pointer;
-    padding-right:10px;
+  img {
+    cursor: pointer;
+    padding-right: 10px;
   }
-`
+`;
 
 // -----------------------------------
-
 
 export const NewQContainer = styled.div`
   width: 85vw;
