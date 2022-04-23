@@ -7,12 +7,13 @@ import RegisterMemo from './RegisterMemo'
 import userData from '../../store/userData';
 import { useNavigate } from "react-router-dom";
 const Main = styled.div`
-  	width: 100%;
+  	width: 80%;
 	display: flex;
 	justify-content: center;
 	background-color: rgb(255, 255, 255);
 	margin-top: 30px;
 	padding-top: 50px;
+	margin-bottom: 100px;
 `
 
 const Wrapper = styled.div`
@@ -168,6 +169,7 @@ const CategoryContainer = styled(Box)`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+	color: white;
 	gap: 10px;
 
 `
@@ -184,24 +186,28 @@ const ModalOverlay = styled.div`
   z-index: 100;
 `
 const Render = ({ location }) => {
+
 	const [getProblem, setProblem] = useState({})
+	const [getSubmitInfo, setSubmitinfo] = useState({})
+
 	const [getModalOpen, setModalOpen] = useState(false)
 	const [getAnswer, setAnswer] = useState('')
 	const getUserData = useRecoilValue(userData)
 	const navigate = useNavigate();
-	let Challenge = 1
 	const { number } = useParams();
 	useEffect(() => {
 		axios.get(`/problem/problem/?id=${number}`)
 			.then(response => {
 				setProblem(response.data.question)
-				console.log(response.data.question)
+				if(response.data.submit === null) {
+					setSubmitinfo({try: 0, success: false})
+				}
+				else {
+					setSubmitinfo(response.data.submit)
+				}
+
 			})
 			.catch(error => console.log(error))
-
-		axios.get(`/problem/submittime/?id=${number}`)
-			.then(console.log)
-			.catch(console.log)
 	}, [])
 
 
@@ -232,6 +238,7 @@ const Render = ({ location }) => {
 		})
 		.then((result) => {
 			console.log(result)
+			setSubmitinfo(result.data)
 			alert(result.data.Message)
 		})
 		.catch(console.log)
@@ -265,11 +272,11 @@ const Render = ({ location }) => {
 					<InfoBox>
 						<InfoItem>
 							<InfoHead>도전 여부</InfoHead>
-							<InfoBody>{Challenge == 2 ? "미도전" : Challenge == 1 ? '성공' : '실패'}</InfoBody>
+							<InfoBody>{getSubmitInfo.try === 0 ? '미도전' : getSubmitInfo.success ? '성공' : '실패'}</InfoBody>
 						</InfoItem>
 						<InfoItem>
 							<InfoHead>내 제출</InfoHead>
-							<InfoBody>13</InfoBody>
+							<InfoBody>{getSubmitInfo.try}</InfoBody>
 						</InfoItem>
 					</InfoBox>
 				</BoxWrapper>
@@ -286,7 +293,7 @@ const Render = ({ location }) => {
 							getProblem.info.map((element, idx) => {
 								return (
 									<CategoryCore 
-										color='blue'
+										color='#3fe2a6;'
 										key={idx}>
 									{element}
 									</CategoryCore>
@@ -309,12 +316,6 @@ const Render = ({ location }) => {
 						<Submit value={getAnswer} onChange={(e) => {setAnswer(e.target.value)}}/>
 						<SubmitButton onClick={submitAnswer}>제출</SubmitButton>
 					</Box>
-				</BoxWrapper>
-				<BoxWrapper>
-					<BoxText>추천 문제</BoxText>
-					<RecommendBox>
-						안녕하세요&nbsp;하하하하하
-					</RecommendBox>
 				</BoxWrapper>
 			</Wrapper>
 		</Main>
