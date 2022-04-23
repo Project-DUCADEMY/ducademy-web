@@ -10,14 +10,14 @@ export const ProblemList = styled.div`
   row-gap: 20px;
   width: 80%;
   height: 450px;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
 
   ::-webkit-scrollbar {
     width: 7px;
   }
   ::-webkit-scrollbar-thumb {
-    height: 17%;
+    height: auto;
     background: #c4c4c4;
     border-radius: 15px;
   }

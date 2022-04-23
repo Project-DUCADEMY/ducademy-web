@@ -44,9 +44,9 @@ const MyPage = () => {
     <Background>
       <MainContainer>
         <ProfileTitle>{getUserData.username} 님의 정보</ProfileTitle>
-        <CommitGraph>
+        {/* <CommitGraph>
           <Graph />
-        </CommitGraph>
+        </CommitGraph> */}
         <MyInfoContainer>
           <ModeifyInformation />
           <Problem />
