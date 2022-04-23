@@ -20,9 +20,9 @@ import Joinpage from "./components/Authentication/JoinPage";
 
 import NotFound from "./NotFound";
 import Register from "./components/Register/RegisterProblem";
-import RegisterWorkbook from './components/Register/RegisterWorkbook'
-import RegisterQuestion from './components/Register/RegisterQuestion';
-import ScrollToTop from './components/common/ScrollToTop'
+import RegisterWorkbook from "./components/Register/RegisterWorkbook";
+import RegisterQuestion from "./components/Register/RegisterQuestion";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 import userData from "./store/userData";
 import { useRecoilState } from "recoil";
@@ -36,14 +36,14 @@ const AppRouter = () => {
       .post("/user/userinfo")
       .then((response) => setUserData(response.data))
       .catch((error) => setUserData(null));
+    // .catch((error) => setUserData(1));
   }, []);
 
   return (
     <BrowserRouter>
-      <ScrollToTop/>
+      <ScrollToTop />
       <NavBar />
       <Routes>
-
         {getUserData === null ? (
           <>
             <Route path="/login" element={<Loginpage />} />
@@ -58,13 +58,13 @@ const AppRouter = () => {
             <Route path="/workbook" element={<Workbooks />} />
             <Route path="/exam" element={<Exam />} />
             <Route path="/QandA" element={<QnA />} />
-            <Route path="/QandA/:number" element={<QnAPage/>}/>
+            <Route path="/QandA/:number" element={<QnAPage />} />
             <Route path="/Group" element={<Groups />} />
             <Route path="/memo" element={<Memos />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/registerWorkbook" element={<RegisterWorkbook/>} />
-            <Route path="/registerQuestion" element={<RegisterQuestion/>} />
+            <Route path="/registerWorkbook" element={<RegisterWorkbook />} />
+            <Route path="/registerQuestion" element={<RegisterQuestion />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />

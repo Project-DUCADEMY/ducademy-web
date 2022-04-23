@@ -7,77 +7,859 @@ import * as MP from "./Problem";
 const Problem = () => {
   const [rightproblem, setrightproblem] = useState([
     {
-      problemNum: "1000",
+      RightProblemNum: "1000",
     },
     {
-      problemNum: "1001",
+      RightProblemNum: "1001",
     },
     {
-      problemNum: "10002",
+      RightProblemNum: "10002",
     },
     {
-      problemNum: "1003",
+      RightProblemNum: "1003",
     },
     {
-      problemNum: "4000",
+      RightProblemNum: "4000",
     },
     {
-      problemNum: "2043",
+      RightProblemNum: "2043",
     },
     {
-      problemNum: "2050",
+      RightProblemNum: "2050",
     },
     {
-      problemNum: "3456",
+      RightProblemNum: "3456",
     },
     {
-      problemNum: "3567",
+      RightProblemNum: "3567",
     },
     {
-      problemNum: "3865",
+      RightProblemNum: "3865",
     },
     {
-      problemNum: "4900",
+      RightProblemNum: "4900",
     },
     {
-      problemNum: "5000",
+      RightProblemNum: "5000",
     },
   ]);
 
+  const [wrongproblem, setwrongproblem] = useState([
+    {
+      WrongProblemNum: "10120",
+    },
+    {
+      WrongProblemNum: "14241",
+    },
+    {
+      WrongProblemNum: "10340",
+    },
+    {
+      WrongProblemNum: "123",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+    {
+      WrongProblemNum: "7664",
+    },
+    {
+      WrongProblemNum: "965",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "76497",
+    },
+    {
+      WrongProblemNum: "432",
+    },
+    {
+      WrongProblemNum: "2043",
+    },
+    {
+      WrongProblemNum: "2346",
+    },
+    {
+      WrongProblemNum: "3456",
+    },
+    {
+      WrongProblemNum: "3567",
+    },
+  ]);
+
+  const [makeprolem,setmakeproblem] = useState
+
   useEffect(() => {
-    // 무작위 번호로 들어오는 problemNum을 기준으로 오름차순으로 정렬
+    // 무작위 번호로 들어오는 RightProblemNum을 기준으로 오름차순으로 정렬
     setrightproblem(
       rightproblem.sort(function (a, b) {
-        return a.problemNum - b.problemNum;
+        return a.RightProblemNum - b.RightProblemNum;
       })
     );
+
+    // 무작위 번호로 들어오는 WrongProblemNum을 기준으로 오름차순으로 정렬
+    setwrongproblem(
+      wrongproblem.sort(function (a, b) {
+        return a.WrongProblemNum - b.WrongProblemNum;
+      })
+    );
+
+    setmakeproblem(
+      makeproblem.srot(function(a,b){
+        return a.
+      })
+    )
   }, []);
 
-  function makeRightProblem() {
-    rightproblem.map();
-  }
+  const MakeRightProblem = rightproblem.map((rightproblem) => (
+    <MP.RP href={`problem/problem/${rightproblem.RightProblemNum}`}>
+      {rightproblem.RightProblemNum}
+    </MP.RP>
+  ));
+
+  const MakeWrongProblem = wrongproblem.map((wrongproblem) => (
+    <MP.WP href={`problem/problem/${wrongproblem.WrongProblemNum}`}>
+      {wrongproblem.WrongProblemNum}
+    </MP.WP>
+  ));
 
   return (
     <div>
       <P.Title>문제</P.Title>
       <P.Hr />
 
-      <P.Container>
+      <MP.Container>
         <P.SubName style={{ height: "450px" }}>맞은 문제</P.SubName>
 
-        <MP.ProblemListContainer>
-          <MP.ProblemList></MP.ProblemList>
-        </MP.ProblemListContainer>
-      </P.Container>
+        <MP.ProblemList>{MakeRightProblem}</MP.ProblemList>
+      </MP.Container>
 
-      {/* <P.Container style={{ marginTop: "100px" }}> */}
-      <P.Container>
-        <P.SubName style={{ height: "450px" }}>맞은 문제</P.SubName>
+      <MP.Container>
+        <P.SubName style={{ height: "450px" }}>틀린 문제</P.SubName>
 
-        <MP.ProblemListContainer>
-          <MP.ProblemList></MP.ProblemList>
-        </MP.ProblemListContainer>
-      </P.Container>
+        <MP.ProblemList>{MakeWrongProblem}</MP.ProblemList>
+      </MP.Container>
+
+      <MP.Container>
+        <P.SubName style={{ height: "450px" }}>내가 만든 문제</P.SubName>
+        <MP.ProblemList></MP.ProblemList>
+      </MP.Container>
     </div>
   );
 };

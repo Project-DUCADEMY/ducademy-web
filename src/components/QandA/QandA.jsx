@@ -126,7 +126,6 @@ const QandA = () => {
     },
   ]);
 
-
   // ----------- 더미
 
   // 현재 선택 된 정렬방식
@@ -148,10 +147,10 @@ const QandA = () => {
   function makeDate(time) {
     const tempTime = new Date(time);
     return `
-      ${tempTime.getFullYear()} / ${tempTime
-      .getMonth()
+      ${tempTime.getFullYear()} / ${tempTime.getMonth().toString().padStart(2, "0")} / ${tempTime
+      .getDate()
       .toString()
-      .padStart(2, "0")} / ${tempTime.getDate().toString().padStart(2, "0")}
+      .padStart(2, "0")}
     `;
   }
 
@@ -167,9 +166,9 @@ const QandA = () => {
   const [hover, setHover] = useState(false);
 
   const nevigate = useNavigate();
-  function clickMyQ(objectId,category) {
+  function clickMyQ(objectId, category) {
     if (hover) {
-      setSelectedSubject(category)
+      setSelectedSubject(category);
       goToAnswer();
     } else {
       nevigate(`/QandA/${objectId}`);
@@ -190,14 +189,13 @@ const QandA = () => {
                 <Q.MyQ
                   key={myQ.id}
                   isNew={myQ.new}
-                  onClick={() => clickMyQ(myQ.objectId,myQ.category)}
+                  onClick={() => clickMyQ(myQ.objectId, myQ.category)}
                 >
                   <section>
                     <h3>{myQ.title}</h3>
                   </section>
                   <Q.MyQFoot>
                     <Q.Category
-                    
                       onMouseOver={() => setHover(true)}
                       onMouseOut={() => setHover(false)}
                     >
@@ -219,10 +217,7 @@ const QandA = () => {
           <Q.BridgeQ>
             <h1>질문과 해설을 검색하세요</h1>
             <Q.SearchContainer>
-              <input
-                type="text"
-                onChange={(e) => changeSearchValue(e.target.value)}
-              />
+              <input type="text" onChange={(e) => changeSearchValue(e.target.value)} />
               <img src={search} onClick={searchThat} />
             </Q.SearchContainer>
             <h2>도움을 주고 받을 수 있습니다</h2>
@@ -256,12 +251,11 @@ const QandA = () => {
                 <option value="기타">기타</option>
                 {subjects.map((subject) => (
                   <optgroup key={subject.id} label={subject.label}>
-                    {subject.values.map((subject) =>
-                        <option value={subject.subject} key={subject.id}>
-                          {subject.subject}
-                        </option>
-                      
-                    )}
+                    {subject.values.map((subject) => (
+                      <option value={subject.subject} key={subject.id}>
+                        {subject.subject}
+                      </option>
+                    ))}
                   </optgroup>
                 ))}
               </M.NewQMenuSubject>
