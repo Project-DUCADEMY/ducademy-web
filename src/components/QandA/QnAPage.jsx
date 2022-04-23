@@ -1,54 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as Q from "./QnAPage.style";
 
 import arrow from "../../assets/image/q&aPage/arrow.svg"
 
+import { useParams } from "react-router-dom";
+
+import axios from 'axios';
+
 const QnAPage = () => {
-  const [question, setQuestion] = useState({
-    title: "두카미 친구들 눈을 보고 얘기합시다",
-    content:
-      "고등학교2학년 1학기 로그 문제들인데 너무 쉽네요 님들ㅇ도 풀어보셈 ㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 하하하하",
-  });
-
-  const [answers, setAnswers] = useState([
-    {
-      id: 0,
-      userId: "병관선생",
-      content:
-        "이걸 못품? ㄹㅇ 김건호 이어폰 낀다고 못듣는거 이해하지만 버즈 빼버리고싶다",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-    },
-    {
-      id: 1,
-      userId: "병관선생",
-      content:
-        "이걸 못품? ㄹㅇ 김건호 이어폰 낀다고 못듣는거 이해하지만 버즈 빼버리고싶다",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-    },
-    {
-      id: 2,
-      userId: "병관선생",
-      content:
-        "이걸 못품? ㄹㅇ 김건호 이어폰 낀다고 못듣는거 이해하지만 버즈 빼버리고싶다 이거 길이 얼마나 길어도 ㄱㄴ 한가 모르겠네 ㅋㅋㄹㄹ ",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-    },
-  ]);
-
+  const { number } = useParams();
+  const [question, setQuestion] = useState({comment: []});
+  const [comment, setComment] = useState('')
+  useEffect(() => {
+    axios.get(`/QnA/detail/?id=${number}`)
+    .then(result => {
+      setQuestion(result.data.QnA)
+    })
+    .catch(console.log)
+  }, [])
+  const CheckLoading = (param) => {
+		if (param === undefined || param === null) {
+			return ' '
+		}
+		else {
+			return param
+		}
+	}
+  const registerComment = () => {
+    axios.post(`/QnA/registerComment/?id=${number}`, {
+      content: comment
+    })
+    .then(result => {
+      console.log(result)
+      setQuestion(result.data.QnA)
+    })
+    .catch(console.log)
+  }
   return (
     <Q.Wrapper>
-    <img src={arrow} />
+    {/* <img src={arrow} /> */}
       <Q.QuestionWrapper>
         <article>
-          <h2>{question.title}</h2>
-          <p>{question.content}</p>
+          <h2>{CheckLoading(question.title)}</h2>
+          <p dangerouslySetInnerHTML={{__html: CheckLoading(question.content)}}></p>
         </article>
       </Q.QuestionWrapper>
 
       <Q.AnswerWrapper>
-        {answers.map((answer, idx) => (
+        {question.comment.map((answer, idx) => (
           <Q.AnswerContainer
-            key={answer.id}
+            key={idx}
             isRight={idx % 2 == 0 ? true : false}
           >
             <div>
@@ -57,7 +59,7 @@ const QnAPage = () => {
                 <Q.AnswerInfo>
                   <div>
                     <i>by&#9;</i>
-                    {answer.userId}
+                    {answer.name}
                   </div>
                   <div>{answer.time}</div>
                 </Q.AnswerInfo>
@@ -67,6 +69,8 @@ const QnAPage = () => {
           </Q.AnswerContainer>
         ))}
       </Q.AnswerWrapper>
+      <Q.CommentInput value={comment} onChange={(e) => setComment(e.target.value)}/>
+      <Q.ConfirmButton onClick={registerComment}>등록</Q.ConfirmButton>
     </Q.Wrapper>
   );
 };

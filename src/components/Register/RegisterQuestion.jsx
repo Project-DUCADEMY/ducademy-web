@@ -109,10 +109,10 @@ function ProblemResister() {
   };
   const navigate = useNavigate()
   const submit = () => {
-    axios.post('/question/register', 
+    axios.post('/QnA/create', 
     {
       title: getTitle,
-      category:getCategory,
+      category: getCategory,
       content: quillRef.current.getEditorContents(),
     })
     .then(response => {
@@ -122,8 +122,6 @@ function ProblemResister() {
     .catch(error => alert(error.response.data))
   }
 
-
-
   const [getTitle, setTitle] = useState('')
   const [getCategory, setCategory] = useState('')
   return (
@@ -131,7 +129,7 @@ function ProblemResister() {
       <QuestionMain>
         <R.TopInputContainer>
             <TitleHolder placeholder={"제목"} onChange={(e) => setTitle(e.target.value)}/>
-            <TagHolder placeholder={"태그"} onChange={(e) => setCategory(e.target.value)}/>
+            <TagHolder placeholder={"유형"} onChange={(e) => setCategory(e.target.value)}/>
           {/*<CategoryInput placeholder={"유형"} />*/}
         </R.TopInputContainer>
         <R.Wrapper>

@@ -9,7 +9,6 @@ const Main = styled.footer`
     height: 100px;
     background-color: #222222;
     padding: 18px 22px;
-    margin-top: 25%;
     border-top: 5px solid black;
     font-size: 15px;
 `

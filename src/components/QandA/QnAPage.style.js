@@ -97,3 +97,27 @@ export const AnswerInfo = styled.header`
         font-size:14px;
     }
 `
+
+export const CommentInput = styled.textarea`
+    width: 200px;
+    height: 50px;
+`
+
+export const ConfirmButton = styled.button`
+  width: 230px;
+  height: 65px;
+  border-radius: 30px;
+  border: none;
+  background-color: #3fe2a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: opacity ease-in-out 0.1s;
+  color: white;
+  margin: 10px auto;
+  &:hover {
+    opacity: 0.7;
+  }
+`;

@@ -30,8 +30,8 @@ const ProblemList = ({
   }
   return (
     <P.NewQWrapper>
-      {newQuestions.map((newQ) => (
-        <div key={newQ.id} onClick={() => clickQnA(newQ.objectId,newQ.category)}>
+      {newQuestions.map((newQ) => {return (
+        <div key={newQ._id} onClick={() => clickQnA(newQ._id ,newQ.category)}>
           <P.NewQListMenu>
             <P.Category 
             onMouseOver={() => setHover(true)}
@@ -43,11 +43,11 @@ const ProblemList = ({
           </P.NewQListMenu>
 
           <P.NewQListInfo>
-            <P.NewQInfoWriter>{newQ.writer}</P.NewQInfoWriter>
-            <P.NewQInfoDate>{makeDate(newQ.time)}</P.NewQInfoDate>
+            <P.NewQInfoWriter>{newQ.creator}</P.NewQInfoWriter>
+            <P.NewQInfoDate>{makeDate(newQ.day)}</P.NewQInfoDate>
           </P.NewQListInfo>
         </div>
-      ))}
+      )})}
     </P.NewQWrapper>
   );
 };

@@ -11,10 +11,19 @@ import ProblemList from "./ProblemList";
 import PlusButton from "../common/PlusButton";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 // 60자로 해야함
 const QandA = () => {
   // 더미----------------------------
-
+  useEffect(() => {
+    axios.get('/QnA/allList')
+    .then((result) => {
+      console.log(result.data.QnAList)
+      setNewQuestions(result.data.QnAList)
+    })
+    .catch(console.log)
+  }, [])
   const [myQuestions, setMyQuestions] = useState([
     {
       id: 1,
@@ -74,147 +83,7 @@ const QandA = () => {
       objectId: "park6",
     },
   ]);
-
-  const [newQuestions, setNewQuestions] = useState([
-    {
-      id: 1,
-      category: "수학",
-      title:
-        "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park7",
-    },
-    {
-      id: 2,
-      category: "과학",
-      title: "원석쌤도 몰랐음",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park8",
-    },
-    {
-      id: 3,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park9",
-    },
-    {
-      id: 4,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park10",
-    },
-    {
-      id: 5,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park11",
-    },
-    {
-      id: 6,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park12",
-    },
-    {
-      id: 7,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park13",
-    },
-    {
-      id: 8,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park14",
-    },
-    {
-      id: 9,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park15",
-    },
-    {
-      id: 10,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park16",
-    },
-    {
-      id: 11,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park17",
-    },
-    {
-      id: 12,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park18",
-    },
-    {
-      id: 13,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park19",
-    },
-    {
-      id: 14,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park20",
-    },
-    {
-      id: 15,
-      category: "수학",
-      title: "4의 n제곱근 중 실수 구하기",
-      comments: 4,
-      writer: "codingbotPark",
-      time: "Tue Apr 12 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      objectId: "park21",
-    },
-  ]);
-
-
+  const [newQuestions, setNewQuestions] = useState([]);
   const [menus, setMenus] = useState([
     {
       title: "최신순",
