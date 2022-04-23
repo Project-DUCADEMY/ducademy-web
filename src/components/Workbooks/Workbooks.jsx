@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import * as M from "../../style/menu.style"
-import search from "../../assets/image/q&aPage/search.svg";
+import search from "../../assets/image/q&aPage/search.svg"
 import Workbook from './Workbook'
 import { useEffect, useState } from 'react'
 import { palette } from '../../style/palette'
@@ -26,7 +26,7 @@ const MenuBar = styled.div`
   align-items: center;
   justify-content: space-between;
   div {
-	  display: flex;
+	display: flex;
   }
 `
 const SearchContainer = styled.div`
@@ -98,42 +98,41 @@ const Workbooks = () => {
 	
 	return (
 		<Main>
-
 			<PlusButton url="/registerWorkbook" />
 			<MainWrapper>
-			<MenuBar>
-				<div>
-					{menus.map((menu, idx) => (
-						<M.NewQMenuSorted
-						key={idx}
-						sortedBy={sortedBy == idx ? true : false}
-							onClick={() => {
-								setSortedBy(idx);
-							}}
+				<MenuBar>
+					<div>
+						{menus.map((menu, idx) => (
+							<M.NewQMenuSorted
+								key={idx}
+								sortedBy={sortedBy == idx ? true : false}
+								onClick={() => {
+									setSortedBy(idx);
+								}}
 							>
-							{menu.title}
-						</M.NewQMenuSorted>
-					))}
-				</div>
-				<SearchContainer>
-					<input type="text" />
-					<img src={search} />
-				</SearchContainer>
-			</MenuBar>
-			<BookShelf>
-				{
-					getWorkbooks.map((element, idx) => {
-						return <Workbook
-						key={idx}
-						color={themes[5]}
-						owner={element.owner}
-						title={element.title}
-						>
-						</Workbook>
-					})
-				}
-			</BookShelf>
-				</MainWrapper>
+								{menu.title}
+							</M.NewQMenuSorted>
+						))}
+					</div>
+					<SearchContainer>
+						<input type="text" />
+						<img src={search} />
+					</SearchContainer>
+				</MenuBar>
+				<BookShelf>
+					{
+						getWorkbooks.map((element, idx) => {
+							return <Workbook
+								key={idx}
+								color={themes[5]}
+								owner={element.owner}
+								title={element.title}
+							>
+							</Workbook>
+						})
+					}
+				</BookShelf>
+			</MainWrapper>
 		</Main>
 	)
 }
