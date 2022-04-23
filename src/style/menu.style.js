@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const NewQMenus = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   > div {
     display: flex;
