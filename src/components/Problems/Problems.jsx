@@ -51,57 +51,18 @@ const SearchContainer = styled.div`
 `
 
 const Problems = ({forRegister}) => {
-  const [sortedBy, setSortedBy] = useState(0);
-  // const menus = ["최신순","조회수순"];
+  const [getSortedBy, setSortedBy] = useState('정렬');
+  const [getType, setType] = useState(0)
   const [menus, setMenus] = useState([
-    {
-      title: "전체",
-      id: 0,
-    },
-    {
-      title: "저장",
-      id: 1,
-    },
-    {
-      title: "오답",
-      id: 1,
-    },
-    {
-      title: "유형",
-      id: 1,
-    },
+    "전체",
+    "저장",
+    "오답",
+    "유형"
   ]);
   const [subjects, setSubjects] = useState([
-    {
-      id: 0,
-      label: "일반교과",
-      values: [
-        {
-          id: 0,
-          subject: "과학",
-        },
-        {
-          id: 1,
-          subject: "수학",
-        },
-      ],
-    },
-    {
-      id: 1,
-      label: "프로그래밍",
-      values: [
-        {
-          id: 0,
-          subject: "파이썬",
-        },
-        {
-          id: 1,
-          subject: "자바스크립트",
-        },
-      ],
-    },
+    '최신순',
+    '오래된순',
   ]);
-
   const [getProblems, setProblems] = useRecoilState(problems)
 	useEffect(() => {
 		axios.get('/problem/problems')
@@ -111,7 +72,7 @@ const Problems = ({forRegister}) => {
 		})
 		.catch(error => console.log(error))
 	}, [])
-
+  
   return (
     <Main fullSize={forRegister}>
       {/* <SearchSpace /> */}
@@ -120,25 +81,20 @@ const Problems = ({forRegister}) => {
           {menus.map((menu, idx) => (
             <M.NewQMenuSorted
               key={idx}
-              sortedBy={sortedBy == idx ? true : false}
+              sortedBy={getType == idx ? true : false}
               onClick={() => {
-                setSortedBy(idx);
+                setType(idx);
               }}
             >
-              {menu.title}
+              {menu}
             </M.NewQMenuSorted>
           ))}
         </div>
         <SearchWrapper>
-
-          <M.NewQMenuSubject>
-            <option>모두</option>
-            {subjects.map((subject) => (
-              <optgroup key={subject.id} label={subject.label}>
-                {subject.values.map((subject) => (
-                  <option key={subject.id}>{subject.subject}</option>
-                ))}
-              </optgroup>
+          <M.NewQMenuSubject onChange={(e) => setSortedBy(e.target.value)}>
+            <option value={getSortedBy}>정렬</option>
+            {subjects.map((subject, idx) => (
+              <option key={idx}>{subject}</option>
             ))}
           </M.NewQMenuSubject>
           <SearchContainer>

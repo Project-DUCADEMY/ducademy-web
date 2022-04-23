@@ -27,6 +27,7 @@ export const NewQWrapper = styled.div`
   width: 100%;
   border-radius: 0px 15px 15px 15px;
   box-shadow: 4px 4px 15px 0px #0000001a;
+  margin-bottom: 100px;
   > div {
     padding:5px 30px 5px 20px;
     height: 60px;
