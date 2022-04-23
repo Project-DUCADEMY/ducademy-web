@@ -33,7 +33,9 @@ const MenuBar = styled.div`
 const SearchContainer = styled.div`
 	display: flex;
 	box-sizing: border-box;
-	border : 1px solid #dcdcdc;
+	border-radius :10px;
+    border: none;
+    box-shadow: 4px 4px 15px 0px #0000001a;
 	background-color: white;
 	align-items: center;
 	justify-content: right;

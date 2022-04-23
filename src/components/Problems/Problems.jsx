@@ -31,11 +31,14 @@ const SearchWrapper = styled.div`
 const SearchContainer = styled.div`
 	display: flex;
 	box-sizing: border-box;
-	border : 1px solid #dcdcdc;
+	border-radius :10px;
+  border: none;
+  box-shadow: 4px 4px 15px 0px #0000001a;
 	background-color: white;
 	align-items: center;
 	justify-content: right;
 	padding-left: 10px;
+  margin-bottom: 10px;
 	transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
 	input {
 		width: 100%;

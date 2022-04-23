@@ -7,7 +7,7 @@ export const NewQMenus = styled.div`
   justify-content: space-between;
   > div {
     display: flex;
-    width: 50%
+    width: 30%
   }
 `;
 
@@ -47,17 +47,17 @@ export const NewQMenuSubject = styled.select`
   padding-left:15px;
   font-size:15px;
   position: relative;
-  bottom:12px;
-  outline:none;
-  :hover{
+  bottom: 12px;
+  outline: none;
+  :hover {
     background-color: #f4f4f4;
   }
-  :focus{
-    border:solid #3fe2a6;
+  :focus {
+    border: solid #3fe2a6;
   }
-  option{
+  option {
     :hover{
-      background:solid #3fe2a6;
+      background: solid #3fe2a6;
     }
   }
 `
