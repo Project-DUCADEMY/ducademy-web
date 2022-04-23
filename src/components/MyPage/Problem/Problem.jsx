@@ -803,7 +803,44 @@ const Problem = () => {
     },
   ]);
 
-  const [makeprolem,setmakeproblem] = useState
+  const [makeproblem, setmakeproblem] = useState([
+    {
+      MakeProblemNum: "1000",
+    },
+    {
+      MakeProblemNum: "1001",
+    },
+    {
+      MakeProblemNum: "10002",
+    },
+    {
+      MakeProblemNum: "1003",
+    },
+    {
+      MakeProblemNum: "4000",
+    },
+    {
+      MakeProblemNum: "2043",
+    },
+    {
+      MakeProblemNum: "2050",
+    },
+    {
+      MakeProblemNum: "3456",
+    },
+    {
+      MakeProblemNum: "3567",
+    },
+    {
+      MakeProblemNum: "3865",
+    },
+    {
+      MakeProblemNum: "4900",
+    },
+    {
+      MakeProblemNum: "5000",
+    },
+  ]);
 
   useEffect(() => {
     // 무작위 번호로 들어오는 RightProblemNum을 기준으로 오름차순으로 정렬
@@ -820,11 +857,11 @@ const Problem = () => {
       })
     );
 
-    // setmakeproblem(
-    //   makeproblem.srot(function(a,b){
-    //     return a
-    //   })
-    // )
+    setmakeproblem(
+      makeproblem.sort(function (a, b) {
+        return a.MakeProblemNum - b.MakeProblemNum;
+      })
+    );
   }, []);
 
   const MakeRightProblem = rightproblem.map((rightproblem) => (
@@ -837,6 +874,12 @@ const Problem = () => {
     <MP.WP href={`problem/problem/${wrongproblem.WrongProblemNum}`}>
       {wrongproblem.WrongProblemNum}
     </MP.WP>
+  ));
+
+  const MakeMakeProblem = makeproblem.map((makeproblem) => (
+    <MP.MP href={`problem/problem/${makeproblem.MakeProblemNum}`}>
+      {makeproblem.MakeProblemNum}
+    </MP.MP>
   ));
 
   return (
@@ -858,7 +901,8 @@ const Problem = () => {
 
       <MP.Container>
         <P.SubName style={{ height: "450px" }}>내가 만든 문제</P.SubName>
-        <MP.ProblemList></MP.ProblemList>
+
+        <MP.ProblemList>{MakeMakeProblem}</MP.ProblemList>
       </MP.Container>
     </div>
   );

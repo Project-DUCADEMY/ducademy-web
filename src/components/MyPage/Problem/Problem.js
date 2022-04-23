@@ -63,7 +63,7 @@ export const WP = styled.a`
 
 //만든 문제
 export const MP = styled.a`
-  color: #dd4124;
+  color: black;
   font-weight: bold;
   text-decoration: none;
   margin-left: 15px;
