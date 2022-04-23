@@ -36,17 +36,19 @@ const FunctionWrapper = styled.div`
 
 
 const Memos = () => {
+	const [getSearch, setSearch] = useState('')
 	const [getDragOver, setDragOver] = useState('')
 	const [getDragMemo, setDragMemo] = useState({})
 	const [getMemos, setMemos] = useState([])
 	useEffect(() => {
-		axios.get('memo/list')
+		axios.get(`memo/list/?query=${getSearch}`, {
+			query: getSearch
+		})
 		.then((res) => {
-			console.log(res.data.readMemo)
 			setMemos(res.data.readMemo)
 		})
 		.catch(console.log)
-	}, []) 
+	}, [getSearch]) 
 
 	return (
 		<MainWrapper>
@@ -56,7 +58,9 @@ const Memos = () => {
 					<LeftFunctionBar 
 						DragOver={[getDragOver, setDragOver]} 
 						DragMemo={getDragMemo}
-						setMemos={setMemos}/>
+						setMemos={setMemos}
+						search={[getSearch, setSearch]}
+						/>
 					<WhiteBoard 
 						getDragOver={getDragOver} 
 						DragMemo={[getDragMemo, setDragMemo]} 

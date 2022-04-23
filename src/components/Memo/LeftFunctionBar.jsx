@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ReactComponent as Delete } from './../../assets/image/memo/delete.svg'
 import { ReactComponent as Edit } from './../../assets/image/memo/edit.svg'
 import { ReactComponent as Search } from './../../assets/image/memo/search.svg'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const Main = styled.div`
     height: 100%;
@@ -83,6 +83,7 @@ const SearchBox = styled(FunctionBox)`
     };
 `
 const Render = (props) => {
+    
     const DeleteMemoHandler = () => {
         console.log(props.DragMemo)
         axios.delete(`/memo/delete?id=${props.DragMemo._id}`, {
@@ -103,21 +104,11 @@ const Render = (props) => {
             <FunctionBoxContainer>
                 <SearchBox 
                     color={'blue'}
-                    onDragEnter={() => {
-                        props.DragOver[1]('등록')
-                    }}
-                    onDragLeave={() => {
-                        props.DragOver[1]('')
-                    }}
-                    isDragOver={props.DragOver[0] === '등록'}
                 >
                     <IconWrapper>
                         <Search/>
                     </IconWrapper>
-                    <SearchContainer>
-                        {/* <input type="text" onChange={(e) => changeSearchValue(e.target.value)}/>
-                        <img src={search} onClick={searchThat}/> */}
-                    </SearchContainer>
+                    <SearchContainer type="text" value={props.search[0]} onChange={(e) => props.search[1](e.target.value)}/ >
                 </SearchBox>
                 <FunctionBox 
                     color={'green'}
