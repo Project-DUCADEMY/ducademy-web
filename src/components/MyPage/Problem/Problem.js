@@ -10,8 +10,6 @@ export const ProblemList = styled.div`
   row-gap: 20px;
   width: 80%;
   height: 450px;
-  /* align-items: center; */
-  /* justify-content: center; */
 
   ::-webkit-scrollbar {
     width: 7px;
@@ -29,7 +27,6 @@ export const ProblemList = styled.div`
 
 //맞은 문제
 export const RP = styled.a`
-  /* background-color: white; */
   color: #009874;
   font-weight: bold;
   text-decoration: none;
@@ -46,7 +43,6 @@ export const RP = styled.a`
 
 //틀린문제
 export const WP = styled.a`
-  /* background-color: white; */
   color: #dd4124;
   font-weight: bold;
   text-decoration: none;
