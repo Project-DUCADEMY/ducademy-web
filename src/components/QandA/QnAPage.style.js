@@ -151,8 +151,19 @@ align-items:center; */
 `;
 
 export const CommentInput = styled.textarea`
-  width: 300px;
-  height: 100px;
+  resize: none;
+  outline: none;
+  padding: 18px 22px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 400px;
+  height: 150px;
+  border: 1px solid #ccc;
+  transition: box-shadow ease-in-out 0.15s, border-color ease-in-out 0.15s;
+  &:focus {
+    box-shadow: 0 0 2px #c9c9c9;
+    border-color: #bbb;
+  }
 `
 export const ConfirmButton = styled.button`
   width: 230px;
