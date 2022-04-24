@@ -9,7 +9,9 @@ const Main = styled.div`
     position: relative;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 300px;
 `
 const TestPaperContainer = styled.div`
     display: flex;
@@ -18,7 +20,6 @@ const TestPaperContainer = styled.div`
     position: relative;
     top: 100px;
     width: 80%;
-    height: 120vh;
     justify-content: center;
 `
 const MenuBar = styled.div`
@@ -26,6 +27,7 @@ const MenuBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #bbb;
   div {
 	display: flex;
   }
@@ -63,15 +65,11 @@ const Render = () => {
 		  id: 0,
 		},
 		{
-		  title: "저장",
+		  title: "인기",
 		  id: 1,
 		},
 		{
-		  title: "오답",
-		  id: 1,
-		},
-		{
-		  title: "유형",
+		  title: "최신",
 		  id: 1,
 		},
 	  ]);
@@ -82,27 +80,27 @@ const Render = () => {
     // }, [getClickTestPaper])
     return (
         <Main>
-            <PlusButton url="/시험추가"/>
+            <PlusButton url="/시험추가" />
             <TestPaperContainer>
-            <MenuBar>
-				<div>
-					{menus.map((menu, idx) => (
-						<M.NewQMenuSorted
-						key={idx}
-						sortedBy={sortedBy == idx ? true : false}
-							onClick={() => {
-								setSortedBy(idx);
-							}}
-							>
-							{menu.title}
-						</M.NewQMenuSorted>
-					))}
-				</div>
-				<SearchContainer>
-					<input type="text" />
-					<img src={search} />
-				</SearchContainer>
-			</MenuBar>
+                <MenuBar>
+                    <div>
+                        {menus.map((menu, idx) => (
+                            <M.NewQMenuSorted
+                                key={idx}
+                                sortedBy={sortedBy == idx ? true : false}
+                                onClick={() => {
+                                    setSortedBy(idx);
+                                }}
+                            >
+                                {menu.title}
+                            </M.NewQMenuSorted>
+                        ))}
+                    </div>
+                    <SearchContainer>
+                        <input type="text" />
+                        <img src={search} />
+                    </SearchContainer>
+                </MenuBar>
                 {
                     Test.map((element, idx) => {
                         return <TestPaper

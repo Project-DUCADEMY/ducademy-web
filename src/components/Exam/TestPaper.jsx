@@ -16,7 +16,7 @@ const Paper = styled.div`
     align-items: center;
     padding: 18px 22px;
 `
-const ExamContainer = styled.div`    
+const ExamContainer = styled.div`
     cursor: pointer;
     max-width: 300px;
     max-height: 430px;
@@ -42,8 +42,8 @@ const Render = (props) => {
             <Paper Rotate={10} correction={0}></Paper>
             <Paper Rotate={-10} correction={100}></Paper>
             <Paper correction={200}>
-                <TitleText>관음충의 발생학</TitleText>
-                <AuthorText>윤지선</AuthorText>
+                <TitleText>수학의 왕도</TitleText>
+                <AuthorText>EBS</AuthorText>
             </Paper>
         </ExamContainer>
     )
