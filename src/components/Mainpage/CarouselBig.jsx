@@ -65,17 +65,6 @@ const CarouselBig = () => {
     },
   ]);
 
-  // // 카르셀 버튼 인덱스
-  // const [carouselArray,setCarouselArray] = useState([])
-  // // 아래에 특정 인덱스로 이동할 수 있는 버튼
-  // useEffect(()=>{
-  //     let tempArray = []
-  // 	for (let i =0;i<carouselMenus.length;i++){
-  //         tempArray.push(i)
-  // 	}
-  // 	setCarouselArray(tempArray)
-  // },[])
-
   // carousel의 단위는 vw
   const [carouselScale, setCarouselScale] = useState(100);
 
@@ -87,9 +76,9 @@ const CarouselBig = () => {
     if (0 >= translatePosition + carouselScale) {
       // translatePosition(translatePosition + carouselScale)
       setTranslatePosition(translatePosition + carouselScale);
-      if (translatePosition <= 0) {
-        setLeftArrowHover(false);
-      }
+      // if (translatePosition <= 0) {
+      //   setLeftArrowHover(false);
+      // }
     }
   }
 
@@ -101,21 +90,25 @@ const CarouselBig = () => {
     ) {
       // translatePosition(translatePosition - carouselScale)
       setTranslatePosition(translatePosition - carouselScale);
-      if (translatePosition / 100 >= -(carouselMenus.length - 1)) {
-        setRightArrowHover(false);
-      }
+      // if (translatePosition / 100 >= -(carouselMenus.length - 1)) {
+      //   setRightArrowHover(false);
+      // }
     }
   }
+
+  useEffect(() => {
+    if (translatePosition == 0){
+      setLeftArrowHover(false)
+    } else if ((translatePosition / 100) == (carouselMenus.length - 1)){
+      setRightArrowHover(false)
+    }
+  },[translatePosition])
+
   function goToDown() {
     window.scrollTo({
       top: window.outerHeight,
       behavior: "smooth",
     });
-  }
-
-  // 캐러셀 인덱스에 따라 이동
-  function moveCarousel(index) {
-    setTranslatePosition(index * -carouselScale);
   }
 
   const [leftArrowHover, setLeftArrowHover] = useState(false);
