@@ -28,68 +28,17 @@ const QandA = () => {
     })
     .catch(console.log)
   }, [searchValue])
-  const [myQuestions, setMyQuestions] = useState([
-    {
-      id: 1,
-      category: "과학",
-      title: "국어시간 너무 잠옴",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: true,
-      objectId: "park1",
-    },
-    {
-      id: 2,
-      category: "파이썬",
-      title: "잘하고싶다",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: false,
-      objectId: "park1",
-    },
-    {
-      id: 3,
-      category: "수학",
-      title:
-        "일일일일일일일일일일이이이이이이이이이이삼삼삼삼삼삼삼삼삼삼사사사사사사사사사사오오오오오오오오오오육육육육육육육육육육",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: true,
-      objectId: "자바스크립트",
-    },
-    {
-      id: 4,
-      category: "기타",
-      title: "잘하고싶다",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: false,
-      objectId: "park3",
-    },
-    {
-      id: 5,
-      category: "파이썬",
-      title: "잘하고싶다",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: false,
-      objectId: "park4",
-    },
-    {
-      id: 6,
-      category: "파이썬",
-      title: "잘하고싶다",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: false,
-      objectId: "park5",
-    },
-    {
-      id: 7,
-      category: "파이썬",
-      title: "잘하고싶다 아 이거 어케함 기모찡 하하하하하하하",
-      time: "Tue Apr 1 2022 09:44:35 GMT+0900 (대한민국 표준시)",
-      new: false,
-      objectId: "park6",
-    },
-  ]);
 
+  useEffect(() => {
+    axios.get(`/QnA/recent/`)
+    .then((result) => {
+      setMyQuestions(result.data.QnAList)
+    })
+    .catch(console.log)
+  }, [])
+
+  const [myQuestions, setMyQuestions] = useState([]);
   const [newQuestions, setNewQuestions] = useState([]);
-
   const [menus, setMenus] = useState([
     {
       title: "최신순",
@@ -198,11 +147,12 @@ const QandA = () => {
           <Q.MyQContainer>
             <Q.MyQWrapper>
               <Q.tempMyQ />
-              {myQuestions.map((myQ) => (
+              {myQuestions.map((myQ, idx) => (
+                
                 <Q.MyQ
-                  key={myQ.id}
+                  key={idx}
                   isNew={myQ.new}
-                  onClick={() => clickMyQ(myQ.objectId, myQ.category)}
+                  onClick={() => clickMyQ(myQ._id, myQ.category)}
                 >
                   <section>
                     <h3>{myQ.title}</h3>
@@ -214,7 +164,7 @@ const QandA = () => {
                     >
                       <div>{myQ.category}</div>
                     </Q.Category>
-                    <Q.MyQFootMenu>{makeDate(myQ.time)}</Q.MyQFootMenu>
+                    <Q.MyQFootMenu>{makeDate(myQ.day)}</Q.MyQFootMenu>
                   </Q.MyQFoot>
                 </Q.MyQ>
               ))}

@@ -6,7 +6,6 @@ const Book = styled.div`
 	height: 420px;
 	padding: 18px 22px;
 	background: ${props => props.background};
-	color: ${props => props.text};
 	border-radius: 20px 16px 12px 32px;
 	box-sizing: border-box;
 	flex-direction: column;
@@ -15,7 +14,7 @@ const Book = styled.div`
 	position: relative;
 	cursor: pointer;	
 	&:hover {
-		box-shadow: 2px 6px 20px 0px ${props => props.shadow};
+		box-shadow: 2px 6px 20px 0px #111111;
 		transform: scale(1.03);
 	}
 `
@@ -78,9 +77,10 @@ const BookBottom = styled.div`
 `
 //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chess.com%2Fko%2Fterms%2Fchess-ko&psig=AOvVaw1FzJjSj38iX7W6IhSQypAa&ust=1649121349223000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjrgPSd-fYCFQAAAAAdAAAAABAD
 const Workbook = ({color, owner, title}) => {
-	const {back, background, shadow, text} = color;
+	const back = '#' + (Number('0x' + color.replace('#', '')) - 1118481).toString(16)
+	const background = color;
 	return (
-		<Book back={back} background={background} shadow={shadow} text={text}>
+		<Book back={back} background={background}>
 			<BookBack back={back}></BookBack>
 			<Title back={back}><TextWrapper>{title}</TextWrapper></Title>
 			{/* <Author back={back}><TextWrapper></TextWrapper></Author> */}

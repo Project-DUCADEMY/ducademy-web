@@ -38,10 +38,11 @@ const SearchContainer = styled.div`
 	align-items: center;
 	justify-content: right;
 	padding-left: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 	transition: box-shadow ease-in-out .15s, border-color ease-in-out .15s;
 	input {
 		width: 100%;
+    height: 30px;
 		font-size: 17px;
 		border-radius: 15px;
 		outline: none;
@@ -94,16 +95,17 @@ const Problems = ({forRegister}) => {
           ))}
         </div>
         <SearchWrapper>
+          <SearchContainer value={getSearch} onChange={(e) => setSearch(e.target.value)}>
+            <input type="text" />
+            <img src={search} />
+          </SearchContainer>
           <M.NewQMenuSubject onChange={(e) => setSortedBy(e.target.value)}>
             <option value={getSortedBy}>정렬</option>
             {subjects.map((subject, idx) => (
               <option key={idx}>{subject}</option>
             ))}
           </M.NewQMenuSubject>
-          <SearchContainer value={getSearch} onChange={(e) => setSearch(e.target.value)}>
-            <input type="text" />
-            <img src={search} />
-          </SearchContainer>
+          
         </SearchWrapper>
       </M.NewQMenus>
       <ProblemList newQuestions={getProblems} forRegister={forRegister} />

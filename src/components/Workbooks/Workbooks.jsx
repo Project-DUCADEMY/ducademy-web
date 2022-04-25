@@ -15,7 +15,7 @@ const Main = styled.div`
 	align-items: center;
 	justify-content: center;
 	background-color: white;
-	margin-top: 30px;
+	margin-bottom: 100px;
 `
 const MainWrapper = styled.div`
 	width: 80%;
@@ -126,7 +126,7 @@ const Workbooks = () => {
 						getWorkbooks.map((element, idx) => {
 							return <Workbook
 								key={idx}
-								color={themes[5]}
+								color={element.color}
 								owner={element.owner}
 								title={element.title}
 							>

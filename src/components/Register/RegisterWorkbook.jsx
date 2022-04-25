@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const MainContainer = styled.div`
     width: 90%;
-    margin-top: 75px;
+    margin-bottom: 70px;
     display: flex;
     flex-direction: column;
     justify-content: right;
@@ -18,13 +18,20 @@ const SubmitWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: right;
+    position: relative;
+    bottom: 100px;
+    justify-content: space-around;
 `
 const ComponentContainer = styled.div`
     width: 50%;
     height: 100%;
     overflow: scroll;
+    padding: 10px;
     display: flex;
     justify-content: center;
+`
+const LeftComponentContainer = styled(ComponentContainer)`
+    padding-top: 135px;
 `
 const Input = styled.input`
     display: flex;
@@ -65,6 +72,7 @@ const Button = styled.button`
 
 const Render = () => {
     const [getWorkbookName, setWorkbookName] = useState('')
+    const [getColor, setColor] = useState('')
     const [getProblems, setProblems] = useState([])
     const pushProblemList = (problem) => {
         if(!getProblems.includes(problem)) {
@@ -88,7 +96,8 @@ const Render = () => {
         console.log(questionNumbers)
         axios.post('/workbook/create', {
             title: getWorkbookName,
-            questionNumber: questionNumbers
+            questionNumber: questionNumbers,
+            color: getColor
         })
         .then(console.log)
         .catch(console.log)
@@ -96,14 +105,16 @@ const Render = () => {
     return(
         <MainContainer>
             <ComponentWrapper>
-                <ComponentContainer>
+                <LeftComponentContainer>
                     <ProblemList newQuestions={getProblems} forRegister={popProblemList}/>
-                </ComponentContainer>
+                </LeftComponentContainer>
                 <ComponentContainer>
                     <Problem fullSize={true} forRegister={pushProblemList} />
                 </ComponentContainer>
+                
             </ComponentWrapper>
             <SubmitWrapper>
+                <Input placeholder="색" value={getColor} onChange={(e) => setColor(e.target.value)}/>
                 <Input placeholder="문제집 이름" value={getWorkbookName} onChange={(e) => setWorkbookName(e.target.value)}/>
                 <Button onClick={registerWorkbook}>등록</Button>
             </SubmitWrapper>
