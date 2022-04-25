@@ -58,6 +58,7 @@ const Memos = () => {
 					<LeftFunctionBar 
 						DragOver={[getDragOver, setDragOver]} 
 						DragMemo={getDragMemo}
+						getSearch={getSearch}
 						setMemos={setMemos}
 						search={[getSearch, setSearch]}
 						/>

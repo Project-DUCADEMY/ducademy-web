@@ -86,15 +86,12 @@ const Render = (props) => {
     
     const DeleteMemoHandler = () => {
         console.log(props.DragMemo)
-        axios.delete(`/memo/delete?id=${props.DragMemo._id}`, {
+        axios.delete(`/memo/delete?id=${props.DragMemo._id}&query=${props.getSearch}`, {
             id: props.DragMemo._id
         })
-        .then(() => {
-            axios.get('memo/list')
-            .then((res) => {
-                props.setMemos(res.data.readMemo)
-            })
-            .catch(console.log)
+        .then((res) => {
+            console.log(res.data)
+            props.setMemos(res.data.memos)
         })
         .catch(console.log)
         props.DragOver[1]('')
