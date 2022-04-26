@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { palette } from '../../style/palette'
 import PlusButton from "../common/PlusButton"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Main = styled.div`
 	width: 100%;
@@ -106,6 +107,7 @@ const Workbooks = () => {
 					<div>
 						{menus.map((menu, idx) => (
 							<M.NewQMenuSorted
+								
 								key={idx}
 								sortedBy={sortedBy == idx ? true : false}
 								onClick={() => {
@@ -129,6 +131,7 @@ const Workbooks = () => {
 								color={element.color}
 								owner={element.owner}
 								title={element.title}
+								Redirect={element._id}
 							>
 							</Workbook>
 						})

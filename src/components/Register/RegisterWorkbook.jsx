@@ -99,8 +99,8 @@ const Render = () => {
             questionNumber: questionNumbers,
             color: getColor
         })
-        .then(console.log)
-        .catch(console.log)
+        .then(() => {alert("문제집 등록 성공")})
+        .catch(() => {alert("문제집 등록 실패")})
     }
     return(
         <MainContainer>

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { palette } from '../../style/palette'
+import { useNavigate } from 'react-router-dom'
 const Book = styled.div`
 	display: flex;
 	width: 280px;
@@ -76,11 +77,16 @@ const BookBottom = styled.div`
 	background-image: linear-gradient(to bottom, transparent 6px, #E4E0CE 8px, transparent 8px, transparent 12px, #E4E0CE 12px, transparent 14px, transparent 18px,#E4E0CE 18px, transparent 20px, transparent 24px, #E4E0CE 24px, transparent 26px, transparent 30px, #E4E0CE 30px, transparent 32px, transparent 36px, #E4E0CE 36px, transparent 38px, transparent 42px, #E4E0CE 42px, transparent 44px, transparent 48px, #E4E0CE 48px, transparent 50px);
 `
 //https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chess.com%2Fko%2Fterms%2Fchess-ko&psig=AOvVaw1FzJjSj38iX7W6IhSQypAa&ust=1649121349223000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjrgPSd-fYCFQAAAAAdAAAAABAD
-const Workbook = ({color, owner, title}) => {
+const Workbook = ({color, owner, title, Redirect}) => {
+	const navigate = useNavigate()
+	const redirectToProblems = (id) => {
+		navigate(`/problems/?workbook=${id}`)
+	}
+
 	const back = '#' + (Number('0x' + color.replace('#', '')) - 1118481).toString(16)
 	const background = color;
 	return (
-		<Book back={back} background={background}>
+		<Book back={back} background={background} onClick={() => redirectToProblems(Redirect)}>
 			<BookBack back={back}></BookBack>
 			<Title back={back}><TextWrapper>{title}</TextWrapper></Title>
 			{/* <Author back={back}><TextWrapper></TextWrapper></Author> */}

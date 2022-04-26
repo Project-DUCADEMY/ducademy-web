@@ -69,14 +69,26 @@ const Problems = ({forRegister}) => {
     '오래된순',
   ]);
   const [getProblems, setProblems] = useRecoilState(problems)
+  const params = new URLSearchParams(window.location.search);
+  const [getWorkbook, setWorkbook] = useState(params.get('workbook'))
 	useEffect(() => {
-		axios.get(`/problem/problems/?query=${getSearch}`)
-		.then(response => {
-			setProblems(response.data.questionInfo)
-		})
-		.catch(error => console.log(error))
+    if(getWorkbook === null) {
+      axios.get(`/problem/problems/?query=${getSearch}`)
+      .then(response => {
+        setProblems(response.data.questionInfo)
+      })
+      .catch(error => console.log(error))
+    }
+    else {
+      axios.get(`/workbook/onelist/?id=${getWorkbook}`)
+      .then(response => {
+        setProblems(response.data.QuestionList)
+      })
+      .catch(error => console.log(error))
+    }
+
 	}, [getSearch])
-  
+
   return (
     <Main fullSize={forRegister}>
       {/* <SearchSpace /> */}
