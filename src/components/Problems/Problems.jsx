@@ -59,10 +59,10 @@ const Problems = ({forRegister}) => {
   const [getType, setType] = useState(0)
   const [getSearch, setSearch] = useState('')
   const [menus, setMenus] = useState([
-    "전체",
-    "저장",
-    "오답",
-    "유형"
+    // "전체",
+    // "저장",
+    // "오답",
+    // "유형"
   ]);
   const [subjects, setSubjects] = useState([
     '최신순',
