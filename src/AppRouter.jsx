@@ -44,7 +44,7 @@ const AppRouter = () => {
       <ScrollToTop />
       <NavBar />
       <Routes>
-        {getUserData === null ? (
+        {getUserData != null ? (
           <>
             <Route path="/login" element={<Loginpage />} />
             <Route path="/join" element={<Joinpage />} />

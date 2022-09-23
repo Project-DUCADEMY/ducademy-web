@@ -29,7 +29,7 @@ export const MyQContainer = styled.div`
   width: 100%;
 
   height: 310px;
-  overflow-x: scroll;
+  overflow-x: auto;
   /* margin-top:100px; */
 
   ::-webkit-scrollbar {
